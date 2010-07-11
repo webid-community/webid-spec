@@ -3,15 +3,14 @@ Abstract
 WebID 1.0
 Web Identification and Discovery
 
-Privacy and Identification on the Web have been at the center of how we 
-interact with sites on the Web. The explosion of Websites over the last 
-decade and a half has created a point of pain for anyone that uses the Web on 
-a regular basis. Remembering login details, passwords, and sharing private 
-information across the many websites that people use on a daily basis has 
-become more difficult and complicated than necessary. This specification 
-outlines a simple universal identification mechanism that is distributed, 
-openly extensible, improves privacy, security and control over how one can 
-identify themselves on the Web.
+Identification and privacy have been at the center of how we interact with sites
+on the Web. The explosion of Websites over the last decade and a half has 
+created a point of pain for anyone that uses the Web on a regular basis. 
+Remembering login details, passwords, and sharing private information across 
+the many websites that people use on a daily basis has become more difficult and 
+complicated than necessary. This specification outlines a simple universal 
+identification mechanism that is distributed, openly extensible, improves 
+privacy, security and control over how one can identify themselves on the Web.
 
 Source
 ------

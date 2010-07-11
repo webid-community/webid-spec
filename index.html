@@ -47,7 +47,7 @@ span.element { color: green; }
 <!--     <script src='/ReSpec.js/js/respec.js' class='remove'></script>  -->
 
     
-  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-11T20:21:06+0000" id="unofficial-draft-11-july-2010">Unofficial Draft 11 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
+  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-11T20:52:55+0000" id="unofficial-draft-11-july-2010">Unofficial Draft 11 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
 </dd>
 <dt>Authors:</dt><dd><span><span>Toby Inkster</span></span>
 </dd>
@@ -56,7 +56,7 @@ span.element { color: green; }
 </dl><p class="copyright">This document is licensed under a <a class="subfoot" href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 License</a>.</p><hr></hr></div>
     <div id="abstract" class="introductory section" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" about="#abstract"><h2>Abstract</h2>
 
-<p>Privacy and Identification on the Web have been at the center of how we
+<p>Identification and privacy have been at the center of how we
 interact with sites on the Web. The explosion of Websites over the last decade
 and a half has created a point of pain for anyone that uses the Web on a
 regular basis. Remembering login details, passwords,
@@ -99,6 +99,9 @@ document. W3C's role in making the Recommendation is to draw attention
 to the specification and to promote its widespread deployment. This
 enhances the functionality and interoperability of the Web.</p>  -->
 
+
+The source code for this document is available via Github at the following
+URL: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/webid-spec</a>
 
 </div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li><li class="tocline"><a href="#relation-to-openid" class="tocxref"><span class="secno">1.2 </span>Relation to OpenID</a></li><li class="tocline"><a href="#relation-to-oauth" class="tocxref"><span class="secno">1.3 </span>Relation to OAuth</a></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">2. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">2.2 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">2.3 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">2.3.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">2.3.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-url" class="tocxref"><span class="secno">2.3.3 </span>Processing the WebID URL</a></li><li class="tocline"><a href="#extracting-identification-url-details" class="tocxref"><span class="secno">2.3.4 </span>Extracting Identification URL Details</a></li><li class="tocline"><a href="#determining-access-privileges" class="tocxref"><span class="secno">2.3.5 </span>Determining Access Privileges</a></li></ul></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></div>
 
