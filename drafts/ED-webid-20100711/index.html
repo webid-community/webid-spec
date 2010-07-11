@@ -47,7 +47,7 @@ span.element { color: green; }
 <!--     <script src='/ReSpec.js/js/respec.js' class='remove'></script>  -->
 
     
-  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-11T21:46:11+0000" id="unofficial-draft-11-july-2010">Unofficial Draft 11 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
+  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-11T22:35:06+0000" id="unofficial-draft-11-july-2010">Unofficial Draft 11 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
 </dd>
 <dt>Authors:</dt><dd><span><span>Toby Inkster</span></span>
 </dd>
@@ -104,7 +104,7 @@ enhances the functionality and interoperability of the Web.</p>  -->
 The source code for this document is available via Github at the following
 URL: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/webid-spec</a>
 
-</div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li><li class="tocline"><a href="#relation-to-openid" class="tocxref"><span class="secno">1.2 </span>Relation to OpenID</a></li><li class="tocline"><a href="#relation-to-oauth" class="tocxref"><span class="secno">1.3 </span>Relation to OAuth</a></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">2. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">2.2 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">2.3 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">2.3.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">2.3.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-url" class="tocxref"><span class="secno">2.3.3 </span>Processing the WebID URL</a></li><li class="tocline"><a href="#extracting-identification-url-details" class="tocxref"><span class="secno">2.3.4 </span>Extracting Identification URL Details</a></li><li class="tocline"><a href="#determining-access-privileges" class="tocxref"><span class="secno">2.3.5 </span>Determining Access Privileges</a></li></ul></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></div>
+</div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li><li class="tocline"><a href="#relation-to-openid" class="tocxref"><span class="secno">1.2 </span>Relation to OpenID</a></li><li class="tocline"><a href="#relation-to-oauth" class="tocxref"><span class="secno">1.3 </span>Relation to OAuth</a></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">2. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">2.2 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">2.3 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">2.3.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">2.3.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">2.3.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#extracting-identification-url-details" class="tocxref"><span class="secno">2.3.4 </span>Extracting Identification URL Details</a></li><li class="tocline"><a href="#determining-access-privileges" class="tocxref"><span class="secno">2.3.5 </span>Determining Access Privileges</a></li></ul></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></div>
 
 
 
@@ -192,7 +192,7 @@ WebIDs in their browser.</p>
 
 <p>The WebID protocol requires just one direct network connection to establish
 identity via the client. The server requires one connection to the client and
-one connection to retrieve the WebID URL if it does not have the credential
+one connection to retrieve the WebID Profile if it does not have the credential
 information cached. Compare this to the much more complex OpenID sequence, which
 requires six connections by the client to establish a login. In a world of 
 distributed data where each site can point to data on any other site, multiple 
@@ -297,8 +297,9 @@ may also be a peer on a peer-to-peer network.</dd>
 <dt><dfn title="Identification_Certificate" id="dfn-identification_certificate">Identification Certificate</dfn></dt>
 <dd>An X.509 [<a class="bibref" rel="biblioentry" href="#bib-X509V3">X509V3</a>] Certificate that <em class="rfc2119" title="must">must</em> contain the 
 <code>Subject Alternative Name</code> field pointing to a URL that is
-dereference-able and results in an [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] document. For example 
-the certificate would contain <code>http://example.org/webid#public</code> as
+dereference-able and results in a document containing RDF data. For example 
+the certificate would contain <code>http://example.org/webid#public</code>,
+known as a <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>, as
 the <code>Subject Alternative Name</code>:
 <code><pre>
 X509v3 extensions:
@@ -307,8 +308,16 @@ X509v3 extensions:
       URI:http://example.org/webid#public
 </pre></code>
 </dd><dt><dfn title="WebID_URL" id="dfn-webid_url">WebID URL</dfn></dt>
-<dd>The URL that contains identification credentials for the 
-<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> encoded in RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>].</dd>
+<dd>A URL specified in the <code>Subject Alternative Name</code> field of the
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> that identifies a 
+<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document.</dd>
+<dt><dfn title="WebID_Profile" id="dfn-webid_profile">WebID Profile</dfn></dt>
+<dd>The document that contains identification credentials for the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> encoded in RDF. The only document format
+that is <em class="rfc2119" title="required">required</em> to be supported is XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>]. Alternate
+document formats expressing RDF data, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or
+[<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] <em class="rfc2119" title="may">may</em> be supported.</dd>
+
 
 </dl>
 
@@ -331,20 +340,20 @@ as a part of the TLS client-cerificate retrieval protocol.</li>
 
 <li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> 
 contained in the <code>Subject Alternative Name</code> field of the 
-<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. The <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> <em class="rfc2119" title="must">must</em> be 
-dereferenced and the resulting document processed according to [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>]. 
-All triples pertaining to the public key associated with the 
-<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> <em class="rfc2119" title="must">must</em> be extracted from the remote document.</li>
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. The <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document
+<em class="rfc2119" title="must">must</em> be dereferenced and all triples pertaining to the public key associated 
+with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> <em class="rfc2119" title="must">must</em> be extracted.
+</li>
 
 <li>The remote document triples <em class="rfc2119" title="must">must</em> be queried for information about the 
 public key contained in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. 
 If the public key in the certificate is found in the list of public keys 
 associated with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>, the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
-<em class="rfc2119" title="must">must</em> assume that the client has write access to the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> and
-therefore owns the URL.</li>
+<em class="rfc2119" title="must">must</em> assume that the client has write access to the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> and
+therefore owns the document.</li>
 
 <li>At this point, the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> has verified that the
-<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> is owned by the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>. The
+<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> is owned by the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>. The
 <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> use the now verified public key contained 
 in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> for all TLS-based communication
 with the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>.
@@ -382,11 +391,17 @@ Identification Agent and the Verification Agent.</p>
 sent to the Verification Agent.</p>
 </div>
 
-<div class="normative section" id="processing-the-webid-url" typeof="bibo:Chapter" about="#processing-the-webid-url">
-<h4><span class="secno">2.3.3 </span>Processing the WebID URL</h4>
+<div class="normative section" id="processing-the-webid-profile" typeof="bibo:Chapter" about="#processing-the-webid-profile">
+<h4><span class="secno">2.3.3 </span>Processing the WebID Profile</h4>
 
-<p class="issue">This section will explain how a Verification Agent extracts 
-semantic data describing the identification credentials from a WebID URL.</p>
+<p>A server responding to a WebID Profile request <em class="rfc2119" title="must">must</em> support returning an
+XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] document with either a <code>text/html</code> or
+<code>application/xhtml+xml</code> MIMEtype. A server <em class="rfc2119" title="may">may</em> support HTTP content
+negotiation and return a document that conforms to N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle
+[<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or RDF/XML [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>].
+
+</p><p class="issue">This section will explain how a Verification Agent extracts 
+semantic data describing the identification credentials from a WebID Profile.</p>
 </div>
 
 <div class="normative section" id="extracting-identification-url-details" typeof="bibo:Chapter" about="#extracting-identification-url-details">
@@ -394,10 +409,10 @@ semantic data describing the identification credentials from a WebID URL.</p>
 
 <p>
 The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> may use a number of different methods to
-extract the public key information from the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>.
+extract the public key information from the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a>.
 </p>
 The following SPARQL query outlines one way in which the public key
-could be extracted from the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>:
+could be extracted from the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a>:
 <code><pre>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
@@ -457,7 +472,10 @@ reviews, criticism and input in the creation of this specification:</p>
 </div><div id="references" class="appendix section" typeof="bibo:Chapter" about="#references">
 <!-- OddPage -->
 <h2><span class="secno">A. </span>References</h2><div id="normative-references" typeof="bibo:Chapter" about="#normative-references" class="section"><h3><span class="secno">A.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-HTTP-TLS">[HTTP-TLS]</dt><dd rel="dcterms:requires">E. Rescorla. <a href="http://www.ietf.org/rfc/rfc2818.txt"><cite>HTTP Over TLS.</cite></a> May 2000. Internet RFC 2818. URL: <a href="http://www.ietf.org/rfc/rfc2818.txt">http://www.ietf.org/rfc/rfc2818.txt</a> 
+</dd><dt id="bib-N3">[N3]</dt><dd rel="dcterms:requires">Tim Berners-Lee; Dan Connolly. <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/"><cite>Notation3 (N3): A readable RDF syntax.</cite></a> 14 January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/">http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/</a> 
+</dd><dt id="bib-RDF-SYNTAX-GRAMMAR">[RDF-SYNTAX-GRAMMAR]</dt><dd rel="dcterms:requires">Dave Beckett. <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210"><cite>RDF/XML Syntax Specification (Revised).</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210">http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210</a> 
 </dd><dt id="bib-RDFA-CORE">[RDFA-CORE]</dt><dd rel="dcterms:requires">Shane McCarron; et al. <a href="http://www.w3.org/TR/2010/WD-rdfa-core-20100422"><cite>RDFa Core 1.1: Syntax and processing rules for embedding RDF through attributes.</cite></a>22 April 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-rdfa-core-20100422">http://www.w3.org/TR/2010/WD-rdfa-core-20100422</a> 
+</dd><dt id="bib-TURTLE">[TURTLE]</dt><dd rel="dcterms:requires">David Beckett, Tim Berners-Lee. <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle: Terse RDF Triple Language</a> January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/turtle/">http://www.w3.org/TeamSubmission/turtle/</a> 
 </dd><dt id="bib-X509V3">[X509V3]</dt><dd rel="dcterms:requires"><cite>ITU-T Recommendation X.509 version 3 (1997). "Information Technology - Open Systems Interconnection - The Directory Authentication Framework"  ISO/IEC 9594-8:1997</cite>.
 </dd><dt id="bib-XHTML-RDFA">[XHTML-RDFA]</dt><dd rel="dcterms:requires">Shane McCarron; et. al. <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100422"><cite>XHTML+RDFa 1.1.</cite></a> 22 April 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100422">http://www.w3.org/TR/WD-xhtml-rdfa-20100422</a> 
 </dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">A.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-PRIMER">[RDF-PRIMER]</dt><dd rel="dcterms:references">Frank Manola; Eric Miller. <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/"><cite>RDF Primer.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</a> 

@@ -401,7 +401,7 @@ WebIDs in their browser.</p>
 
 <p>The WebID protocol requires just one direct network connection to establish
 identity via the client. The server requires one connection to the client and
-one connection to retrieve the WebID URL if it does not have the credential
+one connection to retrieve the WebID Profile if it does not have the credential
 information cached. Compare this to the much more complex OpenID sequence, which
 requires six connections by the client to establish a login. In a world of 
 distributed data where each site can point to data on any other site, multiple 
@@ -504,8 +504,9 @@ may also be a peer on a peer-to-peer network.</dd>
 <dt><tdef>Identification Certificate</tdef></dt>
 <dd>An X.509 [[!X509V3]] Certificate that MUST contain the 
 <code>Subject Alternative Name</code> field pointing to a URL that is
-dereference-able and results in an [[!XHTML-RDFA]] document. For example 
-the certificate would contain <code>http://example.org/webid#public</code> as
+dereference-able and results in a document containing RDF data. For example 
+the certificate would contain <code>http://example.org/webid#public</code>,
+known as a <tref>WebID URL</tref>, as
 the <code>Subject Alternative Name</code>:
 <code><pre>
 X509v3 extensions:
@@ -514,9 +515,17 @@ X509v3 extensions:
       URI:http://example.org/webid#public
 </pre></code>
 <dt><tdef>WebID URL</tdef></dt>
-<dd>The URL that contains identification credentials for the 
-<tref>Identification Agent</tref> encoded in RDFa [[!XHTML-RDFA]].</dd>
+<dd>A URL specified in the <code>Subject Alternative Name</code> field of the
+<tref>Identification Certificate</tref> that identifies a 
+<tref>WebID Profile</tref> document.</dd>
+<dt><tdef>WebID Profile</tdef></dt>
+<dd>The document that contains identification credentials for the 
+<tref>Identification Agent</tref> encoded in RDF. The only document format
+that is REQUIRED to be supported is XHTML+RDFa [[!XHTML-RDFA]]. Alternate
+document formats expressing RDF data, such as N3 [[!N3]], Turtle [[!TURTLE]], or
+[[!RDF-SYNTAX-GRAMMAR]] MAY be supported.</dd>
 </dd>
+
 </dl>
 
 </section>
@@ -538,20 +547,20 @@ as a part of the TLS client-cerificate retrieval protocol.</li>
 
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>WebID URL</tref> 
 contained in the <code>Subject Alternative Name</code> field of the 
-<tref>Identification Certificate</tref>. The <tref>WebID URL</tref> MUST be 
-dereferenced and the resulting document processed according to [[!XHTML-RDFA]]. 
-All triples pertaining to the public key associated with the 
-<tref>WebID URL</tref> MUST be extracted from the remote document.</li>
+<tref>Identification Certificate</tref>. The <tref>WebID Profile</tref> document
+MUST be dereferenced and all triples pertaining to the public key associated 
+with the <tref>WebID URL</tref> MUST be extracted.
+</li>
 
 <li>The remote document triples MUST be queried for information about the 
 public key contained in the <tref>Identification Certificate</tref>. 
 If the public key in the certificate is found in the list of public keys 
 associated with the <tref>WebID URL</tref>, the <tref>Verification Agent</tref>
-MUST assume that the client has write access to the <tref>WebID URL</tref> and
-therefore owns the URL.</li>
+MUST assume that the client has write access to the <tref>WebID Profile</tref> and
+therefore owns the document.</li>
 
 <li>At this point, the <tref>Verification Agent</tref> has verified that the
-<tref>WebID URL</tref> is owned by the <tref>Identification Agent</tref>. The
+<tref>WebID Profile</tref> is owned by the <tref>Identification Agent</tref>. The
 <tref>Verification Agent</tref> MUST use the now verified public key contained 
 in the <tref>Identification Certificate</tref> for all TLS-based communication
 with the <tref>Identification Agent</tref>.
@@ -590,10 +599,16 @@ sent to the Verification Agent.</p>
 </section>
 
 <section class='normative'>
-<h2>Processing the WebID URL</h2>
+<h2>Processing the WebID Profile</h2>
+
+<p>A server responding to a WebID Profile request MUST support returning an
+XHTML+RDFa [[!XHTML-RDFA]] document with either a <code>text/html</code> or
+<code>application/xhtml+xml</code> MIMEtype. A server MAY support HTTP content
+negotiation and return a document that conforms to N3 [[!N3]], Turtle
+[[!TURTLE]], or RDF/XML [[!RDF-SYNTAX-GRAMMAR]].
 
 <p class="issue">This section will explain how a Verification Agent extracts 
-semantic data describing the identification credentials from a WebID URL.</p>
+semantic data describing the identification credentials from a WebID Profile.</p>
 </section>
 
 <section class='normative'>
@@ -601,10 +616,10 @@ semantic data describing the identification credentials from a WebID URL.</p>
 
 <p>
 The <tref>Verification Agent</tref> may use a number of different methods to
-extract the public key information from the <tref>WebID URL</tref>.
+extract the public key information from the <tref>WebID Profile</tref>.
 </p>
 The following SPARQL query outlines one way in which the public key
-could be extracted from the <tref>WebID URL</tref>:
+could be extracted from the <tref>WebID Profile</tref>:
 <code><pre>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
