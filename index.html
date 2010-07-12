@@ -321,11 +321,12 @@ X509v3 extensions:
 <dd>
 A structured document that contains identification credentials for the 
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed using the Resource Description
-Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>]. The XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
-format <em class="rfc2119" title="must">must</em> be supported by the mechanism, e.g. a Web Service, providing the
-WebID Profile document. Alternate RDF serialization
-formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or RDF/XML 
-[<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] <em class="rfc2119" title="may">may</em> be supported by the mechanism providing the 
+Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>].
+The mechanism providing the WebID Profile document (e.g. a Web Service) <em class="rfc2119" title="must">must</em> at least support 
+the XML+RDF [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] or
+the XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
+formats. Alternate RDF serialization formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>] or
+Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>] <em class="rfc2119" title="may">may</em> also be supported by the mechanism providing the 
 WebID Profile document.
 </dd>
 
@@ -404,11 +405,16 @@ sent to the Verification Agent.</p>
 <div class="normative section" id="processing-the-webid-profile" typeof="bibo:Chapter" about="#processing-the-webid-profile">
 <h4><span class="secno">2.3.3 </span>Processing the WebID Profile</h4>
 
-<p>A server responding to a WebID Profile request <em class="rfc2119" title="must">must</em> support returning an
-XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] document with either a <code>text/html</code> or
-<code>application/xhtml+xml</code> MIMEtype. A server <em class="rfc2119" title="may">may</em> support HTTP content
-negotiation and return a document that conforms to N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle
-[<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or RDF/XML [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>].
+<p>A Verification Agent <em class="rfc2119" title="must">must</em> be able to process documents in
+RDF/XML [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>]
+and XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>].
+A server responding to a WebID Profile request <em class="rfc2119" title="must">must</em> be able to
+return a representation in RDF/XML (using media type <code>application/rdf+xml</code>) or 
+XHTML+RDFa (using either media type <code>text/html</code> or media type <code>application/xhtml+xml</code>).
+In addition, either parties <em class="rfc2119" title="may">may</em> support any other RDF format
+via HTTP content-type negotiation.
+</p>
+
 
 </p><p class="issue">This section will explain how a Verification Agent extracts 
 semantic data describing the identification credentials from a WebID Profile.</p>
