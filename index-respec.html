@@ -493,14 +493,17 @@ connection that will be used to transmit OAuth Tokens in OAuth 2.0.
 <h1>Terminology</h1>
 
 <dl>
+
 <dt><tdef>Verification Agent</tdef></dt>
 <dd>Performs authentication on provided WebID credentials and determines if
 an <tref>Identification Agent</tref> can have access to a particular 
 resource. A <tref>Verification Agent</tref> is typically a Web server, but 
 may also be a peer on a peer-to-peer network.</dd>
+
 <dt><tdef>Identification Agent</tdef></dt>
 <dd>Provides identification credentials to a Verification Agent. The
 <tref>Identification Agent</tref> is typically also a User Agent.</dd>
+
 <dt><tdef>Identification Certificate</tdef></dt>
 <dd>An X.509 [[!X509V3]] Certificate that MUST contain the 
 <code>Subject Alternative Name</code> field pointing to a URL that is
@@ -514,16 +517,22 @@ X509v3 extensions:
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre></code>
+
 <dt><tdef>WebID URL</tdef></dt>
 <dd>A URL specified in the <code>Subject Alternative Name</code> field of the
 <tref>Identification Certificate</tref> that identifies a 
 <tref>WebID Profile</tref> document.</dd>
+
 <dt><tdef>WebID Profile</tdef></dt>
-<dd>The document that contains identification credentials for the 
-<tref>Identification Agent</tref> encoded in RDF. The only document format
-that is REQUIRED to be supported is XHTML+RDFa [[!XHTML-RDFA]]. Alternate
-document formats expressing RDF data, such as N3 [[!N3]], Turtle [[!TURTLE]], or
-[[!RDF-SYNTAX-GRAMMAR]] MAY be supported.</dd>
+<dd>
+A structured document that contains identification credentials for the 
+<tref>Identification Agent</tref> expressed using the Resource Description
+Framework [[RDF-CONCEPTS]]. The XHTML+RDFa 1.1 [[!XHTML-RDFA]] serialization
+format MUST be supported by the mechanism, e.g. a Web Service, providing the
+WebID Profile document. Alternate RDF serialization
+formats, such as N3 [[!N3]], Turtle [[!TURTLE]], or RDF/XML 
+[[!RDF-SYNTAX-GRAMMAR]] MAY be supported by the mechanism providing the 
+WebID Profile document.
 </dd>
 
 </dl>

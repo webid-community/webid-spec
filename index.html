@@ -47,7 +47,7 @@ span.element { color: green; }
 <!--     <script src='/ReSpec.js/js/respec.js' class='remove'></script>  -->
 
     
-  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-11T22:35:06+0000" id="unofficial-draft-11-july-2010">Unofficial Draft 11 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
+  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-12T01:01:38+0000" id="unofficial-draft-11-july-2010">Unofficial Draft 11 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
 </dd>
 <dt>Authors:</dt><dd><span><span>Toby Inkster</span></span>
 </dd>
@@ -286,14 +286,17 @@ connection that will be used to transmit OAuth Tokens in OAuth 2.0.
 <h3><span class="secno">2.1 </span>Terminology</h3>
 
 <dl>
+
 <dt><dfn title="Verification_Agent" id="dfn-verification_agent">Verification Agent</dfn></dt>
 <dd>Performs authentication on provided WebID credentials and determines if
 an <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> can have access to a particular 
 resource. A <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> is typically a Web server, but 
 may also be a peer on a peer-to-peer network.</dd>
+
 <dt><dfn title="Identification_Agent" id="dfn-identification_agent">Identification Agent</dfn></dt>
 <dd>Provides identification credentials to a Verification Agent. The
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> is typically also a User Agent.</dd>
+
 <dt><dfn title="Identification_Certificate" id="dfn-identification_certificate">Identification Certificate</dfn></dt>
 <dd>An X.509 [<a class="bibref" rel="biblioentry" href="#bib-X509V3">X509V3</a>] Certificate that <em class="rfc2119" title="must">must</em> contain the 
 <code>Subject Alternative Name</code> field pointing to a URL that is
@@ -307,17 +310,23 @@ X509v3 extensions:
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre></code>
+
 </dd><dt><dfn title="WebID_URL" id="dfn-webid_url">WebID URL</dfn></dt>
 <dd>A URL specified in the <code>Subject Alternative Name</code> field of the
 <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> that identifies a 
 <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document.</dd>
-<dt><dfn title="WebID_Profile" id="dfn-webid_profile">WebID Profile</dfn></dt>
-<dd>The document that contains identification credentials for the 
-<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> encoded in RDF. The only document format
-that is <em class="rfc2119" title="required">required</em> to be supported is XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>]. Alternate
-document formats expressing RDF data, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or
-[<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] <em class="rfc2119" title="may">may</em> be supported.</dd>
 
+<dt><dfn title="WebID_Profile" id="dfn-webid_profile">WebID Profile</dfn></dt>
+<dd>
+A structured document that contains identification credentials for the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed using the Resource Description
+Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>]. The XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
+format <em class="rfc2119" title="must">must</em> be supported by the mechanism, e.g. a Web Service, providing the
+WebID Profile document. Alternate RDF serialization
+formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or RDF/XML 
+[<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] <em class="rfc2119" title="may">may</em> be supported by the mechanism providing the 
+WebID Profile document.
+</dd>
 
 </dl>
 
@@ -478,5 +487,6 @@ reviews, criticism and input in the creation of this specification:</p>
 </dd><dt id="bib-TURTLE">[TURTLE]</dt><dd rel="dcterms:requires">David Beckett, Tim Berners-Lee. <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle: Terse RDF Triple Language</a> January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/turtle/">http://www.w3.org/TeamSubmission/turtle/</a> 
 </dd><dt id="bib-X509V3">[X509V3]</dt><dd rel="dcterms:requires"><cite>ITU-T Recommendation X.509 version 3 (1997). "Information Technology - Open Systems Interconnection - The Directory Authentication Framework"  ISO/IEC 9594-8:1997</cite>.
 </dd><dt id="bib-XHTML-RDFA">[XHTML-RDFA]</dt><dd rel="dcterms:requires">Shane McCarron; et. al. <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100422"><cite>XHTML+RDFa 1.1.</cite></a> 22 April 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100422">http://www.w3.org/TR/WD-xhtml-rdfa-20100422</a> 
-</dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">A.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-PRIMER">[RDF-PRIMER]</dt><dd rel="dcterms:references">Frank Manola; Eric Miller. <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/"><cite>RDF Primer.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</a> 
+</dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">A.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-CONCEPTS">[RDF-CONCEPTS]</dt><dd rel="dcterms:references">Graham Klyne; Jeremy J. Carroll. <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210"><cite>Resource Description Framework (RDF): Concepts and Abstract Syntax.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210">http://www.w3.org/TR/2004/REC-rdf-concepts-20040210</a> 
+</dd><dt id="bib-RDF-PRIMER">[RDF-PRIMER]</dt><dd rel="dcterms:references">Frank Manola; Eric Miller. <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/"><cite>RDF Primer.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</a> 
 </dd></dl></div></div></body></html>
