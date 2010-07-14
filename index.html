@@ -52,6 +52,7 @@ span.element { color: green; }
 <dt>Authors:</dt><dd><span><span>Toby Inkster</span></span>
 </dd>
 <dd><span><a content="Henry Story" href="http://bblfish.net/">Henry Story</a></span>
+<dd><span>Bruno Harbulot</span>
 </dd>
 </dl><p class="copyright">This document is licensed under a <a class="subfoot" href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 License</a>.</p><hr></hr></div>
     <div id="abstract" class="introductory section" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" about="#abstract"><h2>Abstract</h2>
@@ -298,12 +299,12 @@ may also be a peer on a peer-to-peer network.</dd>
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> is typically also a User Agent.</dd>
 
 <dt><dfn title="Identification_Certificate" id="dfn-identification_certificate">Identification Certificate</dfn></dt>
-<dd>An X.509 [<a class="bibref" rel="biblioentry" href="#bib-X509V3">X509V3</a>] Certificate that <em class="rfc2119" title="must">must</em> contain the 
-<code>Subject Alternative Name</code> field pointing to a URL that is
-dereference-able and results in a document containing RDF data. For example 
+<dd>An X.509 [<a class="bibref" rel="biblioentry" href="#bib-X509V3">X509V3</a>] Certificate that <em class="rfc2119" title="must">must</em> contain an
+a <code>Subject Alternative Name</code> extension with a URI entry. The URI in this entry <em class="rfc2119" title="must">must</em> be
+dereference-able and result in a document containing RDF data. For example, 
 the certificate would contain <code>http://example.org/webid#public</code>,
-known as a <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>, as
-the <code>Subject Alternative Name</code>:
+known as a <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>, in
+the <code>Subject Alternative Name</code> extension:
 <code><pre>
 X509v3 extensions:
    ...
@@ -312,7 +313,7 @@ X509v3 extensions:
 </pre></code>
 
 </dd><dt><dfn title="WebID_URL" id="dfn-webid_url">WebID URL</dfn></dt>
-<dd>A URL specified in the <code>Subject Alternative Name</code> field of the
+<dd>A URL specified in a URI entry of the <code>Subject Alternative Name</code> extension of the
 <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> that identifies a 
 <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document.</dd>
 
@@ -320,12 +321,21 @@ X509v3 extensions:
 <dd>
 A structured document that contains identification credentials for the 
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed using the Resource Description
+<<<<<<< HEAD
 Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>]. The XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>]
 serialization format or RDF/XML [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>]
 <em class="rfc2119" title="should">should</em> be supported by the mechanism, e.g. a Web Service, providing the
 WebID Profile document. Alternate RDF serialization
 formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>] 
 <em class="rfc2119" title="may">may</em> be supported by the mechanism providing the 
+=======
+Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>].
+The mechanism providing the WebID Profile document (e.g. a Web Service) <em class="rfc2119" title="must">must</em> at least support 
+the XML+RDF [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] or
+the XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
+formats. Alternate RDF serialization formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>] or
+Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>] <em class="rfc2119" title="may">may</em> also be supported by the mechanism providing the 
+>>>>>>> remotes/origin/harbulot
 WebID Profile document.
 </dd>
 
@@ -349,7 +359,7 @@ using HTTP over TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HT
 as a part of the TLS client-cerificate retrieval protocol.</li>
 
 <li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> 
-contained in the <code>Subject Alternative Name</code> field of the 
+contained in the <code>Subject Alternative Name</code> extension of the 
 <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. The <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document
 <em class="rfc2119" title="must">must</em> be dereferenced and all triples pertaining to the public key associated 
 with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> <em class="rfc2119" title="must">must</em> be extracted.
@@ -404,11 +414,17 @@ sent to the Verification Agent.</p>
 <div class="normative section" id="processing-the-webid-profile" typeof="bibo:Chapter" about="#processing-the-webid-profile">
 <h4><span class="secno">2.3.3 </span>Processing the WebID Profile</h4>
 
-<p>A server responding to a WebID Profile request <em class="rfc2119" title="should">should</em> support returning either and RDF/XML[<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] document (as application/rdf+xml) or an
-XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] document with either a <code>text/html</code> or
-<code>application/xhtml+xml</code> MIMEtype. A server <em class="rfc2119" title="may">may</em> support HTTP content
-negotiation and return a document that conforms to N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle
-[<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or RDF/XML [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>].
+
+<p>A Verification Agent <em class="rfc2119" title="must">must</em> be able to process documents in
+RDF/XML [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>]
+and XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>].
+A server responding to a WebID Profile request <em class="rfc2119" title="should">should</em> be able to
+return a representation in RDF/XML (using media type <code>application/rdf+xml</code>) or 
+XHTML+RDFa (using either media type <code>text/html</code> or media type <code>application/xhtml+xml</code>).
+In addition, either parties <em class="rfc2119" title="may">may</em> support any other RDF format
+via HTTP content-type negotiation.
+</p>
+
 
 </p><p class="issue">This section will explain how a Verification Agent extracts 
 semantic data describing the identification credentials from a WebID Profile.</p>
