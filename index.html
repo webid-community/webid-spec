@@ -321,7 +321,7 @@ X509v3 extensions:
 A structured document that contains identification credentials for the 
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed using the Resource Description
 Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>]. The XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
-format <em class="rfc2119" title="must">must</em> be supported by the mechanism, e.g. a Web Service, providing the
+format <em class="rfc2119" title="must">should</em> be supported by the mechanism, e.g. a Web Service, providing the
 WebID Profile document. Alternate RDF serialization
 formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>], or RDF/XML 
 [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] <em class="rfc2119" title="may">may</em> be supported by the mechanism providing the 
@@ -403,7 +403,7 @@ sent to the Verification Agent.</p>
 <div class="normative section" id="processing-the-webid-profile" typeof="bibo:Chapter" about="#processing-the-webid-profile">
 <h4><span class="secno">2.3.3 </span>Processing the WebID Profile</h4>
 
-<p>A server responding to a WebID Profile request <em class="rfc2119" title="must">must</em> support returning an
+<p>A server responding to a WebID Profile request <em class="rfc2119" title="must">should</em> support returning either and RDF/XML[<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] document (as application/rdf+xml) or an
 XHTML+RDFa [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] document with either a <code>text/html</code> or
 <code>application/xhtml+xml</code> MIMEtype. A server <em class="rfc2119" title="may">may</em> support HTTP content
 negotiation and return a document that conforms to N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>], Turtle
