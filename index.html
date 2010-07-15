@@ -377,37 +377,53 @@ Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the
 <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a> 
 contained in the <code>Subject Alternative Name</code> extension of the 
 <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">
-Identification Certificate</a>. 
+Identification Certificate</a>.</li>
 
+<li>The Verification Agent may query trusted triple stores for information about the 
+public key contained in the <a class="tref internalDFN" title="Identification_Certificate" 
+href="#dfn-identification_certificate">Identification Certificate</a>. 
+If a statement associating the claimed WebID URI to the public key is found the Verification
+Agent has succesfully authenticated the Identification Agent.</li>
 
-The <a class="tref internalDFN" title="WebID_Profile" 
-href="#dfn-webid_profile">WebID Profile</a> document
-<em class="rfc2119" title="must">must</em> be dereferenced and all triples pertaining to the public key associated 
-with the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a> <em class="rfc2119" title="must">must</em> be extracted.
+<li>If the Verification Agent dind't successully athenticate the agent
+querying trusted triple stores. The Verification Agent 
+<em class="rfc2119" title="must">must</em> attempt to
+dereference the WebID URI to a <a class="tref internalDFN" title="WebID_Profile" 
+href="#dfn-webid_profile">WebID Profile</a> document. HTTP Content 
+Negotiation is used to choose the media type of the format understood by
+both communicating parties that is most likely to express RDF content. If 
+a RDF Content could be retrieved this RDF is considered a trusted source.
+The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
+queries the retrieved RDF content for information about the 
+public key contained in the <a class="tref internalDFN" title="Identification_Certificate" 
+href="#dfn-identification_certificate">Identification Certificate</a>. 
+If a statement associating the claimed WebID URI to the public key is found the Verification
+Agent has succesfully authenticated the Identification Agent, as the presence
+of the public key in the WebID profile indicates ownership of the 
+agent identified by the WebID on the WebID Profile document and the
+verified request thus originates from Agent Identified by the provided WebID.</li>
+
+<li>If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
+still dind't successully athenticate the agent the Verification Agent <em class="rfc2119" title="may">may</em>
+query other trusted sources attempting to authenticate the Identification Agent.
 </li>
 
-<li>The remote document triples <em class="rfc2119" title="must">must</em> be queried for information about the 
-public key contained in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. 
-If the public key in the certificate is found in the list of public keys 
-associated with the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a>, 
-the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
-<em class="rfc2119" title="must">must</em> assume that the client has write access to the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> and
-therefore owns the document.</li>
+<li>If authentication of the WebId failed the Verification Agent must not accept the client certificate.</li>
 
-<li>At this point, the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> has verified that the
-<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> is owned by the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>. The
-<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> use the now verified public key contained 
+<li>If <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> has accepted the
+client certificate the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> 
+<em class="rfc2119" title="must">must</em> use the now verified public key contained 
 in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> for all TLS-based communication
 with the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>.
 </li></ol>
 
 <p>
-The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> <em class="rfc2119" title="may">may</em> re-establish a different identity at 
+The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> 
+<em class="rfc2119" title="may">may</em> re-establish a different identity at 
 any time by executing all of the steps in the Authentication Sequence again. 
 Additional algorithms, detailed in the next section, <em class="rfc2119" title="may">may</em> be performed to 
 determine if the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> can access a particular 
-resource after the last step of the Authentication Sequence has been
-completed.
+resource after the last step of the Authentication Sequence has been completed.
 </p>
 
 </div>
