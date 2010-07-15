@@ -391,8 +391,15 @@ querying trusted triple stores. The Verification Agent
 dereference the WebID URI to a <a class="tref internalDFN" title="WebID_Profile" 
 href="#dfn-webid_profile">WebID Profile</a> document. HTTP Content 
 Negotiation is used to choose the media type of the format understood by
-both communicating parties that is most likely to express RDF content. If 
-a RDF Content could be retrieved this RDF is considered a trusted source.
+both communicating parties that is most likely to express RDF content. 
+<strong>Disputed section:</strong>
+The Verification Agent <em class="rfc2119" title="must">must</em> at least support 
+the XML+RDF [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] or
+the XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
+formats. Alternate RDF serialization formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>] or
+Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>] <em class="rfc2119" title="may">may</em> also be supported.
+<strong>End of disputed section.</strong>
+If a RDF Content could be retrieved this RDF is considered a trusted source.
 The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
 queries the retrieved RDF content for information about the 
 public key contained in the <a class="tref internalDFN" title="Identification_Certificate" 
@@ -402,6 +409,7 @@ Agent has succesfully authenticated the Identification Agent, as the presence
 of the public key in the WebID profile indicates ownership of the 
 agent identified by the WebID on the WebID Profile document and the
 verified request thus originates from Agent Identified by the provided WebID.</li>
+
 
 <li>If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
 still dind't successully athenticate the agent the Verification Agent <em class="rfc2119" title="may">may</em>
