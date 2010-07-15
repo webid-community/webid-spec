@@ -184,8 +184,8 @@ intended to receive it.
 <div class="informative section" id="relation-to-openid" typeof="bibo:Chapter" about="#relation-to-openid">
 <h3><span class="secno">1.2 </span>Relation to OpenID</h3><p><em>This section is non-normative.</em></p>
 
-<p>WebId is compatiple with OpenId as both use URIs for identification that
-dereference to a Personal Profile Document. Either by using RDF-A or Content 
+<p>WebId is compatible with OpenId as both use URIs for identification that
+dereference to a Personal Profile Document. Either by using RDFa or Content 
 Negotiation this document can be both compliant with the requirements of
 OpenId and WebId. Therefore WebId can work beside OpenID ans share content of 
 the user profile. That said, there are a number of benefits that WebID
@@ -362,15 +362,26 @@ Agents to determine if access should be granted to a particular resource.
 
 <ol>
 <li>The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> attempts to access a resource
-using HTTP over TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HTTP-TLS</a>] via the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>.</li>
+using HTTP over TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HTTP-TLS</a>] 
+via the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>.</li>
 
-<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> request the 
-<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> of the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>
+<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">
+Verification Agent</a> <em class="rfc2119" title="must">must</em> request the 
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">
+Identification Certificate</a> of the <a class="tref internalDFN" title="Identification_Agent" 
+href="#dfn-identification_agent">Identification Agent</a>
 as a part of the TLS client-cerificate retrieval protocol.</li>
 
-<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a> 
+<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">
+Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the 
+<a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a> 
 contained in the <code>Subject Alternative Name</code> extension of the 
-<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. The <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">
+Identification Certificate</a>. 
+
+
+The <a class="tref internalDFN" title="WebID_Profile" 
+href="#dfn-webid_profile">WebID Profile</a> document
 <em class="rfc2119" title="must">must</em> be dereferenced and all triples pertaining to the public key associated 
 with the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a> <em class="rfc2119" title="must">must</em> be extracted.
 </li>
@@ -378,7 +389,8 @@ with the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">Web
 <li>The remote document triples <em class="rfc2119" title="must">must</em> be queried for information about the 
 public key contained in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. 
 If the public key in the certificate is found in the list of public keys 
-associated with the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a>, the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
+associated with the <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a>, 
+the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
 <em class="rfc2119" title="must">must</em> assume that the client has write access to the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> and
 therefore owns the document.</li>
 
