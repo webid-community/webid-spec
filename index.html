@@ -212,9 +212,11 @@ connections become costly to manage.</p>
 
 <p>WebID builds on well established Internet and Web standards;
 <a href="http://en.wikipedia.org/wiki/REST">REST</a>, 
-RDF [<a class="bibref" rel="biblioentry" href="#bib-RDF-PRIMER">RDF-PRIMER</a>], RDFa [<a class="bibref" rel="biblioentry" href="#bib-RDFA-CORE">RDFA-CORE</a>], TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HTTP-TLS</a>], and X.509 
+RDF [<a class="bibref" rel="biblioentry" href="#bib-RDF-PRIMER">RDF-PRIMER</a>], 
+TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HTTP-TLS</a>], and X.509 
 [<a class="bibref" rel="biblioentry" href="#bib-X509V3">X509V3</a>]. By building on previous standards, it makes both explaining and 
-implementing WebID easier on developers.</p>
+implementing WebID easier on developers.
+</p>
 
 <p>Since WebID is RESTful, you can perform basic HTTP operations to 
 <code>GET</code> your WebID, and if you needed update it, you can use
@@ -223,23 +225,26 @@ HTTP <code>PUT</code> semantics. You can also create a WebID via
 requires a new set of operations described in the OpenID Attribute Exchange
 specification.</p>
 
+<p>WebID is built on RDF and thus enables all of the advanced semantic web
+concepts that RDF enables. For example, a developer may perform machine
+reasoning with a WebID. One can construct machine-executable statements like
+"If this WebID claims to be a friend of one of our partner WebIDs that is
+trusted and the relationship is bi-directional, trust the WebID."
+RDFa [<a class="bibref" rel="biblioentry" href="#bib-RDFA-CORE">RDFA-CORE</a>], 
+allows editor to expose the semantic content of their HTML documents. 
+While OpenID attempts to support this use case by mapping OpenID to RDF, it's
+far easier to do with WebID because WebID is natively RDF-aware.</p>
+
 <p>It is easy to extend a WebID with new attributes via RDF. The power of
-RDF and RDFa allows developers to add extensions to WebID by defining new
-vocabularies that they publish. There is no authorization process necessary
+RDF allows developers to add extensions to WebID by defining new
+vocabularies that they publish. 
+There is no authorization process necessary
 and thus WebID allows for distributed innovation. Every WebID property is
 a URI, which when clicked, can give you yet more information about what the
 property means. A developer can create new usage classes by extending their
 vocabulary at will. A developer can add relationships to a WebID by simply
 adding more HTML to the developer's page. OpenID does not provide any type of
 distributed innovation akin to RDF or RDFa.</p>
-
-<p>WebID is built on RDF and thus enables all of the advanced semantic web
-concepts that RDF enables. For example, a developer may perform machine
-reasoning with a WebID. One can construct machine-executable statements like
-"If this WebID claims to be a friend of one of our partner WebIDs that is
-trusted and the relationship is bi-directional, trust the WebID." 
-While OpenID attempts to support this use case by mapping OpenID to RDF, it's
-far easier to do with WebID because WebID is natively RDF-aware.</p>
 
 <p>Implementing WebID is easier than OpenID because all of the basic 
 technologies have been working and integrated into Web browsers for many years. 
@@ -311,8 +316,9 @@ may also be a peer on a peer-to-peer network.</dd>
 
 <dt><dfn title="Identification_Certificate" id="dfn-identification_certificate">Identification Certificate</dfn></dt>
 <dd>An X.509 [<a class="bibref" rel="biblioentry" href="#bib-X509V3">X509V3</a>] Certificate that <em class="rfc2119" title="must">must</em> contain an
-a <code>Subject Alternative Name</code> extension with a URI entry. The URI in this entry <em class="rfc2119" title="must">must</em> be
-dereference-able and result in a document containing RDF data. For example, 
+a <code>Subject Alternative Name</code> extension with a URI entry. The URI in this entry 
+identifies the Identification Agent and <em class="rfc2119" title="should">should</em> be
+dereference-able to a representation containing RDF data. For example, 
 the certificate would contain <code>http://example.org/webid#public</code>,
 known as a <a class="tref internalDFN" title="WebID_URI" href="#dfn-webid_url">WebID URI</a>, in
 the <code>Subject Alternative Name</code> extension:
@@ -325,20 +331,22 @@ X509v3 extensions:
 
 </dd><dt><dfn title="WebID_URI" id="dfn-webid_url">WebID URI</dfn></dt>
 <dd>A URI specified in a URI entry of the <code>Subject Alternative Name</code> extension of the
-<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> that identifies a 
-<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document.</dd>
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> that identifies an 
+<a class="tref internalDFN" title="WebID_Profile" href="#dfn-identification_agent">Identification Agent</a></dd>
 
 <dt><dfn title="WebID_Profile" id="dfn-webid_profile">WebID Profile</dfn></dt>
 <dd>
 A structured document that contains identification credentials for the 
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed using the Resource Description
 Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>].
+<strong>Disputed section:</strong>
 The mechanism providing the WebID Profile document (e.g. a Web Service) <em class="rfc2119" title="should">should</em> at least support 
 the XML+RDF [<a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a>] or
 the XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a>] serialization
 formats. Alternate RDF serialization formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>] or
 Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>] <em class="rfc2119" title="may">may</em> also be supported by the mechanism providing the 
 WebID Profile document.
+<strong>End of disputed section.</strong>
 </dd>
 
 </dl>
