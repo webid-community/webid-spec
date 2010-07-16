@@ -196,9 +196,9 @@ achieves over OpenID:
 also provides URIs to a Personal Profile Document. However, in the case of WebID, the user does not need to
 remember the URI, the browser or User Agent does. To log in on a
 WebID web site there is no need to enter any identifier like one
-has to for OpenID. Just one click that tells the browser to send the id. 
+has to for OpenID. Just one click that tells the browser to send the identifier. 
 The person that is browsing does not need to 
-remember either the WebID URI or the website password. The only password one
+remember either their WebID URI or the website password. The only password one
 needs to remember is the one that is used to access their collection of
 WebIDs in their browser.</p>
 
@@ -272,7 +272,7 @@ utilize your private OpenID credentials. The reason that there are a few
 large OpenID providers and very few small OpenID providers is because of this
 trust design issue related to OpenID.</p>
 
-<p>WebID does not require HTTP redirects. Redirects are are problematic on many
+<p>WebID does not require HTTP redirects. Redirects are problematic on many
 cell phones, because telecoms heavily rely on proxys, which selectively block
 redirects.</p>
 
@@ -383,7 +383,7 @@ Identification Certificate</a>.</li>
 public key contained in the <a class="tref internalDFN" title="Identification_Certificate" 
 href="#dfn-identification_certificate">Identification Certificate</a>. 
 If a statement associating the claimed WebID URI to the public key is found the Verification
-Agent has succesfully authenticated the Identification Agent.</li>
+Agent has successfully authenticated the Identification Agent.</li>
 
 <li>If the Verification Agent dind't successully athenticate the agent
 querying trusted triple stores. The Verification Agent 
@@ -399,20 +399,20 @@ the XHTML+RDFa 1.1 [<a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">X
 formats. Alternate RDF serialization formats, such as N3 [<a class="bibref" rel="biblioentry" href="#bib-N3">N3</a>] or
 Turtle [<a class="bibref" rel="biblioentry" href="#bib-TURTLE">TURTLE</a>] <em class="rfc2119" title="may">may</em> also be supported.
 <strong>End of disputed section.</strong>
-If a RDF Content could be retrieved this RDF is considered a trusted source.
+If an RDF Content could be retrieved this RDF is considered a trusted source.
 The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
 queries the retrieved RDF content for information about the 
 public key contained in the <a class="tref internalDFN" title="Identification_Certificate" 
 href="#dfn-identification_certificate">Identification Certificate</a>. 
 If a statement associating the claimed WebID URI to the public key is found the Verification
-Agent has succesfully authenticated the Identification Agent, as the presence
+Agent has successfully authenticated the Identification Agent, as the presence
 of the public key in the WebID profile indicates ownership of the 
 agent identified by the WebID on the WebID Profile document and the
 verified request thus originates from Agent Identified by the provided WebID.</li>
 
 
 <li>If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>
-still dind't successully athenticate the agent the Verification Agent <em class="rfc2119" title="may">may</em>
+still didn't successully authenticate the agent the Verification Agent <em class="rfc2119" title="may">may</em>
 query other trusted sources attempting to authenticate the Identification Agent.
 </li>
 
