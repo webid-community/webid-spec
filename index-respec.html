@@ -598,10 +598,9 @@ as a part of the TLS client-cerificate retrieval protocol.</li>
 <tref>WebID URL</tref> contained in the <code>Subject Alternative Name</code> 
 extension of the <tref>Identification Certificate</tref>.</li>
 
-<li>The <tref>public key</tref> information associated with the <tref>WebID URL</tref> MUST 
-be verified by the <tref>Verification Agent</tref>. This MUST be performed
-by validating the <tref>public key</tref> associated with the <tref>WebID URL</tref>. This 
-process SHOULD occur either by dereferencing the <tref>WebID URL</tref> and 
+<li>The <tref>public key</tref> information associated with the 
+<tref>WebID URL</tref> MUST be checked by the <tref>Verification Agent</tref>. 
+This process SHOULD occur either by dereferencing the <tref>WebID URL</tref> and 
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
 up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
@@ -610,16 +609,25 @@ and extraction mechanism is further detailed in the sections titled
 <a href="#extracting-webid-url-details">Extracting WebID URL Details</a>.
 </li>
 
-<li>If the <tref>public key</tref> in the <tref>Identification Certificate</tref> is found 
-in the list of <tref>public key</tref>s associated with the <tref>WebID URL</tref>, the 
-<tref>Verification Agent</tref> MUST assume that the client has write access to 
-the <tref>WebID Profile</tref> and therefore owns the document.</li>
+<li>If the <tref>public key</tref> in the 
+<tref>Identification Certificate</tref> is found in the list of 
+<tref>public key</tref>s associated with the <tref>WebID URL</tref>, the 
+<tref>Verification Agent</tref> MUST assume that the client intends to use
+the <tref>public key</tref> to verify their ownership of the WebID URL.</li>
 
-<li>If the <tref>Verification Agent</tref> has verified that the
-<tref>WebID Profile</tref> is owned by the <tref>Identification Agent</tref>, the
-<tref>Verification Agent</tref> MUST use the verified <tref>public key</tref> contained 
-in the <tref>Identification Certificate</tref> for all TLS-based communication
-with the <tref>Identification Agent</tref>.
+<li>
+The <tref>Verification Agent</tref> verifies that the 
+<tref>Identification Agent</tref> owns the <tref>WebID Profile</tref> 
+by using the <tref>public key</tref> to create a cryptographic challenge. 
+The challenge SHOULD be fulfilled by performing TLS mutual-authentication
+between the <tref>Verification Agent</tref> and the 
+<tref>Identification Agent</tref>. 
+If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
+a digital signature challenge MUST be provided by the 
+<tref>Verification Agent</tref>. These processes are detailed in the sections 
+titled <a href="#authorization">Authorization</a> and 
+<a href="#secure-communication">Secure Communication</a>.</li>
+
 </ol>
 
 <p>
@@ -699,7 +707,7 @@ WHERE {
 </section>
 
 <section class='normative'>
-<h2>Determining Access Privileges</h2>
+<h2>Authorization</h2>
 
 <p class="issue">This section will explain how a Verification Agent may
 use the information discovered via a WebID URL to determine if one should
@@ -709,13 +717,35 @@ given WebID.</p>
 
 </section>
 
+<section class='normative'>
+<h2>Secure Communication</h2>
+
+<p class="issue">This section will explain how an Identification Agent and
+a Verification Agent may communicate securely using a set of verified
+identification credentials.</p>
+
+<p>
+If the <tref>Verification Agent</tref> has verified that the
+<tref>WebID Profile</tref> is owned by the <tref>Identification Agent</tref>, 
+the <tref>Verification Agent</tref> SHOULD use the verified 
+<tref>public key</tref> contained in the <tref>Identification Certificate</tref> 
+for all TLS-based communication with the <tref>Identification Agent</tref>.
+This ensures that both the <tref>Authorization Agent</tref> and the 
+<tref>Identification Agent</tref>
+are communicating in a secure manner, ensuring cryptographically protected
+privacy for both sides.
+</p>
+
+</section>
+
 </section>
 
 <section id="appendix">
 
 <section class='informative' id="history">
 <h1 >Change History</h1>
-<p>2010-07-11 Initial version.</p>
+<p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
+<p><a href="http://github.com/msporny/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
 </section>
 
 <section class='informative' id="acknowledgements">
