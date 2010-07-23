@@ -53,4 +53,7 @@ To directly contribute to the specification:
    no payment will be made to any of the editors, authors or contributors. That
    said, millions of people will be thankful for your contribution in ensuring
    that the web continutes to be accessible in a patent and royalty-free way.
+5. You will want to become familiar with ReSpec before you edit the
+   'index-respec.html' file. Documentation for respec is available here:
+   http://dev.w3.org/2009/dap/ReSpec.js/documentation.html
 
