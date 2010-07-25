@@ -419,15 +419,15 @@ collection of WebIDs in their browser, and that's only if they opt-in to
 password protect their WebIDs.
 </p>
 
-<p>WebID gives people and other agents a Web ID URL for identification. OpenID
-also provides a URL to a Personal Profile Document. However, in the case of 
-WebID, the user does not need to remember the URL, the browser or User Agent 
-does. A login button on a WebID web site is just a button. No need to enter any 
-identifier like one has to for OpenID. Just click the button. Your browser will 
-then ask you what identity you wish to use. The person that is browsing does 
-not need to remember either the WebID URL or the website password. The only 
-password one needs to remember is the one that is used to access their 
-collection of WebIDs in their browser.</p>
+<p>
+While WebID works well in a browser environment, it is also very useful outside
+of the browser environment. WebID can also operate without requiring the use
+of any passwords. This is useful to developers that may 
+want to use WebID to perform server-to-server or peer-to-peer verification of 
+identity. WebID works for automated agents such as Search Agents, API Agents,
+and other automated mechanisms that are often found outside of the browser
+environment.
+</p>
 
 <p>The WebID protocol requires just one direct network connection to establish
 identity via the client. The server requires one connection to the client and
@@ -807,7 +807,7 @@ documents:</p>
 
 <section class='informative' id="history">
 <h1>Change History</h1>
-<p><a href="">2010-07-25</a> Added WebID Profile section.</p>
+<p><a href="http://github.com/msporny/webid-spec/commit/b19d2812901b4511fdf9876c1be53bb36ee3201e">2010-07-25</a> Added WebID Profile section.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
 </section>
