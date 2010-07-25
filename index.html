@@ -47,7 +47,7 @@ span.element { color: green; }
 <!--     <script src='/ReSpec.js/js/respec.js' class='remove'></script>  -->
 
     
-  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-18T14:10:06+0000" id="unofficial-draft-18-july-2010">Unofficial Draft 18 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
+  <link href="http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" rel="stylesheet" type="text/css" charset="utf-8" /><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit; "><div class="head"><p></p><h1 rel="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 rel="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2010-07-25T22:59:59+0000" id="unofficial-draft-25-july-2010">Unofficial Draft 25 July 2010</h2><dl><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
 </dd>
 <dt>Authors:</dt><dd><span><a content="Toby Inkster" href="http://tobyinkster.co.uk/">Toby Inkster</a></span>
 </dd>
@@ -112,7 +112,7 @@ enhances the functionality and interoperability of the Web.</p>  -->
 The source code for this document is available via Github at the following
 URL: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/webid-spec</a>
 
-</div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li><li class="tocline"><a href="#relation-to-openid" class="tocxref"><span class="secno">1.2 </span>Relation to OpenID</a></li><li class="tocline"><a href="#relation-to-oauth" class="tocxref"><span class="secno">1.3 </span>Relation to OAuth</a></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">2. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">2.2 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">2.3 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">2.3.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">2.3.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">2.3.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#extracting-webid-url-details" class="tocxref"><span class="secno">2.3.4 </span>Extracting WebID URL Details</a></li><li class="tocline"><a href="#determining-access-privileges" class="tocxref"><span class="secno">2.3.5 </span>Determining Access Privileges</a></li></ul></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></div>
+</div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li><li class="tocline"><a href="#relation-to-openid" class="tocxref"><span class="secno">1.2 </span>Relation to OpenID</a></li><li class="tocline"><a href="#relation-to-oauth" class="tocxref"><span class="secno">1.3 </span>Relation to OAuth</a></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">2. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">2.2 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">2.3 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">2.3.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">2.3.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">2.3.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#extracting-webid-url-details" class="tocxref"><span class="secno">2.3.4 </span>Extracting WebID URL Details</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">2.3.5 </span>Authorization</a></li><li class="tocline"><a href="#secure-communication" class="tocxref"><span class="secno">2.3.6 </span>Secure Communication</a></li></ul></li><li class="tocline"><a href="#the-webid-profile" class="tocxref"><span class="secno">2.4 </span>The WebID Profile</a><ul class="toc"><li class="tocline"><a href="#personal-information" class="tocxref"><span class="secno">2.4.1 </span>Personal Information</a></li><li class="tocline"><a href="#cryptographic-details" class="tocxref"><span class="secno">2.4.2 </span>Cryptographic Details</a></li></ul></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></div>
 
 
 
@@ -206,15 +206,15 @@ collection of WebIDs in their browser, and that's only if they opt-in to
 password protect their WebIDs.
 </p>
 
-<p>WebID gives people and other agents a Web ID URL for identification. OpenID
-also provides a URL to a Personal Profile Document. However, in the case of 
-WebID, the user does not need to remember the URL, the browser or User Agent 
-does. A login button on a WebID web site is just a button. No need to enter any 
-identifier like one has to for OpenID. Just click the button. Your browser will 
-then ask you what identity you wish to use. The person that is browsing does 
-not need to remember either the WebID URL or the website password. The only 
-password one needs to remember is the one that is used to access their 
-collection of WebIDs in their browser.</p>
+<p>
+While WebID works well in a browser environment, it is also very useful outside
+of the browser environment. WebID can also operate without requiring the use
+of any passwords. This is useful to developers that may 
+want to use WebID to perform server-to-server or peer-to-peer verification of 
+identity. WebID works for automated agents such as Search Agents, API Agents,
+and other automated mechanisms that are often found outside of the browser
+environment.
+</p>
 
 <p>The WebID protocol requires just one direct network connection to establish
 identity via the client. The server requires one connection to the client and
@@ -387,10 +387,9 @@ as a part of the TLS client-cerificate retrieval protocol.</li>
 <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> contained in the <code>Subject Alternative Name</code> 
 extension of the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>.</li>
 
-<li>The <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> information associated with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> <em class="rfc2119" title="must">must</em> 
-be verified by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. This <em class="rfc2119" title="must">must</em> be performed
-by validating the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> associated with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>. This 
-process <em class="rfc2119" title="should">should</em> occur either by dereferencing the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> and 
+<li>The <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> information associated with the 
+<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> <em class="rfc2119" title="must">must</em> be checked by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. 
+This process <em class="rfc2119" title="should">should</em> occur either by dereferencing the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> and 
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
 up-to-date and trusted by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. The processing
@@ -399,17 +398,26 @@ and extraction mechanism is further detailed in the sections titled
 <a href="#extracting-webid-url-details">Extracting WebID URL Details</a>.
 </li>
 
-<li>If the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> is found 
-in the list of <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a>s associated with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>, the 
-<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> assume that the client has write access to 
-the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> and therefore owns the document.</li>
+<li>If the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> in the 
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> is found in the list of 
+<a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a>s associated with the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>, the 
+<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> assume that the client intends to use
+the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> to verify their ownership of the WebID URL.</li>
 
-<li>If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> has verified that the
-<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> is owned by the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>, the
-<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> use the verified <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> contained 
-in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> for all TLS-based communication
-with the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>.
-</li></ol>
+<li>
+The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> verifies that the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> owns the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> 
+by using the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> to create a cryptographic challenge. 
+The challenge <em class="rfc2119" title="should">should</em> be fulfilled by performing TLS mutual-authentication
+between the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> and the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>. 
+If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> does not have access to the TLS layer, 
+a digital signature challenge <em class="rfc2119" title="must">must</em> be provided by the 
+<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. These processes are detailed in the sections 
+titled <a href="#authorization">Authorization</a> and 
+<a href="#secure-communication">Secure Communication</a>.</li>
+
+</ol>
 
 <p>
 The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> <em class="rfc2119" title="may">may</em> re-establish a different identity at 
@@ -487,8 +495,8 @@ WHERE {
 
 </div>
 
-<div class="normative section" id="determining-access-privileges" typeof="bibo:Chapter" about="#determining-access-privileges">
-<h4><span class="secno">2.3.5 </span>Determining Access Privileges</h4>
+<div class="normative section" id="authorization" typeof="bibo:Chapter" about="#authorization">
+<h4><span class="secno">2.3.5 </span>Authorization</h4>
 
 <p class="issue">This section will explain how a Verification Agent may
 use the information discovered via a WebID URL to determine if one should
@@ -498,13 +506,99 @@ given WebID.</p>
 
 </div>
 
+<div class="normative section" id="secure-communication" typeof="bibo:Chapter" about="#secure-communication">
+<h4><span class="secno">2.3.6 </span>Secure Communication</h4>
+
+<p class="issue">This section will explain how an Identification Agent and
+a Verification Agent may communicate securely using a set of verified
+identification credentials.</p>
+
+<p>
+If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> has verified that the
+<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> is owned by the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>, 
+the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="should">should</em> use the verified 
+<a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> contained in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> 
+for all TLS-based communication with the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>.
+This ensures that both the <a class="tref" title="Authorization_Agent">Authorization Agent</a> and the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>
+are communicating in a secure manner, ensuring cryptographically protected
+privacy for both sides.
+</p>
+
+</div>
+
+</div>
+
+<div class="normative section" id="the-webid-profile" typeof="bibo:Chapter" about="#the-webid-profile">
+<h3><span class="secno">2.4 </span>The WebID Profile</h3>
+
+<p>The <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> is a structured document that contains 
+identification credentials for the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed 
+using the Resource Description Framework [<a class="bibref" rel="biblioentry" href="#bib-RDF-CONCEPTS">RDF-CONCEPTS</a>]. The following 
+sections describe how to express certain common properties that could be used
+by <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>s and other entities that consume a 
+<a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a>.</p>
+
+<p>The following vocabularies are used in their shortened form in the 
+subsequent sections:</p>
+
+<dl>
+  <dt>foaf</dt>
+  <dd>http://xmlns.com/foaf/0.1/</dd>
+  <dt>cert</dt>
+  <dd>http://www.w3.org/ns/auth/cert#</dd>
+  <dt>rsa</dt>
+  <dd>http://www.w3.org/ns/auth/rsa#</dd>
+</dl>
+
+<div class="normative section" id="personal-information" typeof="bibo:Chapter" about="#personal-information">
+<h4><span class="secno">2.4.1 </span>Personal Information</h4>
+
+<p>Personal details are the most common requirement when registering an 
+account with a website. Some of these pieces of information include an e-mail 
+address, a name and perhaps an avatar image. This section includes
+properties that <em class="rfc2119" title="should">should</em> be used when conveying key pieces of personal 
+information but are <em class="rfc2119" title="not required">not required</em> to be present in a WebID Profile:</p>
+
+<dl>
+  <dt>foaf:mbox</dt>
+  <dd>The e-mail address that is associated with the WebID URL.</dd>
+  <dt>foaf:name</dt>
+  <dd>The name that is most commonly used to refer to the individual 
+    or agent.</dd>
+  <dt>foaf:depiction</dt>
+  <dd>An image representation of the individual or agent.</dd>
+</dl>
+</div>
+
+<div class="normative section" id="cryptographic-details" typeof="bibo:Chapter" about="#cryptographic-details">
+<h4><span class="secno">2.4.2 </span>Cryptographic Details</h4>
+
+<p>Cryptographic details are important when <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>s
+and <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>s interact. The following properties 
+<em class="rfc2119" title="should">should</em> be used when conveying cryptographic information in WebID Profile
+documents:</p>
+
+<dl>
+  <dt>rsa:RSAPublicKey</dt>
+  <dd>Expresses an RSA public key. The RSAPublicKey <em class="rfc2119" title="must">must</em> specify the
+  rsa:modulus and rsa:public_exponent properties.</dd>
+  <dt>cert:identity</dt>
+  <dd>Used to associate an RSAPublicKey with a WebID URL. A WebID Profile
+  <em class="rfc2119" title="must">must</em> contain at least one RSAPublicKey that is associated with the
+  corresponding WebID URL.</dd>
+</dl>
+</div>
+
 </div>
 
 <div id="appendix" typeof="bibo:Chapter" about="#appendix" class="section">
 
 <div class="informative section" id="history" typeof="bibo:Chapter" about="#history">
 <h4>Change History</h4><p><em>This section is non-normative.</em></p>
-<p>2010-07-11 Initial version.</p>
+<p><a href="http://github.com/msporny/webid-spec/commit/b19d2812901b4511fdf9876c1be53bb36ee3201e">2010-07-25</a> Added WebID Profile section.</p>
+<p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
+<p><a href="http://github.com/msporny/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
 </div>
 
 <div class="informative section" id="acknowledgements" typeof="bibo:Chapter" about="#acknowledgements">
