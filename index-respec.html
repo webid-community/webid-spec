@@ -740,10 +740,74 @@ privacy for both sides.
 
 </section>
 
+<section class='normative'>
+<h2>The WebID Profile</h2>
+
+<p>The <tref>WebID Profile</tref> is a structured document that contains 
+identification credentials for the <tref>Identification Agent</tref> expressed 
+using the Resource Description Framework [[RDF-CONCEPTS]]. The following 
+sections describe how to express certain common properties that could be used
+by <tref>Verification Agent</tref>s and other entities that consume a 
+<tref>WebID Profile</tref>.</p>
+
+<p>The following vocabularies are used in their shortened form in the 
+subsequent sections:</p>
+
+<dl>
+  <dt>foaf</dt>
+  <dd>http://xmlns.com/foaf/0.1/</dd>
+  <dt>cert</dt>
+  <dd>http://www.w3.org/ns/auth/cert#</dd>
+  <dt>rsa</dt>
+  <dd>http://www.w3.org/ns/auth/rsa#</dd>
+</dl>
+
+<section class='normative'>
+<h2>Personal Information</h2>
+
+<p>Personal details are the most common requirement when registering an 
+account with a website. Some of these pieces of information include an e-mail 
+address, a name and perhaps an avatar image. This section includes
+properties that SHOULD be used when conveying key pieces of personal 
+information but are NOT REQUIRED to be present in a WebID Profile:</p>
+
+<dl>
+  <dt>foaf:mbox</dt>
+  <dd>The e-mail address that is associated with the WebID URL.</dd>
+  <dt>foaf:name</dt>
+  <dd>The name that is most commonly used to refer to the individual 
+    or agent.</dd>
+  <dt>foaf:depiction</dt>
+  <dd>An image representation of the individual or agent.</dd>
+</dl>
+</section>
+
+<section class='normative'>
+<h2>Cryptographic Details</h2>
+
+<p>Cryptographic details are important when <tref>Verification Agent</tref>s
+and <tref>Identification Agent</tref>s interact. The following properties 
+SHOULD be used when conveying cryptographic information in WebID Profile
+documents:</p>
+
+<dl>
+  <dt>rsa:RSAPublicKey</dt>
+  <dd>Expresses an RSA public key. The RSAPublicKey MUST specify the
+  rsa:modulus and rsa:public_exponent properties.</dd>
+  <dt>cert:identity</dt>
+  <dd>Used to associate an RSAPublicKey with a WebID URL. A WebID Profile
+  MUST contain at least one RSAPublicKey that is associated with the
+  corresponding WebID URL.</dd>
+</dl>
+</section>
+
+</section>
+
 <section id="appendix">
 
 <section class='informative' id="history">
-<h1 >Change History</h1>
+<h1>Change History</h1>
+<p><a href="">2010-07-25</a> Added WebID Profile section.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
 </section>
