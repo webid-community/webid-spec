@@ -365,7 +365,7 @@ One major criticism of open networks is that they seem to have no way of
 protecting the personal information distributed on the web or limiting
 access to resources. Few people are willing to make all their personal
 information public, many would like large pieces to be protected, making
-it available only to a select group of agents. Giving access to
+it available only to a selected group of agents. Giving access to
 information is very similar to giving access to services. There are many
 occasions when people would like services to only be accessible to
 members of a group, such as allowing only friends, family members,
@@ -495,7 +495,7 @@ large OpenID providers and very few small OpenID providers is because of this
 trust design issue related to OpenID.</p>
 
 <p>WebID does not require HTTP redirects. Redirects are problematic on many
-cell phones, because telecoms heavily rely on proxys, which selectively block
+cell phones because telecommunication companies rely heavily on proxy servers which may selectively block
 redirects.</p>
 
 <p>A WebID provider is 100% compatible with an OpenID provider and thus can 
@@ -555,7 +555,7 @@ of the <tref>Identification Certificate</tref> that identifies an
 <tref>Identification Agent</tref>.</dd>
 
 <dt><tdef>public key</tdef></dt>
-<dd>A widely distributed crytographic key that can be used to verify 
+<dd>A widely distributed cryptographic key that can be used to verify 
 digital signatures and encrypt data between a sender and a receiver. A public
 key is always included in an <tref>Identification Certificate</tref></dd>
 
@@ -592,7 +592,7 @@ using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
 
 <li>The <tref>Verification Agent</tref> MUST request the 
 <tref>Identification Certificate</tref> of the <tref>Identification Agent</tref>
-as a part of the TLS client-cerificate retrieval protocol.</li>
+as a part of the TLS client-certificate retrieval protocol.</li>
 
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
 <tref>WebID URL</tref> contained in the <code>Subject Alternative Name</code> 
