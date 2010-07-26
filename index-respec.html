@@ -667,14 +667,12 @@ sent to the Verification Agent.</p>
 
 <p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML 
 [[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to 
-a <tref>WebID Profile</tref> request SHOULD support HTTP content negotiation. The server
-MUST return a representation in RDF/XML for media type
-<code>application/rdf+xml</code>.
-The server MUST return a representation in XHTML+RDFa for media type
-<code>text/html</code> or media type 
-<code>application/xhtml+xml</code>. <tref>Verification Agent</tref>s and 
-<tref>Identification Agent</tref>s MAY support any other RDF format via 
-HTTP content negotiation.
+a <tref>WebID Profile</tref> request SHOULD be able to deliver at least RDF/XML
+or RDFa. The Verification Agent MUST set the Accept-Header to request
+<code>application/rdf+xml</code> with a higher priority than <code>text/html</code>
+and <code>application/xhtml+xml</code>. If the server answers such a request
+with an HTML representation of the resource, this SHOULD describe the WebId Profile
+with RDFa.
 </p> 
 
 <p class="issue">This section will explain how a Verification Agent extracts 
