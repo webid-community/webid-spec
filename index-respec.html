@@ -198,7 +198,7 @@ span.element { color: green; }
           // only "name" is required
           editors:  [
               { name: "Manu Sporny", mailto:"msporny@digitalbazaar.com",
-                  company: "Digital Bazaar, Inc.", companyURL: "http://blog.digitalbazaar.com/" }
+                  company: "Digital Bazaar, Inc.", companyURI: "http://blog.digitalbazaar.com/" }
               ],
 
           // authors, add as many as you like. 
@@ -206,10 +206,10 @@ span.element { color: green; }
           // only "name" is required. Same format as editors.
 
           authors:  [
-              { name: "Toby Inkster", url: "http://tobyinkster.co.uk/" },
-              { name: "Henry Story", url: "http://bblfish.net/" },
-              { name: "Bruno Harbulot", url: "http://blog.distributedmatter.net/" },
-              { name: "Reto Bachmann-Gmür", url: "http://www.facebook.com/farewellutopia" }
+              { name: "Toby Inkster", URI: "http://tobyinkster.co.uk/" },
+              { name: "Henry Story", URI: "http://bblfish.net/" },
+              { name: "Bruno Harbulot", URI: "http://blog.distributedmatter.net/" },
+              { name: "Reto Bachmann-Gmür", URI: "http://www.facebook.com/farewellutopia" }
           ],
 
 //          errata: 'http://www.w3.org/MarkUp/2008/REC-rdfa-syntax-20081014-errata',
@@ -327,7 +327,7 @@ to the specification and to promote its widespread deployment. This
 enhances the functionality and interoperability of the Web.</p> -->
 
 The source code for this document is available via Github at the following
-URL: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/webid-spec</a>
+URI: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/webid-spec</a>
 
 </section>
 
@@ -376,9 +376,9 @@ access control?
 
 <p>
 Using an process made popular by OpenID, we show how one can tie a User
-Agent to a URL by proving that one has write access to the URL. WebID is
+Agent to a URI by proving that one has write access to the URI. WebID is
 a simpler alternative to OpenID (fewer connections), that uses X.509 
-certificates to tie a User Agent (Browser) to a Person identified via a URL. 
+certificates to tie a User Agent (Browser) to a Person identified via a URI.
 WebID also provides a few additional features to OpenID. These
 features include trust management, via digital signatures, and free-form 
 extensibility via RDFa. By using the existing SSL certificate exchange
@@ -397,7 +397,7 @@ intended to receive it.
 <p class='issue'>This section needs to be re-written. The flow and grammar
 leaves much to be desired. -- manu</p>
 
-<p>WebID is compatible with OpenID. Both protocols use a URL that dereferences
+<p>WebID is compatible with OpenID. Both protocols use a URI that dereferences
 to a Personal Profile Document. This Personal Profile Document is where further
 information about an identity can be discovered. This mechanism is compatible
 with both WebID and OpenID. Therefore, WebID does not intend to replace OpenID, 
@@ -407,13 +407,13 @@ Document.</p>
 <p>That said, there are a number of benefits that WebID achieves over OpenID:
 </p>
 
-<p>WebID gives people and other agents a WebID URL for identification. OpenID 
-also provides a URL to a Personal Profile Document. However, in the case of 
-WebID, one does not need to remember the URL since the User Agent remembers
-the URL on behalf of the person browsing. To log in on a WebID web site there 
+<p>WebID gives people and other agents a WebID URI for identification. OpenID
+also provides a URI to a Personal Profile Document. However, in the case of
+WebID, one does not need to remember the URI since the User Agent remembers
+the URI on behalf of the person browsing. To log in on a WebID web site there
 is no need to enter any identifier like one has to do for OpenID. Just one click 
-tells the browser to send the WebID URL. The person that is browsing does 
-not need to remember either their WebID URL or the website password. The only 
+tells the browser to send the WebID URI. The person that is browsing does
+not need to remember either their WebID URI or the website password. The only
 password one may need to remember is the one that is used to access their 
 collection of WebIDs in their browser, and that's only if they opt-in to 
 password protect their WebIDs.
@@ -538,11 +538,10 @@ may also be a peer on a peer-to-peer network.</dd>
 <dt><tdef>Identification Certificate</tdef></dt>
 <dd>An X.509 [[!X509V3]] Certificate that MUST contain a 
 <code>Subject Alternative Name</code> extension with a URI entry. The URI
-SHOULD be a URL, and SHOULD NOT be a URN. The URL
-identifies the <tref>Identification Agent</tref>. The URL MUST be 
+identifies the <tref>Identification Agent</tref>. The URI SHOULD be
 dereference-able and result in a document containing RDF data. For example, 
 the certificate would contain <code>http://example.org/webid#public</code>,
-known as a <tref>WebID URL</tref>, as the <code>Subject Alternative Name</code>:
+known as a <tref>WebID URI</tref>, as the <code>Subject Alternative Name</code>:
 <code><pre>
 X509v3 extensions:
    ...
@@ -550,8 +549,8 @@ X509v3 extensions:
       URI:http://example.org/webid#public
 </pre></code>
 
-<dt><tdef>WebID URL</tdef></dt>
-<dd>A URL specified via the <code>Subject Alternative Name</code> extension 
+<dt><tdef>WebID URI</tdef></dt>
+<dd>A URI specified via the <code>Subject Alternative Name</code> extension
 of the <tref>Identification Certificate</tref> that identifies an 
 <tref>Identification Agent</tref>.</dd>
 
@@ -596,25 +595,25 @@ using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
 as a part of the TLS client-certificate retrieval protocol.</li>
 
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
-<tref>WebID URL</tref> contained in the <code>Subject Alternative Name</code> 
+<tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
 extension of the <tref>Identification Certificate</tref>.</li>
 
 <li>The <tref>public key</tref> information associated with the 
-<tref>WebID URL</tref> MUST be checked by the <tref>Verification Agent</tref>. 
-This process SHOULD occur either by dereferencing the <tref>WebID URL</tref> and 
+<tref>WebID URI</tref> MUST be checked by the <tref>Verification Agent</tref>.
+This process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
 up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
 and extraction mechanism is further detailed in the sections titled 
 <a href="#processing-the-webid-profile">Processing the WebID Profile</a> and
-<a href="#extracting-webid-url-details">Extracting WebID URL Details</a>.
+<a href="#extracting-webid-URI-details">Extracting WebID URI Details</a>.
 </li>
 
 <li>If the <tref>public key</tref> in the 
 <tref>Identification Certificate</tref> is found in the list of 
-<tref>public key</tref>s associated with the <tref>WebID URL</tref>, the 
+<tref>public key</tref>s associated with the <tref>WebID URI</tref>, the
 <tref>Verification Agent</tref> MUST assume that the client intends to use
-this <tref>public key</tref> to verify their ownership of the <tref>WebID URL</tref>.</li>
+this <tref>public key</tref> to verify their ownership of the <tref>WebID URI</tref>.</li>
 
 <li>
 The <tref>Verification Agent</tref> verifies that the 
@@ -683,7 +682,7 @@ semantic data describing the identification credentials from a WebID Profile.</p
 </section>
 
 <section class='normative'>
-<h2>Extracting WebID URL Details</h2>
+<h2>Extracting WebID URI Details</h2>
 
 <p>
 The <tref>Verification Agent</tref> may use a number of different methods to
@@ -711,7 +710,7 @@ WHERE {
 <h2>Authorization</h2>
 
 <p class="issue">This section will explain how a Verification Agent may
-use the information discovered via a WebID URL to determine if one should
+use the information discovered via a WebID URI to determine if one should
 be able to access a particular resource. It will explain how a Verification
 Agent can use links to other RDFa documents to build knowledge about the
 given WebID.</p>
@@ -774,7 +773,7 @@ information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:<
 
 <dl>
   <dt>foaf:mbox</dt>
-  <dd>The e-mail address that is associated with the WebID URL.</dd>
+  <dd>The e-mail address that is associated with the WebID URI.</dd>
   <dt>foaf:name</dt>
   <dd>The name that is most commonly used to refer to the individual 
     or agent.</dd>
@@ -796,9 +795,9 @@ documents:</p>
   <dd>Expresses an RSA public key. The RSAPublicKey MUST specify the
   rsa:modulus and rsa:public_exponent properties.</dd>
   <dt>cert:identity</dt>
-  <dd>Used to associate an RSAPublicKey with a WebID URL. A WebID Profile
+  <dd>Used to associate an RSAPublicKey with a WebID URI. A WebID Profile
   MUST contain at least one RSAPublicKey that is associated with the
-  corresponding WebID URL.</dd>
+  corresponding WebID URI.</dd>
 </dl>
 </section>
 
