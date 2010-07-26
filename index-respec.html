@@ -531,7 +531,7 @@ resource. A <tref>Verification Agent</tref> is typically a Web server, but
 may also be a peer on a peer-to-peer network.</dd>
 
 <dt><tdef>Identification Agent</tdef></dt>
-<dd>Provides identification credentials to a Verification Agent. The
+<dd>Provides identification credentials to a <tref>Verification Agent</tref>. The
 <tref>Identification Agent</tref> is typically also a User Agent.</dd>
 
 <dt><tdef>Identification Certificate</tdef></dt>
@@ -557,7 +557,7 @@ of the <tref>Identification Certificate</tref> that identifies an
 <dt><tdef>public key</tdef></dt>
 <dd>A widely distributed cryptographic key that can be used to verify 
 digital signatures and encrypt data between a sender and a receiver. A public
-key is always included in an <tref>Identification Certificate</tref></dd>
+key is always included in an <tref>Identification Certificate</tref>.</dd>
 
 <dt><tdef>WebID Profile</tdef></dt>
 <dd>
@@ -582,8 +582,8 @@ specification is currently under heavy debate.</p>
 <section class='normative'>
 <h1>Authentication Sequence</h1>
 
-<p>The following steps are executed by Verification Agents and Identification
-Agents to determine if access should be granted to a particular resource.
+<p>The following steps are executed by <tref>Verification Agent</tref>s and <tref>Identification
+Agent</tref>s to determine if access should be granted to a particular resource.
 </p>
 
 <ol>
@@ -613,7 +613,7 @@ and extraction mechanism is further detailed in the sections titled
 <tref>Identification Certificate</tref> is found in the list of 
 <tref>public key</tref>s associated with the <tref>WebID URL</tref>, the 
 <tref>Verification Agent</tref> MUST assume that the client intends to use
-the <tref>public key</tref> to verify their ownership of the WebID URL.</li>
+this <tref>public key</tref> to verify their ownership of the <tref>WebID URL</tref>.</li>
 
 <li>
 The <tref>Verification Agent</tref> verifies that the 
@@ -665,15 +665,15 @@ sent to the Verification Agent.</p>
 <section class='normative'>
 <h2>Processing the WebID Profile</h2>
 
-<p>A Verification Agent MUST be able to process documents in RDF/XML 
+<p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML 
 [[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to 
-a WebID Profile request SHOULD support HTTP content negotiation. The server
+a <tref>WebID Profile</tref> request SHOULD support HTTP content negotiation. The server
 MUST return a representation in RDF/XML for media type
 <code>application/rdf+xml</code>.
 The server MUST return a representation in XHTML+RDFa for media type
 <code>text/html</code> or media type 
-<code>application/xhtml+xml</code>. <tref>Verification Agents</tref> and 
-<tref>Identification Agents</tref> MAY support any other RDF format via 
+<code>application/xhtml+xml</code>. <tref>Verification Agent</tref>s and 
+<tref>Identification Agent</tref>s MAY support any other RDF format via 
 HTTP content negotiation.
 </p> 
 
@@ -769,7 +769,7 @@ subsequent sections:</p>
 account with a website. Some of these pieces of information include an e-mail 
 address, a name and perhaps an avatar image. This section includes
 properties that SHOULD be used when conveying key pieces of personal 
-information but are NOT REQUIRED to be present in a WebID Profile:</p>
+information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:</p>
 
 <dl>
   <dt>foaf:mbox</dt>
@@ -787,7 +787,7 @@ information but are NOT REQUIRED to be present in a WebID Profile:</p>
 
 <p>Cryptographic details are important when <tref>Verification Agent</tref>s
 and <tref>Identification Agent</tref>s interact. The following properties 
-SHOULD be used when conveying cryptographic information in WebID Profile
+SHOULD be used when conveying cryptographic information in <tref>WebID Profile</tref>
 documents:</p>
 
 <dl>
