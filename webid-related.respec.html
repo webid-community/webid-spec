@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WebID 1.0</title>
+    <title>WebID in relation to other technologies</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
     <!-- 
       === NOTA BENE ===
@@ -170,8 +170,8 @@ span.element { color: green; }
           diffTool:             "http://www3.aptest.com/standards/htmldiff/htmldiff.pl",
           
           // the specifications short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "webid",
-          subtitle: "Web Identification and Discovery",
+          shortName:            "webid-related",
+          subtitle: "How WebID relates and compares to other technologies",
 
           // if you wish the publication date to be other than today, set this
           // publishDate:  "2009-08-06",
@@ -346,344 +346,142 @@ specifications that are in active use today.
 <section class='informative'>
 <h1>Motivation</h1>
 
-<p>
-It is a fundamental design criteria of the Web to enable individuals and
-organizations to control how they interact with the rest of society. This
-includes how one expresses their identity, public information and personal 
-details to social networks, Web sites and services.
+<p class='issue'>TODO</p>
+
+</section>
+
+</section>
+
+<section class='informative'>
+<h1>Relation to OpenID</h1>
+
+<p class='issue'>This section needs to be re-written. The flow and grammar
+leaves much to be desired. -- manu</p>
+
+<p>WebID is compatible with OpenID. Both protocols use a URI that dereferences
+to a Personal Profile Document. This Personal Profile Document is where further
+information about an identity can be discovered. This mechanism is compatible
+with both WebID and OpenID. Therefore, WebID does not intend to replace OpenID, 
+but can work beside OpenID by sharing the content in the Personal Profile
+Document.</p>
+
+<p>That said, there are a number of benefits that WebID achieves over OpenID:
+</p>
+
+<p>WebID gives people and other agents a WebID URI for identification. OpenID
+also provides a URI to a Personal Profile Document. However, in the case of
+WebID, one does not need to remember the URI since the User Agent remembers
+the URI on behalf of the person browsing. To log in on a WebID web site there
+is no need to enter any identifier like one has to do for OpenID. Just one click 
+tells the browser to send the WebID URI. The person that is browsing does
+not need to remember either their WebID URI or the website password, and because
+no password or other secret credential is exchanged with the website, WebID is
+immune from phishing attacks.
 </p>
 
 <p>
-Semantic Web vocabularies such as Friend-of-a-Friend (FOAF) permit distributed 
-hyperlinked social networks to exist. This vocabulary, along with other 
-vocabularies, allow one to add information and services protection to 
-distributed social networks.
+While WebID works well in a browser environment, it is also very useful outside
+of the browser environment. WebID can also operate without requiring the use
+of any passwords. This is useful to developers that may 
+want to use WebID to perform server-to-server or peer-to-peer verification of 
+identity. WebID works for automated agents such as Search Agents, API Agents,
+and other automated mechanisms that are often found outside of the browser
+environment.
 </p>
+
+<p>The WebID protocol requires just one direct network connection to establish
+identity via the client. The server requires one connection to the client and
+one connection to retrieve the WebID Profile if it does not have the credential
+information cached. Compare this to the much more complex OpenID sequence, which
+requires six connections by the client to establish a login. In a world of 
+distributed data where each site can point to data on any other site, multiple 
+connections become costly to manage.</p>
+
+<p>WebID builds on a number of well established Internet and Web standards;
+<a href="http://en.wikipedia.org/wiki/REST">REST</a>, 
+RDF [[RDF-PRIMER]], RDFa [[!RDFA-CORE]], RDF/XML [[!RDF-SYNTAX-GRAMMAR]], 
+TLS [[!HTTP-TLS]], and X.509 [[!X509V3]]. By building on proven technologies
+which have been integrated into Web browsers for many years,
+it makes both explaining and implementing WebID easier on developers.
+As a matter of fact, there were already three interoperable implementations
+of WebID before this specification was written.</p>
+
+<p>Since WebID is RESTful, you can perform basic HTTP operations to 
+<code>GET</code> your WebID, and if you needed update it, you can use
+HTTP <code>PUT</code> semantics. You can also create a WebID via 
+<code>POST</code>. This is improved from the OpenID specification, which
+requires a new set of operations described in the OpenID Attribute Exchange
+specification.</p>
+
+<p>WebID is built on RDF and thus enables all of the advanced semantic web
+concepts that RDF enables. For example, a developer may perform machine
+reasoning with a WebID. One can construct machine-executable statements like
+"If this WebID claims to be a friend of one of our partner WebIDs that is
+trusted and the relationship is bi-directional, trust the WebID." 
+While OpenID attempts to support this use case by mapping OpenID to RDF, it's
+far easier to do with WebID because WebID is natively built on RDF. This also
+allows to include WebID profiles into HTML documents with RDFa.</p>
+
+<p>It is easy to extend a WebID with new attributes via RDF. The power of
+RDF allows developers to add extensions to WebID by defining new
+vocabularies that they publish. There is no authorization process necessary
+and thus WebID allows for distributed innovation. Every WebID property is
+a URI, which when clicked, can give you yet more information about what the
+property means. A developer can create new usage classes by extending their
+vocabulary at will. A developer can add relationships to a WebID by simply
+adding more HTML to the developer's page. OpenID does not provide any type of
+distributed innovation akin to RDF.</p>
+
+<p>WebID is truly decentralized - with WebID you get a web of trust. 
+OpenID only supports the Web of Trust model if you indirectly trust the
+OpenID provider. In other words - OpenID is not truly decentralized. In OpenID
+you must trust OpenID providers. With WebID you only have to trust the people
+and the organizations with which you are communicating. In other words, you
+don't have to ask anyone whether or not you can trust your friends. You can
+query people that you trust directly to see if someone is trustworthy or not.
+There is no need for a central WebID authority.
+</p>
+
+<p>WebID is fully distributed. Anyone can setup a WebID by placing a single
+file on a web server of their choosing, for example on their own domain name.
+There is no need for a special OpenID-like provider service.
+You can also use a WebID hosting provider, but it's not necessary for
+WebID to work. While it is possible to run an OpenID server, other
+OpenID applications may not trust you and thus you won't be able to fully
+utilize your private OpenID credentials. The reason that there are a few
+large OpenID providers and very few small OpenID providers is because of this
+trust design issue related to OpenID.</p>
+
+<p>WebID does not require HTTP redirects. Redirects are problematic on many
+cell phones because telecommunication companies rely heavily on proxy servers which may selectively block
+redirects.</p>
+
+<p>A WebID provider is 100% compatible with an OpenID provider and thus can 
+inter-operate with OpenID-powered networks.</p>
+
+<p class='issue'>This last claim needs to be backed up by some bug reports or
+documentation on the actual problems.</p>
+
+</section>
+
+<section class='informative'>
+<h1>Relation to OAuth</h1>
 
 <p>
-One major criticism of open networks is that they seem to have no way of
-protecting the personal information distributed on the web or limiting
-access to resources. Few people are willing to make all their personal
-information public, many would like large pieces to be protected, making
-it available only to a selected group of agents. Giving access to
-information is very similar to giving access to services. There are many
-occasions when people would like services to only be accessible to
-members of a group, such as allowing only friends, family members,
-colleagues to post an article, photo or comment on a blog. How does one do
-this in a flexible way, without requiring a central point of
-access control?
-</p>
-
-<p>
-Using an process made popular by OpenID, we show how one can tie a User
-Agent to a URI by proving that one has write access to the URI. WebID is
-a simpler alternative to OpenID (fewer connections), that uses X.509 
-certificates to tie a User Agent (Browser) to a Person identified via a URI.
-WebID also provides a few additional features to OpenID. These
-features include trust management, via digital signatures, and free-form 
-extensibility via RDFa. By using the existing SSL certificate exchange
-mechanism, WebID integrates more smoothly with existing Web browsers, including
-browsers on mobile devices. WebID also permits automated session login
-in addition to interactive session login. Additionally, all data is encrypted
-and guaranteed to only be received by the person or organization that was 
-intended to receive it.
+OAuth and WebID are mutually beneficial when used together. WebID can be
+used to provide RSA parameters to the RSA-SHA1 signature method required by
+OAuth 1.0. WebID can also be used to establish the consumer_key and HTTPS 
+connection that will be used to transmit OAuth Tokens in OAuth 2.0.
 </p>
 
 </section>
 
-</section>
-
-<section class='normative'>
-<h1>The WebID Protocol</h1>
-
-<section class='normative'>
-<h1>Terminology</h1>
-
-<dl>
-
-<dt><tdef>Verification Agent</tdef></dt>
-<dd>Performs authentication on provided WebID credentials and determines if
-an <tref>Identification Agent</tref> can have access to a particular 
-resource. A <tref>Verification Agent</tref> is typically a Web server, but 
-may also be a peer on a peer-to-peer network.</dd>
-
-<dt><tdef>Identification Agent</tdef></dt>
-<dd>Provides identification credentials to a <tref>Verification Agent</tref>. The
-<tref>Identification Agent</tref> is typically also a User Agent.</dd>
-
-<dt><tdef>Identification Certificate</tdef></dt>
-<dd>An X.509 [[!X509V3]] Certificate that MUST contain a 
-<code>Subject Alternative Name</code> extension with a URI entry. The URI
-identifies the <tref>Identification Agent</tref>. The URI SHOULD be
-dereference-able and result in a document containing RDF data. For example, 
-the certificate would contain <code>http://example.org/webid#public</code>,
-known as a <tref>WebID URI</tref>, as the <code>Subject Alternative Name</code>:
-<code><pre>
-X509v3 extensions:
-   ...
-   X509v3 Subject Alternative Name:
-      URI:http://example.org/webid#public
-</pre></code>
-
-<dt><tdef>WebID URI</tdef></dt>
-<dd>A URI specified via the <code>Subject Alternative Name</code> extension
-of the <tref>Identification Certificate</tref> that identifies an 
-<tref>Identification Agent</tref>.</dd>
-
-<dt><tdef>public key</tdef></dt>
-<dd>A widely distributed cryptographic key that can be used to verify 
-digital signatures and encrypt data between a sender and a receiver. A public
-key is always included in an <tref>Identification Certificate</tref>.</dd>
-
-<dt><tdef>WebID Profile</tdef></dt>
-<dd>
-A structured document that contains identification credentials for the 
-<tref>Identification Agent</tref> expressed using the Resource Description
-Framework [[RDF-CONCEPTS]]. Either the XHTML+RDFa 1.1 [[!XHTML-RDFA]] 
-serialization format or the RDF/XML [[!RDF-SYNTAX-GRAMMAR]] serialization
-format MUST be supported by the mechanism, e.g. a Web Service, providing the
-WebID Profile document. Alternate RDF serialization
-formats, such as N3 [[!N3]] or Turtle [[!TURTLE]], MAY be supported by the 
-mechanism providing the WebID Profile document.
-</dd>
-
-</dl>
-
-<p class="issue">Whether or not RDF/XML, XHTML+RDFa 1.1, both or neither
-serialization of RDF should be required serialization formats in the 
-specification is currently under heavy debate.</p>
-
-</section>
-
-<section class='normative'>
-<h1>Authentication Sequence</h1>
-
-<p>The following steps are executed by <tref>Verification Agent</tref>s and <tref>Identification
-Agent</tref>s to determine if access should be granted to a particular resource.
-</p>
-
-<ol>
-<li>The <tref>Identification Agent</tref> attempts to access a resource
-using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
-
-<li>The <tref>Verification Agent</tref> MUST request the 
-<tref>Identification Certificate</tref> of the <tref>Identification Agent</tref>
-as a part of the TLS client-certificate retrieval protocol.</li>
-
-<li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
-<tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
-extension of the <tref>Identification Certificate</tref>.</li>
-
-<li>The <tref>public key</tref> information associated with the 
-<tref>WebID URI</tref> MUST be checked by the <tref>Verification Agent</tref>.
-This process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
-extracting RDF data from the resulting document, or by utilizing a cached 
-version of the RDF data contained in the document or other data source that is 
-up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
-and extraction mechanism is further detailed in the sections titled 
-<a href="#processing-the-webid-profile">Processing the WebID Profile</a> and
-<a href="#extracting-webid-URI-details">Extracting WebID URI Details</a>.
-</li>
-
-<li>If the <tref>public key</tref> in the 
-<tref>Identification Certificate</tref> is found in the list of 
-<tref>public key</tref>s associated with the <tref>WebID URI</tref>, the
-<tref>Verification Agent</tref> MUST assume that the client intends to use
-this <tref>public key</tref> to verify their ownership of the <tref>WebID URI</tref>.</li>
-
-<li>
-The <tref>Verification Agent</tref> verifies that the 
-<tref>Identification Agent</tref> owns the <tref>WebID Profile</tref> 
-by using the <tref>public key</tref> to create a cryptographic challenge. 
-The challenge SHOULD be fulfilled by performing TLS mutual-authentication
-between the <tref>Verification Agent</tref> and the 
-<tref>Identification Agent</tref>. 
-If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
-a digital signature challenge MUST be provided by the 
-<tref>Verification Agent</tref>. These processes are detailed in the sections 
-titled <a href="#authorization">Authorization</a> and 
-<a href="#secure-communication">Secure Communication</a>.</li>
-
-</ol>
-
-<p>
-The <tref>Identification Agent</tref> MAY re-establish a different identity at 
-any time by executing all of the steps in the Authentication Sequence again. 
-Additional algorithms, detailed in the next section, MAY be performed to 
-determine if the <tref>Verification Agent</tref> can access a particular 
-resource after the last step of the Authentication Sequence has been
-completed.</li>
-</p>
-
-</section>
-
-<section class='normative'>
-<h1>Authentication Sequence Details</h1>
-
-<p>This section covers details about each step in the authentication process.
-</p>
-
-<section class='normative'>
-<h2>Initiating a TLS Connection</h2>
-
-<p class="issue">This section will detail how the TLS connection process is
-started and used by WebID to create a secure channel between the 
-Identification Agent and the Verification Agent.</p>
-</section>
-
-<section class='normative'>
-<h2>Exchanging the Identification Certificate</h2>
-
-<p class="issue">This section will detail how the certificate is selected and
-sent to the Verification Agent.</p>
-</section>
-
-<section class='normative'>
-<h2>Processing the WebID Profile</h2>
-
-<p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML 
-[[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to 
-a <tref>WebID Profile</tref> request SHOULD be able to deliver at least RDF/XML
-or RDFa. The Verification Agent MUST set the Accept-Header to request
-<code>application/rdf+xml</code> with a higher priority than <code>text/html</code>
-and <code>application/xhtml+xml</code>. If the server answers such a request
-with an HTML representation of the resource, this SHOULD describe the WebId Profile
-with RDFa.
-</p> 
-
-<p class="issue">This section will explain how a Verification Agent extracts 
-semantic data describing the identification credentials from a WebID Profile.</p>
-</section>
-
-<section class='normative'>
-<h2>Extracting WebID URI Details</h2>
-
-<p>
-The <tref>Verification Agent</tref> may use a number of different methods to
-extract the <tref>public key</tref> information from the <tref>WebID Profile</tref>.
-</p>
-The following SPARQL query outlines one way in which the <tref>public key</tref>
-could be extracted from the <tref>WebID Profile</tref>:
-<code><pre>
-PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
-PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
-SELECT ?modulus ?exp
-WHERE {
-   ?key cert:identity &lt;http://example.org/webid#public&gt;;
-      a rsa:RSAPublicKey;
-      rsa:modulus [ cert:hex ?modulus; ];
-      rsa:public_exponent [ cert:decimal ?exp ] .
-}
-</pre></code>
-
-<p class="issue">This section still needs more information.</p>
-
-</section>
-
-<section class='normative'>
-<h2>Authorization</h2>
-
-<p class="issue">This section will explain how a Verification Agent may
-use the information discovered via a WebID URI to determine if one should
-be able to access a particular resource. It will explain how a Verification
-Agent can use links to other RDFa documents to build knowledge about the
-given WebID.</p>
-
-</section>
-
-<section class='normative'>
-<h2>Secure Communication</h2>
-
-<p class="issue">This section will explain how an Identification Agent and
-a Verification Agent may communicate securely using a set of verified
-identification credentials.</p>
-
-<p>
-If the <tref>Verification Agent</tref> has verified that the
-<tref>WebID Profile</tref> is owned by the <tref>Identification Agent</tref>, 
-the <tref>Verification Agent</tref> SHOULD use the verified 
-<tref>public key</tref> contained in the <tref>Identification Certificate</tref> 
-for all TLS-based communication with the <tref>Identification Agent</tref>.
-This ensures that both the <tref>Verification Agent</tref> and the 
-<tref>Identification Agent</tref>
-are communicating in a secure manner, ensuring cryptographically protected
-privacy for both sides.
-</p>
-
-</section>
-
-</section>
-
-<section class='normative'>
-<h2>The WebID Profile</h2>
-
-<p>The <tref>WebID Profile</tref> is a structured document that contains 
-identification credentials for the <tref>Identification Agent</tref> expressed 
-using the Resource Description Framework [[RDF-CONCEPTS]]. The following 
-sections describe how to express certain common properties that could be used
-by <tref>Verification Agent</tref>s and other entities that consume a 
-<tref>WebID Profile</tref>.</p>
-
-<p>The following vocabularies are used in their shortened form in the 
-subsequent sections:</p>
-
-<dl>
-  <dt>foaf</dt>
-  <dd>http://xmlns.com/foaf/0.1/</dd>
-  <dt>cert</dt>
-  <dd>http://www.w3.org/ns/auth/cert#</dd>
-  <dt>rsa</dt>
-  <dd>http://www.w3.org/ns/auth/rsa#</dd>
-</dl>
-
-<section class='normative'>
-<h2>Personal Information</h2>
-
-<p>Personal details are the most common requirement when registering an 
-account with a website. Some of these pieces of information include an e-mail 
-address, a name and perhaps an avatar image. This section includes
-properties that SHOULD be used when conveying key pieces of personal 
-information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:</p>
-
-<dl>
-  <dt>foaf:mbox</dt>
-  <dd>The e-mail address that is associated with the WebID URI.</dd>
-  <dt>foaf:name</dt>
-  <dd>The name that is most commonly used to refer to the individual 
-    or agent.</dd>
-  <dt>foaf:depiction</dt>
-  <dd>An image representation of the individual or agent.</dd>
-</dl>
-</section>
-
-<section class='normative'>
-<h2>Cryptographic Details</h2>
-
-<p>Cryptographic details are important when <tref>Verification Agent</tref>s
-and <tref>Identification Agent</tref>s interact. The following properties 
-SHOULD be used when conveying cryptographic information in <tref>WebID Profile</tref>
-documents:</p>
-
-<dl>
-  <dt>rsa:RSAPublicKey</dt>
-  <dd>Expresses an RSA public key. The RSAPublicKey MUST specify the
-  rsa:modulus and rsa:public_exponent properties.</dd>
-  <dt>cert:identity</dt>
-  <dd>Used to associate an RSAPublicKey with a WebID URI. A WebID Profile
-  MUST contain at least one RSAPublicKey that is associated with the
-  corresponding WebID URI.</dd>
-</dl>
-</section>
-
-</section>
 
 <section id="appendix">
 
 <section class='informative' id="history">
 <h1>Change History</h1>
-<p><a href="http://github.com/msporny/webid-spec/commit/b19d2812901b4511fdf9876c1be53bb36ee3201e">2010-07-25</a> Added WebID Profile section.</p>
-<p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
-<p><a href="http://github.com/msporny/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
+<p><a href="">2010-07-31</a> Initial version split from the core WebID specification.</p>
 </section>
 
 <section class='informative' id="acknowledgements">
