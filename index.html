@@ -385,7 +385,7 @@ as a part of the TLS client-cerificate retrieval protocol.</li>
 
 <li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> and the
 <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> contained in the <code>Subject Alternative Name</code> 
-extension of the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>.</li>
+extension of the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. <p class="issue">There may be more than one URI in the SAN</p> </li>
 <li>
 The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> verifies that the 
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> owns the private key corresponding to the public key  sent in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. This <em class="rfc2119" title="should">should</em> be fulfilled by performing TLS mutual-authentication
