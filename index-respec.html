@@ -418,12 +418,12 @@ identifies the <tref>Identification Agent</tref>. The URI SHOULD be
 dereference-able and result in a document containing RDF data. For example, 
 the certificate would contain <code>http://example.org/webid#public</code>,
 known as a <tref>WebID URI</tref>, as the <code>Subject Alternative Name</code>:
-<code><pre>
+<pre>
 X509v3 extensions:
    ...
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
-</pre></code>
+</pre>
 
 <dt><tdef>WebID URI</tdef></dt>
 <dd>A URI specified via the <code>Subject Alternative Name</code> extension
@@ -564,7 +564,7 @@ extract the <tref>public key</tref> information from the <tref>WebID Profile</tr
 </p>
 The following SPARQL query outlines one way in which the <tref>public key</tref>
 could be extracted from the <tref>WebID Profile</tref>:
-<code><pre>
+<pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 SELECT ?modulus ?exp
@@ -574,7 +574,7 @@ WHERE {
       rsa:modulus [ cert:hex ?modulus; ];
       rsa:public_exponent [ cert:decimal ?exp ] .
 }
-</pre></code>
+</pre>
 
 <p class="issue">This section still needs more information.</p>
 
