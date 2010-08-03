@@ -477,6 +477,7 @@ as a part of the TLS client-certificate retrieval protocol.</li>
 <tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
 extension of the <tref>Identification Certificate</tref>.
 <p class="issue">There may be more than one URI in the SAN</p></li>
+
 <li>
 The <tref>Verification Agent</tref> verifies that the 
 <tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the 
@@ -487,10 +488,14 @@ If the <tref>Verification Agent</tref> does not have access to the TLS layer,
 a digital signature challenge MAY be provided by the 
 <tref>Verification Agent</tref>. These processes are detailed in the section
 on  
-<a href="#secure-communication">Secure Communication</a>.<p class="issue">We don't have any implementations for this second way of doing things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p> </li>
+<a href="#secure-communication">Secure Communication</a>.
+<p class="issue">We don't have any implementations for this second way of doing 
+things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p>
+</li>
+
 <li>The meaning of the 
-<tref>WebID URL</tref> is a graph of relations that is fetched by the <tref>Verification Agent</tref> 
-by either by dereferencing the <tref>WebID URL</tref> and 
+<tref>WebID URI</tref> is a graph of relations that is fetched by the <tref>Verification Agent</tref> 
+either by dereferencing the <tref>WebID URI</tref> and 
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
 up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
@@ -499,9 +504,11 @@ up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
 </li>
 
 <li>If the <tref>public key</tref> in the 
-<tref>Identification Certificate</tref> matches one in the set given by the profile document graph given above then the 
-<tref>Verification Agent</tref> knows that the <tref>Identification Agent</tref> is indeed identified by the <tref>WebID URL</tref>. The verification is done by querying the 
-Personal Profile graph as specified in <a href="#extracting-webid-url-details">querying the RDF graph</a></li>
+<tref>Identification Certificate</tref> matches one in the set given by the
+profile document graph given above then the <tref>Verification Agent</tref>
+knows that the <tref>Identification Agent</tref> is indeed identified by the
+<tref>WebID URI</tref>. The verification is done by querying the 
+Personal Profile graph as specified in <a href="#extracting-webid-uri-details">querying the RDF graph</a>.</li>
 </ol>
 
 <p>
@@ -542,7 +549,7 @@ sent to the Verification Agent.</p>
 <p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML 
 [[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to 
 a <tref>WebID Profile</tref> request SHOULD be able to deliver at least RDF/XML
-or RDFa. The Verification Agent MUST set the Accept-Header to request
+or RDFa. The <tref>Verification Agent</tref> MUST set the Accept-Header to request
 <code>application/rdf+xml</code> with a higher priority than <code>text/html</code>
 and <code>application/xhtml+xml</code>. If the server answers such a request
 with an HTML representation of the resource, this SHOULD describe the WebId Profile
@@ -573,9 +580,14 @@ WHERE {
       rsa:public_exponent [ cert:decimal ?exp ] .
 }
 </pre>
-<p class="issue">The above query is using the original non literal method of writing a query, and does not support the literal notation. Should we in this document take that to now be deprecated?</p>
-<p class="issue">The above query will work properly if the graph does inferencing on the rsa ontology. If it does not then it would be wise to remove the "a rsa:RSAPublicKey relation from the pattern.</p>
-<p>Currently as a trnsition phase allowing for literals and non literal notationthe following query is adopted:</p>
+<p class="issue">The above query is using the original non literal method of
+writing a query, and does not support the literal notation. Should we in this
+document take that to now be deprecated?</p>
+<p class="issue">The above query will work properly if the graph does
+inferencing on the rsa ontology. If it does not then it would be wise to remove
+the "a rsa:RSAPublicKey relation from the pattern.</p>
+<p>Currently as a transition phase allowing for literals and non literal
+notation the following query is adopted:</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
@@ -588,9 +600,13 @@ WHERE {
    OPTIONAL { ?e cert:decimal ?exp . }
 </pre>
 <p>In the above query the verifier has to iterate through the answer set,
-converting bindings for ?m and ?e if they are literals to integers, else to check for ?mod and ?exp and convert those to literals. In order to allow for the possibility of there being multiple ways of writing the literals, this process should be able to convert the various 
+converting bindings for ?m and ?e if they are literals to integers, else to
+check for ?mod and ?exp and convert those to literals. In order to allow for
+the possibility of there being multiple ways of writing the literals, this 
+process should be able to convert the various 
 </p>
-<p>If we move to dropping the deprecated relations - and thereby make writing the rdf easier, the query can be the much simpler</p>
+<p>If we move to dropping the deprecated relations - and thereby make writing
+the rdf easier, the query can be the much simpler</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
@@ -601,7 +617,8 @@ WHERE {
         rsa:public_exponent ?e .
 }
 </pre>
-<p>Here the verification agent must check that one of the answers for ?m and ?e matches the public key in the certificate</p>
+<p>Here the verification agent must check that one of the answers for ?m and ?e
+matches the public key in the certificate</p>
 <p>If the triple store supports literal inferencing then the query for
 a given modulus "9D79BFE2498..." and exponent "65537" 
 be as simple simple as:
@@ -617,7 +634,8 @@ ASK {
 </pre>
 <p>If the above query returns True, then authentication has succeeded, otherwise not. </p>
 <p>Note that this will requre the type inferencing engine to be able to
-convert literals written in the profile document as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮" into the integer.
+convert literals written in the profile document as
+"9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮" into the integer.
 </p>
 
 <p class="issue">This section still needs more information.</p>
