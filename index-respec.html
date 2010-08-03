@@ -475,7 +475,8 @@ as a part of the TLS client-certificate retrieval protocol.</li>
 
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
 <tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
-extension of the <tref>Identification Certificate</tref>.</li>
+extension of the <tref>Identification Certificate</tref>.
+<p class="issue">There may be more than one URI in the SAN</p></li>
 <li>
 The <tref>Verification Agent</tref> verifies that the 
 <tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the 
