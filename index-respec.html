@@ -570,6 +570,52 @@ WHERE {
       rsa:public_exponent [ cert:decimal ?exp ] .
 }
 </pre>
+<p class="issue">The above query is using the original non literal method of writing a query, and does not support the literal notation. Should we in this document take that to now be deprecated?</p>
+<p class="issue">The above query will work properly if the graph does inferencing on the rsa ontology. If it does not then it would be wise to remove the "a rsa:RSAPublicKey relation from the pattern.</p>
+<p>Currently as a trnsition phase allowing for literals and non literal notationthe following query is adopted:</p>
+<pre class='example'>
+PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
+PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
+SELECT ?m ?e ?mod ?exp 
+WHERE { 
+   [] cert:identity ?webid ;
+        rsa:modulus ?m ;
+        rsa:public_exponent ?e .
+   OPTIONAL { ?m cert:hex ?mod . }
+   OPTIONAL { ?e cert:decimal ?exp . }
+</pre>
+<p>In the above query the verifier has to iterate through the answer set,
+converting bindings for ?m and ?e if they are literals to integers, else to check for ?mod and ?exp and convert those to literals. In order to allow for the possibility of there being multiple ways of writing the literals, this process should be able to convert the various integer xsd formats xsd:int, xsd:nonNegativeInteger, xsd:int, ...  [TODO: check that carefully]
+</p>
+<p>If we move to dropping the deprecated relations - and thereby make writing the rdf easier, the query can be the much simpler</p>
+<pre class='example'>
+PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
+PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
+SELECT ?m ?e ?mod ?exp 
+WHERE { 
+   [] cert:identity ?webid ;
+        rsa:modulus ?m ;
+        rsa:public_exponent ?e .
+}
+</pre>
+<p>Here the verification agent must check that one of the answers for ?m and ?e matches the public key in the certificate</p>
+<p>If the triple store supports literal inferencing then the query for
+a given modulus "9D79BFE2498..." and exponent "65537" 
+be as simple simple as:
+</p>
+<pre class='example'>
+PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
+PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
+ASK {
+   [] cert:identity &lt;http://example.org/webid#public&gt;;
+      rsa:modulus  "9D79BFE2498..."^^cert:hex;
+      rsa:public_exponent "65537"^^cert:int .
+}
+</pre>
+<p>If the above query returns True, then authentication has succeeded, otherwise not. </p>
+<p>Note that this will requre the type inferencing engine to be able to
+convert literals written in the profile document as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮" into the integer.
+</p>
 
 <p class="issue">This section still needs more information.</p>
 
