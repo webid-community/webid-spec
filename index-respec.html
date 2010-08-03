@@ -459,8 +459,10 @@ specification is currently under heavy debate.</p>
 <section class='normative'>
 <h1>Authentication Sequence</h1>
 
-<p>The following steps are executed by <tref>Verification Agent</tref>s and <tref>Identification
-Agent</tref>s to determine if access should be granted to a particular resource.
+<p>The following steps are executed by <tref>Verification Agent</tref>s and
+<tref>Identification Agent</tref>s to determine the global identity of the
+requesting agent. Once this is known, the identity can be used to determine
+if access should be granted to the requested resource.
 </p>
 
 <ol>
@@ -474,37 +476,31 @@ as a part of the TLS client-certificate retrieval protocol.</li>
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
 <tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
 extension of the <tref>Identification Certificate</tref>.</li>
-
-<li>The <tref>public key</tref> information associated with the 
-<tref>WebID URI</tref> MUST be checked by the <tref>Verification Agent</tref>.
-This process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
-extracting RDF data from the resulting document, or by utilizing a cached 
-version of the RDF data contained in the document or other data source that is 
-up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
-and extraction mechanism is further detailed in the sections titled 
-<a href="#processing-the-webid-profile">Processing the WebID Profile</a> and
-<a href="#extracting-webid-URI-details">Extracting WebID URI Details</a>.
-</li>
-
-<li>If the <tref>public key</tref> in the 
-<tref>Identification Certificate</tref> is found in the list of 
-<tref>public key</tref>s associated with the <tref>WebID URI</tref>, the
-<tref>Verification Agent</tref> MUST assume that the client intends to use
-this <tref>public key</tref> to verify their ownership of the <tref>WebID URI</tref>.</li>
-
 <li>
 The <tref>Verification Agent</tref> verifies that the 
-<tref>Identification Agent</tref> owns the <tref>WebID Profile</tref> 
-by using the <tref>public key</tref> to create a cryptographic challenge. 
-The challenge SHOULD be fulfilled by performing TLS mutual-authentication
+<tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the 
+<tref>Identification Certificate</tref>. This SHOULD be fulfilled by performing TLS mutual-authentication
 between the <tref>Verification Agent</tref> and the 
 <tref>Identification Agent</tref>. 
 If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
-a digital signature challenge MUST be provided by the 
-<tref>Verification Agent</tref>. These processes are detailed in the sections 
-titled <a href="#authorization">Authorization</a> and 
-<a href="#secure-communication">Secure Communication</a>.</li>
+a digital signature challenge MAY be provided by the 
+<tref>Verification Agent</tref>. These processes are detailed in the section
+on  
+<a href="#secure-communication">Secure Communication</a>.<p class="issue">We don't have any implementations for this second way of doing things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p> </li>
+<li>The meaning of the 
+<tref>WebID URL</tref> is a graph of relations that is fetched by the <tref>Verification Agent</tref> 
+by either by dereferencing the <tref>WebID URL</tref> and 
+extracting RDF data from the resulting document, or by utilizing a cached 
+version of the RDF data contained in the document or other data source that is 
+up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
+ mechanism is further detailed in the sections titled 
+<a href="#processing-the-webid-profile">Processing the WebID Profile</a>
+</li>
 
+<li>If the <tref>public key</tref> in the 
+<tref>Identification Certificate</tref> matches one in the set given by the profile document graph given above then the 
+<tref>Verification Agent</tref> knows that the <tref>Identification Agent</tref> is indeed identified by the <tref>WebID URL</tref>. The verification is done by querying the 
+Personal Profile graph as specified in <a href="#extracting-webid-url-details">querying the RDF graph</a></li>
 </ol>
 
 <p>
