@@ -457,66 +457,60 @@ specification is currently under heavy debate.</p>
 </section>
 
 <section class='normative'>
-<h1>Authentication Sequence</h1>
+<h3><span class="secno">2.2 </span>Authentication Sequence</h3>
 
-<p>The following steps are executed by <tref>Verification Agent</tref>s and <tref>Identification
-Agent</tref>s to determine if access should be granted to a particular resource.
+<p>The following steps are executed by Verification Agents and Identification
+Agents to determine the global identity of the requesting agent. Once this is known, the identity can be used to determine if access should be granted to the requested resource.
 </p>
 
 <ol>
-<li>The <tref>Identification Agent</tref> attempts to access a resource
-using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
+<li>The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> attempts to access a resource
+using HTTP over TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HTTP-TLS</a>] via the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>.</li>
 
-<li>The <tref>Verification Agent</tref> MUST request the 
-<tref>Identification Certificate</tref> of the <tref>Identification Agent</tref>
-as a part of the TLS client-certificate retrieval protocol.</li>
+<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> request the 
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> of the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>
+as a part of the TLS client-cerificate retrieval protocol.</li>
 
-<li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
-<tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
-extension of the <tref>Identification Certificate</tref>.</li>
-
-<li>The <tref>public key</tref> information associated with the 
-<tref>WebID URI</tref> MUST be checked by the <tref>Verification Agent</tref>.
-This process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
+<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> and the
+<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> contained in the <code>Subject Alternative Name</code> 
+extension of the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. <p class="issue">There may be more than one URI in the SAN</p> </li>
+<li>
+The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> verifies that the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> owns the private key corresponding to the public key  sent in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. This <em class="rfc2119" title="should">should</em> be fulfilled by performing TLS mutual-authentication
+between the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> and the 
+<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>. 
+If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> does not have access to the TLS layer, 
+a digital signature challenge <em class="rfc2119" title="may">may</em> be provided by the 
+<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. These processes are detailed in the section
+on  
+<a href="#secure-communication">Secure Communication</a>.<p class="issue">We don't have any implementations for this second way of doing things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p> </li>
+<li>The meaning of the 
+<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> is a graph of relations that is fetched by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> 
+by either by dereferencing the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> and 
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
-up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
-and extraction mechanism is further detailed in the sections titled 
-<a href="#processing-the-webid-profile">Processing the WebID Profile</a> and
-<a href="#extracting-webid-URI-details">Extracting WebID URI Details</a>.
+up-to-date and trusted by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. The processing
+ mechanism is further detailed in the sections titled 
+<a href="#processing-the-webid-profile">Processing the WebID Profile</a>
 </li>
 
-<li>If the <tref>public key</tref> in the 
-<tref>Identification Certificate</tref> is found in the list of 
-<tref>public key</tref>s associated with the <tref>WebID URI</tref>, the
-<tref>Verification Agent</tref> MUST assume that the client intends to use
-this <tref>public key</tref> to verify their ownership of the <tref>WebID URI</tref>.</li>
-
-<li>
-The <tref>Verification Agent</tref> verifies that the 
-<tref>Identification Agent</tref> owns the <tref>WebID Profile</tref> 
-by using the <tref>public key</tref> to create a cryptographic challenge. 
-The challenge SHOULD be fulfilled by performing TLS mutual-authentication
-between the <tref>Verification Agent</tref> and the 
-<tref>Identification Agent</tref>. 
-If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
-a digital signature challenge MUST be provided by the 
-<tref>Verification Agent</tref>. These processes are detailed in the sections 
-titled <a href="#authorization">Authorization</a> and 
-<a href="#secure-communication">Secure Communication</a>.</li>
+<li>If the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> in the 
+<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> matches one in the set given by the profile document graph given above then the 
+<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> knows that the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> is indeed identified by the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>. The verification is done by querying the 
+Personal Profile graph as specified in <a href="#extracting-webid-url-details">querying the RDF graph</a></li>
 
 </ol>
 
 <p>
-The <tref>Identification Agent</tref> MAY re-establish a different identity at 
+The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> <em class="rfc2119" title="may">may</em> re-establish a different identity at 
 any time by executing all of the steps in the Authentication Sequence again. 
-Additional algorithms, detailed in the next section, MAY be performed to 
-determine if the <tref>Verification Agent</tref> can access a particular 
+Additional algorithms, detailed in the next section, <em class="rfc2119" title="may">may</em> be performed to 
+determine if the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> can access a particular 
 resource after the last step of the Authentication Sequence has been
 completed.
 </p>
 
-</section>
+</div>
 
 <section class='normative'>
 <h1>Authentication Sequence Details</h1>
