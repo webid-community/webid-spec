@@ -582,7 +582,7 @@ ASK {
 <p>The above requires the graph to be able to do inferencing on dataytypes. This is because people may publish their modulus string in a number of syntactical ways. The modulus can be colon seperated, spread over a number of lines, or contain arbitrary non hex characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." .  The datatype itself need not necessarily be expressed in cert:hex, but could use a number of xsd integer datatype notations, cert:int or future base64 notations. 
 </p>
 <p class="issue">Should we define the base64 notation?</p>
-<p>If a <tref>Verifying Agent</tref> does not have access to a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the WebId in the following query with the required value, the <tref>Verifying Agent</tref> can query the Profile Graph with a query such as</p>
+<p>If a <tref>Verifying Agent</tref> does not have access to a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the <code>?webid</code> variable in the following query with the required value the <tref>Verifying Agent</tref> can query the Profile Graph with</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
