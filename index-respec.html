@@ -561,67 +561,13 @@ semantic data describing the identification credentials from a WebID Profile.</p
 </section>
 
 <section class='normative'>
-<h2>Extracting WebID URI Details</h2>
+<h2>Verifying the WebID is identified by that public key</h2>
 
 <p>
-The <tref>Verification Agent</tref> may use a number of different methods to
-extract the <tref>public key</tref> information from the <tref>WebID Profile</tref>.
+The <tref>Verification Agent</tref> must check that the <tref>WebID Profile</tref> associates the WebID with the public key given in the X.509 Certificate. There are number of ways of doing this, each of which essentially consists in checking that the graph of relations in the Profile contain a pattern of relations.
 </p>
-The following SPARQL query outlines one way in which the <tref>public key</tref>
-could be extracted from the <tref>WebID Profile</tref>:
-<pre class='example'>
-PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
-PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
-SELECT ?modulus ?exp
-WHERE {
-   ?key cert:identity &lt;http://example.org/webid#public&gt;;
-      a rsa:RSAPublicKey;
-      rsa:modulus [ cert:hex ?modulus; ];
-      rsa:public_exponent [ cert:decimal ?exp ] .
-}
-</pre>
-<p class="issue">The above query is using the original non literal method of
-writing a query, and does not support the literal notation. Should we in this
-document take that to now be deprecated?</p>
-<p class="issue">The above query will work properly if the graph does
-inferencing on the rsa ontology. If it does not then it would be wise to remove
-the "a rsa:RSAPublicKey relation from the pattern.</p>
-<p>Currently as a transition phase allowing for literals and non literal
-notation the following query is adopted:</p>
-<pre class='example'>
-PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
-PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
-SELECT ?m ?e ?mod ?exp 
-WHERE { 
-   [] cert:identity ?webid ;
-        rsa:modulus ?m ;
-        rsa:public_exponent ?e .
-   OPTIONAL { ?m cert:hex ?mod . }
-   OPTIONAL { ?e cert:decimal ?exp . }
-</pre>
-<p>In the above query the verifier has to iterate through the answer set,
-converting bindings for ?m and ?e if they are literals to integers, else to
-check for ?mod and ?exp and convert those to literals. In order to allow for
-the possibility of there being multiple ways of writing the literals, this 
-process should be able to convert the various 
-</p>
-<p>If we move to dropping the deprecated relations - and thereby make writing
-the rdf easier, the query can be the much simpler</p>
-<pre class='example'>
-PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
-PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
-SELECT ?m ?e ?mod ?exp 
-WHERE { 
-   [] cert:identity ?webid ;
-        rsa:modulus ?m ;
-        rsa:public_exponent ?e .
-}
-</pre>
-<p>Here the verification agent must check that one of the answers for ?m and ?e
-matches the public key in the certificate</p>
-<p>If the triple store supports literal inferencing then the query for
-a given modulus "9D79BFE2498..." and exponent "65537" 
-be as simple simple as:
+<p>Assuming the public key is an RSA key, and that its modulus is
+ "9D79BFE2498..." and exponent "65537" then the query to ask the graph is
 </p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
@@ -632,13 +578,24 @@ ASK {
       rsa:public_exponent "65537"^^cert:int .
 }
 </pre>
-<p>If the above query returns True, then authentication has succeeded, otherwise not. </p>
-<p>Note that this will requre the type inferencing engine to be able to
-convert literals written in the profile document as
-"9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮" into the integer.
+<p>If the query returns true, then the graph has validated the associated public key with the WebID.</p>
+<p>The above requires the graph to be able to do inferencing on dataytypes. This is because people may publish their modulus string in a number of syntactical ways. The modulus can be colon seperated, spread over a number of lines, or contain arbitrary non hex characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." .  The datatype itself need not necessarily be expressed in cert:hex, but could use a number of xsd integer datatype notations, cert:int or future base64 notations. 
 </p>
-
-<p class="issue">This section still needs more information.</p>
+<p class="issue">Should we define the base64 notation?</p>
+<p>If a <tref>Verifying Agent</tref> does not have access to a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the WebId in the following query with the required value, the <tref>Verifying Agent</tref> can query the Profile Graph with a query such as</p>
+<pre class='example'>
+PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
+PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
+SELECT ?m ?e 
+WHERE { 
+   [] cert:identity ?webid ;
+        rsa:modulus ?m ;
+        rsa:public_exponent ?e .
+}
+</pre>
+<p>Here the verification agent must check that one of the answers for ?m and ?e
+matches the integer values of the modulus and exponent given in the public key in the certificate.</p>
+<p class="issue"> The public key could be a DSA key. We need to add an ontology for DSA too. What other cryptographic ontologies should we add?</p>
 
 </section>
 
