@@ -312,7 +312,7 @@ titled <a href="#terminology">Terminology</a>.</p>
 <p>Developers that are interested in implementing this specification will be
 most interested in the sections titled 
 <a href="#authentication-sequence">Authentication Sequence</a> and 
-<a href="#authentication-sequence-details">Authentication Sequence Details</a></p>.
+<a href="#authentication-sequence-details">Authentication Sequence Details</a>.</p>
   
 </section>
 </section>
@@ -457,60 +457,70 @@ specification is currently under heavy debate.</p>
 </section>
 
 <section class='normative'>
-<h3><span class="secno">2.2 </span>Authentication Sequence</h3>
+<h1>Authentication Sequence</h1>
 
-<p>The following steps are executed by Verification Agents and Identification
-Agents to determine the global identity of the requesting agent. Once this is known, the identity can be used to determine if access should be granted to the requested resource.
+<p>The following steps are executed by <tref>Verification Agent</tref>s and
+<tref>Identification Agent</tref>s to determine the global identity of the
+requesting agent. Once this is known, the identity can be used to determine
+if access should be granted to the requested resource.
 </p>
 
 <ol>
-<li>The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> attempts to access a resource
-using HTTP over TLS [<a class="bibref" rel="biblioentry" href="#bib-HTTP-TLS">HTTP-TLS</a>] via the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>.</li>
+<li>The <tref>Identification Agent</tref> attempts to access a resource
+using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
 
-<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> request the 
-<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> of the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>
-as a part of the TLS client-cerificate retrieval protocol.</li>
+<li>The <tref>Verification Agent</tref> MUST request the 
+<tref>Identification Certificate</tref> of the <tref>Identification Agent</tref>
+as a part of the TLS client-certificate retrieval protocol.</li>
 
-<li>The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> extract the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> and the
-<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> contained in the <code>Subject Alternative Name</code> 
-extension of the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. <p class="issue">There may be more than one URI in the SAN</p> </li>
+<li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
+<tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
+extension of the <tref>Identification Certificate</tref>.
+<p class="issue">There may be more than one URI in the SAN</p></li>
+
 <li>
-The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> verifies that the 
-<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> owns the private key corresponding to the public key  sent in the <a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a>. This <em class="rfc2119" title="should">should</em> be fulfilled by performing TLS mutual-authentication
-between the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> and the 
-<a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>. 
-If the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> does not have access to the TLS layer, 
-a digital signature challenge <em class="rfc2119" title="may">may</em> be provided by the 
-<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. These processes are detailed in the section
+The <tref>Verification Agent</tref> verifies that the 
+<tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the 
+<tref>Identification Certificate</tref>. This SHOULD be fulfilled by performing TLS mutual-authentication
+between the <tref>Verification Agent</tref> and the 
+<tref>Identification Agent</tref>. 
+If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
+a digital signature challenge MAY be provided by the 
+<tref>Verification Agent</tref>. These processes are detailed in the section
 on  
-<a href="#secure-communication">Secure Communication</a>.<p class="issue">We don't have any implementations for this second way of doing things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p> </li>
+<a href="#secure-communication">Secure Communication</a>.
+<p class="issue">We don't have any implementations for this second way of doing 
+things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p>
+</li>
+
 <li>The meaning of the 
-<a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> is a graph of relations that is fetched by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> 
-by either by dereferencing the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a> and 
+<tref>WebID URI</tref> is a graph of relations that is fetched by the <tref>Verification Agent</tref> 
+either by dereferencing the <tref>WebID URI</tref> and 
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
-up-to-date and trusted by the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>. The processing
+up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
  mechanism is further detailed in the sections titled 
 <a href="#processing-the-webid-profile">Processing the WebID Profile</a>
 </li>
 
-<li>If the <a class="tref internalDFN" title="public_key" href="#dfn-public_key">public key</a> in the 
-<a class="tref internalDFN" title="Identification_Certificate" href="#dfn-identification_certificate">Identification Certificate</a> matches one in the set given by the profile document graph given above then the 
-<a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> knows that the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> is indeed identified by the <a class="tref internalDFN" title="WebID_URL" href="#dfn-webid_url">WebID URL</a>. The verification is done by querying the 
-Personal Profile graph as specified in <a href="#extracting-webid-url-details">querying the RDF graph</a></li>
-
+<li>If the <tref>public key</tref> in the 
+<tref>Identification Certificate</tref> matches one in the set given by the
+profile document graph given above then the <tref>Verification Agent</tref>
+knows that the <tref>Identification Agent</tref> is indeed identified by the
+<tref>WebID URI</tref>. The verification is done by querying the 
+Personal Profile graph as specified in <a href="#extracting-webid-uri-details">querying the RDF graph</a>.</li>
 </ol>
 
 <p>
-The <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> <em class="rfc2119" title="may">may</em> re-establish a different identity at 
+The <tref>Identification Agent</tref> MAY re-establish a different identity at 
 any time by executing all of the steps in the Authentication Sequence again. 
-Additional algorithms, detailed in the next section, <em class="rfc2119" title="may">may</em> be performed to 
-determine if the <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> can access a particular 
+Additional algorithms, detailed in the next section, MAY be performed to 
+determine if the <tref>Verification Agent</tref> can access a particular 
 resource after the last step of the Authentication Sequence has been
 completed.
 </p>
 
-</div>
+</section>
 
 <section class='normative'>
 <h1>Authentication Sequence Details</h1>
@@ -539,7 +549,7 @@ sent to the Verification Agent.</p>
 <p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML 
 [[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to 
 a <tref>WebID Profile</tref> request SHOULD be able to deliver at least RDF/XML
-or RDFa. The Verification Agent MUST set the Accept-Header to request
+or RDFa. The <tref>Verification Agent</tref> MUST set the Accept-Header to request
 <code>application/rdf+xml</code> with a higher priority than <code>text/html</code>
 and <code>application/xhtml+xml</code>. If the server answers such a request
 with an HTML representation of the resource, this SHOULD describe the WebId Profile
@@ -570,9 +580,14 @@ WHERE {
       rsa:public_exponent [ cert:decimal ?exp ] .
 }
 </pre>
-<p class="issue">The above query is using the original non literal method of writing a query, and does not support the literal notation. Should we in this document take that to now be deprecated?</p>
-<p class="issue">The above query will work properly if the graph does inferencing on the rsa ontology. If it does not then it would be wise to remove the "a rsa:RSAPublicKey relation from the pattern.</p>
-<p>Currently as a trnsition phase allowing for literals and non literal notationthe following query is adopted:</p>
+<p class="issue">The above query is using the original non literal method of
+writing a query, and does not support the literal notation. Should we in this
+document take that to now be deprecated?</p>
+<p class="issue">The above query will work properly if the graph does
+inferencing on the rsa ontology. If it does not then it would be wise to remove
+the "a rsa:RSAPublicKey relation from the pattern.</p>
+<p>Currently as a transition phase allowing for literals and non literal
+notation the following query is adopted:</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
@@ -585,9 +600,13 @@ WHERE {
    OPTIONAL { ?e cert:decimal ?exp . }
 </pre>
 <p>In the above query the verifier has to iterate through the answer set,
-converting bindings for ?m and ?e if they are literals to integers, else to check for ?mod and ?exp and convert those to literals. In order to allow for the possibility of there being multiple ways of writing the literals, this process should be able to convert the various integer xsd formats xsd:int, xsd:nonNegativeInteger, xsd:int, ...  [TODO: check that carefully]
+converting bindings for ?m and ?e if they are literals to integers, else to
+check for ?mod and ?exp and convert those to literals. In order to allow for
+the possibility of there being multiple ways of writing the literals, this 
+process should be able to convert the various 
 </p>
-<p>If we move to dropping the deprecated relations - and thereby make writing the rdf easier, the query can be the much simpler</p>
+<p>If we move to dropping the deprecated relations - and thereby make writing
+the rdf easier, the query can be the much simpler</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
@@ -598,7 +617,8 @@ WHERE {
         rsa:public_exponent ?e .
 }
 </pre>
-<p>Here the verification agent must check that one of the answers for ?m and ?e matches the public key in the certificate</p>
+<p>Here the verification agent must check that one of the answers for ?m and ?e
+matches the public key in the certificate</p>
 <p>If the triple store supports literal inferencing then the query for
 a given modulus "9D79BFE2498..." and exponent "65537" 
 be as simple simple as:
@@ -614,7 +634,8 @@ ASK {
 </pre>
 <p>If the above query returns True, then authentication has succeeded, otherwise not. </p>
 <p>Note that this will requre the type inferencing engine to be able to
-convert literals written in the profile document as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮" into the integer.
+convert literals written in the profile document as
+"9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮" into the integer.
 </p>
 
 <p class="issue">This section still needs more information.</p>
