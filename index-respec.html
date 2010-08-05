@@ -424,6 +424,7 @@ X509v3 extensions:
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre>
+<p class="issue">TODO: cover the case where there are more than one URI entry</p>
 </dd>
 
 <dt><tdef>WebID URI</tdef></dt>
@@ -446,13 +447,13 @@ format MUST be supported by the mechanism, e.g. a Web Service, providing the
 WebID Profile document. Alternate RDF serialization
 formats, such as N3 [[!N3]] or Turtle [[!TURTLE]], MAY be supported by the 
 mechanism providing the WebID Profile document.
+<p class="issue">Whether or not RDF/XML, XHTML+RDFa 1.1, both or neither
+serialization of RDF should be required serialization formats in the 
+specification is currently under heavy debate.</p>
 </dd>
 
 </dl>
 
-<p class="issue">Whether or not RDF/XML, XHTML+RDFa 1.1, both or neither
-serialization of RDF should be required serialization formats in the 
-specification is currently under heavy debate.</p>
 
 </section>
 
