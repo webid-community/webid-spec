@@ -392,11 +392,10 @@ intended to receive it.
 </section>
 
 </section>
+<section>
+<h1>Preconditions</h1>
 
-<section class='normative'>
-<h1>The WebID Protocol</h1>
-
-<section class='normative'>
+<section>
 <h1>Terminology</h1>
 
 <dl>
@@ -456,6 +455,99 @@ specification is currently under heavy debate.</p>
 
 </section>
 
+
+<section class='normative'>
+<h1>Creating the certificate</h1>
+
+<p>The user agent will create an X.509 Certificate with a Subject Alternative Name URI. The URI must be one that points to a document the user controls, as he will have to add information to that document at that URI. </p>
+<p>Suppose for sake of example that the X.509 Certificate contains the public key
+<p>Example: 
+  User controls http://joe.example/profile then his WebID can be
+  http://joe.example/profile#me
+</p>
+<p>As an example to use throughout this specification here is the 
+following certificate as an output of the openssl program.</p>
+<p class="example">
+<pre>
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            5f:df:d6:be:2c:73:c1:fb:aa:2a:2d:23:a6:91:3b:5c
+        Signature Algorithm: sha1WithRSAEncryption
+        <span style="color: red">Issuer:</span> O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority
+        Validity
+            Not Before: Jun  8 14:16:14 2010 GMT
+            Not After : Jun  8 16:16:14 2010 GMT
+        <span style="color: red">Subject:</span> O=FOAF+SSL, OU=The Community Of Self Signers/UID=https://example.org/profile#me, CN=Joe (Personal)
+        Subject Public Key Info:
+<span style="color: red">            Public Key Algorithm:</span> rsaEncryption
+                <span style="color: red">Public-Key:</span> (2048 bit)
+                <span style="color: red">Modulus:</span>
+                    00:cb:24:ed:85:d6:4d:79:4b:69:c7:01:c1:86:ac:
+                    c0:59:50:1e:85:60:00:f6:61:c9:32:04:d8:38:0e:
+                    07:19:1c:5c:8b:36:8d:2a:c3:2a:42:8a:cb:97:03:
+                    98:66:43:68:dc:2a:86:73:20:22:0f:75:5e:99:ca:
+                    2e:ec:da:e6:2e:8d:15:fb:58:e1:b7:6a:e5:9c:b7:
+                    ac:e8:83:83:94:d5:9e:72:50:b4:49:17:6e:51:a4:
+                    94:95:1a:1c:36:6c:62:17:d8:76:8d:68:2d:de:78:
+                    dd:4d:55:e6:13:f8:83:9c:f2:75:d4:c8:40:37:43:
+                    e7:86:26:01:f3:c4:9a:63:66:e1:2b:b8:f4:98:26:
+                    2c:3c:77:de:19:bc:e4:0b:32:f8:9a:e6:2c:37:80:
+                    f5:b6:27:5b:e3:37:e2:b3:15:3a:e2:ba:72:a9:97:
+                    5a:e7:1a:b7:24:64:94:97:06:6b:66:0f:cf:77:4b:
+                    75:43:d9:80:95:2d:2e:85:86:20:0e:da:41:58:b0:
+                    14:e7:54:65:d9:1e:cf:93:ef:c7:ac:17:0c:11:fc:
+                    72:46:fc:6d:ed:79:c3:77:80:00:0a:c4:e0:79:f6:
+                    71:fd:4f:20:7a:d7:70:80:9e:0e:2d:7b:0e:f5:49:
+                    3b:ef:e7:35:44:d8:e1:be:3d:dd:b5:24:55:c6:13:
+                    91:a1
+                <span style="color: red">Exponent:</span> 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Key Usage: critical
+                Digital Signature, Non Repudiation, Key Encipherment, Key Agreement, Certificate Sign
+            Netscape Cert Type: 
+                SSL Client, S/MIME
+            X509v3 Subject Key Identifier: 
+                08:8E:A5:5B:AE:5D:C3:8B:00:B7:30:62:65:2A:5A:F5:D2:E9:00:FA
+            <span style="color: red">X509v3 Subject Alternative Name:</span> critical
+                <span style="color: red">URI:</span>https://joe.example/profile#me
+    Signature Algorithm: sha1WithRSAEncryption
+        cf:8c:f8:7b:b2:af:63:f0:0e:dc:64:22:e5:8a:ba:03:1e:f1:
+        ee:6f:2c:f5:f5:10:ad:4c:54:fc:49:2b:e1:0d:cd:be:3d:7c:
+        78:66:c8:ae:42:9d:75:9f:2c:29:71:91:5c:29:5b:96:ea:e1:
+        e4:ef:0e:5c:f7:07:a0:1e:9c:bf:50:ca:21:e6:6c:c3:df:64:
+        29:6b:d3:8a:bd:49:e8:72:39:dd:07:07:94:ac:d5:ec:85:b1:
+        a0:5c:c0:08:d3:28:2a:e6:be:ad:88:5e:2a:40:64:59:e7:f2:
+        45:0c:b9:48:c0:fd:ac:bc:fb:1b:c9:e0:1c:01:18:5e:44:bb:
+        d8:b8
+</pre>
+</p>
+<p class="issue">Should we formally require the Issuer to be 
+   O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority. This was discussed on the list as allowing servers to distinguish certificates that are foaf+Ssl enabled from others. Will probably need some very deep TLS thinking to get this right.</p>
+<p class="issue">discuss the importance for UIs of the CN</p>
+</section>
+
+
+<section class='normative'>
+<h1>Publishing the Profile Document</h1>
+
+<p>The profile document must expose the relation between the WebID and the
+<tref>Identification Agent</tref>'s public keys at the location of the <tref>WebID document</tref>. It will do that using the cert, rsa ontologies, and the cert or xsd datatypes. The document will be in a format that has a well known interpretation to an RDF graph, which is currently rdf/xml, rdfa.
+</p>
+<p class="issue">TODO: show a graph of the certificate in the previous section, then show the same in rdfa, rdf/xml and turtle</p>
+<p class="issue">TODO: discuss other formats and GRDDL, XSPARQL options for xml formats</p>
+<p class="issue">TODO: the dsa ontology</p>
+ <p class="issue">summarize and point to content negotiation documents</p>
+</section>
+
+</section>
+<section class='normative'>
+<h1>The WebID Protocol</h1>
+
+<section class='normative'>
 <section class='normative'>
 <h1>Authentication Sequence</h1>
 
