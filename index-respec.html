@@ -536,15 +536,32 @@ Certificate:
 
 
 <section class='normative'>
-<h1>Publishing the Profile Document</h1>
+<h1>Publishing the WebID Profile Document</h1>
 
-<p>The profile document must expose the relation between the WebID and the
-<tref>Identification Agent</tref>'s public keys at the location of the <tref>WebID document</tref>. It will do that using the cert, rsa ontologies, and the cert or xsd datatypes. The document will be in a format that has a well known interpretation to an RDF graph, which is currently rdf/xml, rdfa.
-</p>
+<p>The <tref>WebID Profile</tref> document MUST expose the relation between the
+<tref>WebID URI</tref> and the <tref>Identification Agent</tref>'s <tref>public key<tref>s
+using the <code>cert</code> and <code>rsa</code> ontologies, as well as the
+<code>cert</code> or <code>xsd</code> datatypes. The document will be in a
+format that has a well known interpretation to an RDF graph. At the time
+of this writing, RDF/XML [[RDF-SYNTAX-GRAMMAR]] and RDFa [[XHTML-RDFA]]
+are two popular formats which map natively into RDF.</p>
+
+Below is an example of a minimal RDFa markup asserting the relation
+between a <tref>public key</tref> published in a <tref>WebID profile</tref>
+document and a <tref>WebID URI</tref>:
+<pre class='example'>
+&lt;div typeof="<span style="color: red">rsa:RSAPublicKey</span>"&gt;
+    &lt;span rel="<span style="color: red">cert:identity</span>" resource="http://example.org/webid#public"&gt;&lt;/span&gt;
+    &lt;span property="<span style="color: red">rsa:modulus</span>" datatype="<span style="color: red">cert:hex</span>" content="00:cb:24:ed:85:d6:4d:79:4b:69:c7:01:c1:86:ac..."&gt;&lt;/span&gt;
+    &lt;span property="<span style="color: red">rsa:public_exponent</span>" datatype="<span style="color: red">cert:int</span>" content="65537"&gt;&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
 <p class="issue">TODO: show a graph of the certificate in the previous section, then show the same in rdfa, rdf/xml and turtle</p>
 <p class="issue">TODO: discuss other formats and GRDDL, XSPARQL options for xml formats</p>
 <p class="issue">TODO: the dsa ontology</p>
- <p class="issue">summarize and point to content negotiation documents</p>
+<p class="issue">summarize and point to content negotiation documents</p>
+
 </section>
 
 </section>
