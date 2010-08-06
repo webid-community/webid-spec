@@ -463,12 +463,15 @@ specification is currently under heavy debate.</p>
 <section class='normative'>
 <h1>Creating the certificate</h1>
 
-<p>The user agent will create an X.509 Certificate with a Subject Alternative Name URI. The URI must be one that points to a document the user controls, as he will have to add information to that document at that URI. </p>
-<p>Suppose for sake of example that the X.509 Certificate contains the public key</p>
-<p>Example: 
-  User controls http://joe.example/profile then his WebID can be
-  http://joe.example/profile#me
-</p>
+<p>The user agent will create a <tref>Identification Certificate</tref> with a
+<code>Subject Alternative Name</code> URI entry. This URI must be one that
+dereferences to a document the user controls so that he can publish the
+public key of the <tref>Identification Certificate</tref> at this URI.</p>
+<p>For example, if a user Joe controls <code>http://joe.example/profile</code>,
+then his WebID can be <code>http://joe.example/profile#me</code></p>
+
+<p class="issue">explain why the WebID URI is different from the URI of the WebID profile document.</p>
+
 <p>As an example to use throughout this specification here is the 
 following certificate as an output of the openssl program.</p>
 <p class="example">
