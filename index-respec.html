@@ -685,7 +685,24 @@ as a part of the TLS client-certificate retrieval protocol.</li>
 
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
 <tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
-extension of the <tref>Identification Certificate</tref>.
+extension of the <tref>Identification Certificate</tref>.</li>
+
+<li>The <tref>public key</tref> information associated with the 
+<tref>WebID URI</tref> MUST be checked by the <tref>Verification Agent</tref>.
+This process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
+extracting RDF data from the resulting document, or by utilizing a cached 
+version of the RDF data contained in the document or other data source that is 
+up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
+and extraction mechanism is further detailed in the sections titled 
+<a href="#processing-the-webid-profile">Processing the WebID Profile</a> and
+<a href="#extracting-webid-URI-details">Extracting WebID URI Details</a>.
+</li>
+
+<li>If the <tref>public key</tref> in the 
+<tref>Identification Certificate</tref> is found in the list of 
+<tref>public key</tref>s associated with the <tref>WebID URI</tref>, the
+<tref>Verification Agent</tref> MUST assume that the client intends to use
+this <tref>public key</tref> to verify their ownership of the <tref>WebID URI</tref>.</li>
 
 <li>
 The <tref>Verification Agent</tref> verifies that the 
@@ -694,23 +711,10 @@ The <tref>Verification Agent</tref> verifies that the
 between the <tref>Verification Agent</tref> and the 
 <tref>Identification Agent</tref>. 
 If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
-a digital signature challenge MAY be provided by the 
-<tref>Verification Agent</tref>. These processes are detailed in the section
-on  
-<a href="#secure-communication">Secure Communication</a>.
-<p class="issue">We don't have any implementations for this second way of doing 
-things, so this is still hypothetical. Implementations using TLS mutual-authentication are many</p>
-</li>
-
-<li>The meaning of the 
-<tref>WebID URI</tref> is a graph of relations that is fetched by the <tref>Verification Agent</tref> 
-either by dereferencing the <tref>WebID URI</tref> and 
-extracting RDF data from the resulting document, or by utilizing a cached 
-version of the RDF data contained in the document or other data source that is 
-up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
- mechanism is further detailed in the sections titled 
-<a href="#processing-the-webid-profile">Processing the WebID Profile</a>
-</li>
+a digital signature challenge MUST be provided by the 
+<tref>Verification Agent</tref>. These processes are detailed in the sections 
+titled <a href="#authorization">Authorization</a> and 
+<a href="#secure-communication">Secure Communication</a>.</li>
 
 <li>If the <tref>public key</tref> in the 
 <tref>Identification Certificate</tref> matches one in the set given by the
@@ -773,10 +777,13 @@ semantic data describing the identification credentials from a WebID Profile.</p
 <h2>Verifying the WebID is identified by that public key</h2>
 
 <p>
-The <tref>Verification Agent</tref> must check that the <tref>WebID Profile</tref> associates the WebID with the public key given in the X.509 Certificate. There are number of ways of doing this, each of which essentially consists in checking that the graph of relations in the Profile contain a pattern of relations.
+There are number of different ways to check that the public key given in the X.509 
+certificate against the one provided by the <tref>WebID Profile</tref> or another 
+trusted source, the essence is checking that the graph of relations in the 
+Profile contains a pattern of relations.
 </p>
 <p>Assuming the public key is an RSA key, and that its modulus is
- "9D79BFE2498..." and exponent "65537" then the query to ask the graph is
+ "9D79BFE2498..." and exponent "65537" then the following SPARQL query could be used:
 </p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
@@ -787,16 +794,24 @@ ASK {
       rsa:public_exponent "65537"^^cert:int .
 }
 </pre>
-<p>If the query returns true, then the graph has validated the associated public key with the WebID.</p>
-<p>The above requires the graph to be able to do inferencing on dataytypes. This is because people may publish their modulus string in a number of syntactical ways. The modulus can be colon seperated, spread over a number of lines, or contain arbitrary non hex characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." .  The datatype itself need not necessarily be expressed in cert:hex, but could use a number of xsd integer datatype notations, cert:int or future base64 notations. 
+<p>If the query returns true, then the graph has validated the associated 
+public key with the WebID.</p>
+<p>The above requires the sparql endpoint (or the underlying triple store 
+to be able to do inferencing on dataytypes. This is because the numerical 
+values may be expressed with different xsd and cert datatypes which must all
+be supported by <tref>VerificationAgent</tref>s. The cert datatypes allow
+the numerical expression to be spread over a number of lines, or contain 
+arbitrary characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." .  The datatype
+itself need not necessarily be expressed in cert:hex, but could use a number of
+xsd integer datatype notations, cert:int or future base64 notations. 
 </p>
 <p class="issue">Should we define the base64 notation?</p>
-<p>If a <tref>Verifying Agent</tref> does not have access to a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the <code>?webid</code> variable in the following query with the required value the <tref>Verifying Agent</tref> can query the Profile Graph with</p>
+<p>If the SPARQL endpoint doesn't provide a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the <code>?webid</code> variable in the following query with the required value the <tref>Verifying Agent</tref> can query the Profile Graph with</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 SELECT ?m ?e 
-WHERE { 
+WHERE {
    [] cert:identity ?webid ;
         rsa:modulus ?m ;
         rsa:public_exponent ?e .
