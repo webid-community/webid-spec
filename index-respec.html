@@ -538,7 +538,10 @@ Certificate:
 <tref>Identification Agent</tref>'s public keys at the location of the <tref>WebID document</tref>. It will do that using the cert, rsa ontologies, and the cert or xsd datatypes.  The set of relations to be published at the <tref>WebID document</tref> can be presented in a graphical notation as follows.</p>
 <img alt="Web ID graph" src="img/WebIdGraph.jpg"/>
 <p>The document can publish many more relations than are of interest to the WebID protocol, as shown in the above graph by the grayed out relations.</p>
-<p>The encoding of this graph is immaterial to the protocol, so long as a well known mapping to the format of the representation to such a graph can be found. Below we discuss the most well known formats, and a method for dealing with new unknown formats as they come along.
+<p>The encoding of this graph is immaterial to the protocol, so long as a well known mapping to the format of the representation to such a graph can be found. Below we discuss the most well known formats, and a method for dealing with new unknown formats as they come along.</p>
+<p>The WebID provider must publish the graph of relations in one of the well known formats, though he may publish it in a number of formats to increase the useabulity of his site using Content Negotations.</p>
+<p class="issue">Add content negoatiation pointers</p>
+<p>It is particularly useful to have one of the representations be in HTML or XHTML even if it is not marked up in RDFa as this allows people using a web browser to understand what the information at that URI represents.</p>
 <section class='normative'>
 <h1>Turtle</h1>
 <p>A widely used format for writing RDF graphs is the Turtle notation. </p>
@@ -622,6 +625,17 @@ html. Here is just one example.</p>
     &lt;dd property="rsa:public_exponent" datatype="cert:int"&gt;65537&lt;/dd&gt; 
    &lt;/dl&gt; 
 &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</p>
+<p>If a WebId provider would rather prefer not to mark up his data in RDFa, but just provide a human readable format for users and have the RDF graph appear in a machine readable format such as RDF/XML then he should publish the link from the HTML to the machine readable format as follows:</p>
+ <p class="example">
+<pre>
+&lt;html&gt; 
+&lt;head&gt;
+&lt;link type="rel" type="application/rdf+xml" href="profile.rdf"/&gt;
+&lt;/head&gt;
+&lt;body&gt; ...  &lt;/body&gt;
 &lt;/html&gt;
 </pre>
 </p>
