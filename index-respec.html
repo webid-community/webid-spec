@@ -14,7 +14,7 @@ code           { font-family: monospace; }
 
 span.hilite { color: red; /* font-weight: bold */ }
 
-li p           { margin-top: 0.3em;
+li p           { margin-top: 0.3em; li
                  margin-bottom: 0.3em; }
 
 div.explanation { background-color: #ADD8E6;
@@ -638,7 +638,7 @@ html. Here is just one example.</p>
 &lt;/html&gt;
 </pre>
 </p>
-<p>If a WebId provider would rather prefer not to mark up his data in RDFa, but just provide a human readable format for users and have the RDF graph appear in a machine readable format such as RDF/XML then he should publish the link from the HTML to the machine readable format as follows:</p>
+<p>If a WebId provider would rather prefer not to mark up his data in RDFa, but just provide a human readable format for users and have the RDF graph appear in a machine readable format such as RDF/XML then he MAY publish the link from the HTML to a machine readable format (it this is available at a dedicated URI) as follows:</p>
  <p class="example">
 <pre>
 &lt;html&gt; 
@@ -686,7 +686,6 @@ as a part of the TLS client-certificate retrieval protocol.</li>
 <li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
 <tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
 extension of the <tref>Identification Certificate</tref>.
-<p class="issue">There may be more than one URI in the SAN</p></li>
 
 <li>
 The <tref>Verification Agent</tref> verifies that the 
