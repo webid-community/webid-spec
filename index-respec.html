@@ -414,7 +414,7 @@ may also be a peer on a peer-to-peer network.</dd>
 <tref>Identification Agent</tref> is typically also a User Agent.</dd>
 
 <dt><tdef>Identification Certificate</tdef></dt>
-<dd>An X.509 [[!X509V3]] Certificate that MUST contain a 
+<dd>An X.509 [[!X509V3]] Certificate that MUST contain exactly one 
 <code>Subject Alternative Name</code> extension with a URI entry. The URI
 identifies the <tref>Identification Agent</tref>. The URI SHOULD be
 dereference-able and result in a document containing RDF data. For example, 
@@ -426,7 +426,6 @@ X509v3 extensions:
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre>
-<p class="issue">TODO: cover the case where there are more than one URI entry</p>
 </dd>
 
 <dt><tdef>WebID URI</tdef></dt>
