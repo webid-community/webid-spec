@@ -480,7 +480,7 @@ pre.sh_sourceCode .sh_section { color: black; font-weight: bold; }
 pre.sh_sourceCode .sh_paren { color: red; }
 pre.sh_sourceCode .sh_attribute { color: #006400; }
 
-</style><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit;"><div class="head"><p></p><h1 id="title" class="title" property="dcterms:title">WebID 1.0</h1><h2 id="subtitle" property="bibo:subtitle">Web Identification and Discovery</h2><h2 content="2010-08-09T14:56:40+0000" datatype="xsd:dateTime" property="dcterms:issued" id="unofficial-draft-09-august-2010">Unofficial Draft 09 August 2010</h2><dl><dt>Editors:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a href="http://blog.digitalbazaar.com/" rel="foaf:workplaceHomepage">Digital Bazaar, Inc.</a> <a href="mailto:msporny@digitalbazaar.com" rel="foaf:mbox">msporny@digitalbazaar.com</a> </span>
+</style><link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit;"><div class="head"><p></p><h1 id="title" class="title" property="dcterms:title">WebID 1.0</h1><h2 id="subtitle" property="bibo:subtitle">Web Identification and Discovery</h2><h2 content="2010-08-09T16:28:49+0000" datatype="xsd:dateTime" property="dcterms:issued" id="unofficial-draft-09-august-2010">Unofficial Draft 09 August 2010</h2><dl><dt>Editors:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a href="http://blog.digitalbazaar.com/" rel="foaf:workplaceHomepage">Digital Bazaar, Inc.</a> <a href="mailto:msporny@digitalbazaar.com" rel="foaf:mbox">msporny@digitalbazaar.com</a> </span>
 </dd>
 <dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Stéphane Corlosquet</span>, <a href="http://massgeneral.org/" rel="foaf:workplaceHomepage">Massachusetts General Hospital</a> <a href="mailto:scorlosquet@gmail.com" rel="foaf:mbox">scorlosquet@gmail.com</a> </span>
 </dd>
@@ -547,7 +547,7 @@ enhances the functionality and interoperability of the Web.</p>  -->
 The source code for this document is available via Github at the following
 URI: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/webid-spec</a>
 
-</div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li></ul></li><li class="tocline"><a href="#preconditions" class="tocxref"><span class="secno">2. </span>Preconditions</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#creating-the-certificate" class="tocxref"><span class="secno">2.2 </span>Creating the certificate</a></li><li class="tocline"><a href="#publishing-the-webid-profile-document" class="tocxref"><span class="secno">2.3 </span>Publishing the WebID Profile Document</a><ul class="toc"><li class="tocline"><a href="#turtle" class="tocxref"><span class="secno">2.3.1 </span>Turtle</a></li><li class="tocline"><a href="#rdfa-html-notation" class="tocxref"><span class="secno">2.3.2 </span>RDFa HTML notation</a></li><li class="tocline"><a href="#in-rdf-xml" class="tocxref"><span class="secno">2.3.3 </span>In RDF/XML</a></li><li class="tocline"><a href="#in-portable-contacts-format-using-grddl" class="tocxref"><span class="secno">2.3.4 </span>In Portable Contacts format using GRDDL</a></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">2.4 </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">2.4.1 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">2.4.2 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">2.4.2.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">2.4.2.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">2.4.2.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#verifying-the-webid-is-identified-by-that-public-key" class="tocxref"><span class="secno">2.4.2.4 </span>Verifying the WebID is identified by that public key</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">2.4.2.5 </span>Authorization</a></li><li class="tocline"><a href="#secure-communication" class="tocxref"><span class="secno">2.4.2.6 </span>Secure Communication</a></li></ul></li><li class="tocline"><a href="#the-webid-profile" class="tocxref"><span class="secno">2.4.3 </span>The WebID Profile</a><ul class="toc"><li class="tocline"><a href="#personal-information" class="tocxref"><span class="secno">2.4.3.1 </span>Personal Information</a></li><li class="tocline"><a href="#cryptographic-details" class="tocxref"><span class="secno">2.4.3.2 </span>Cryptographic Details</a></li></ul></li></ul></li><li class="tocline"><a href="#history" class="tocxref"><span class="secno">2.5 </span>Change History</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">2.6 </span>Acknowledgments</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.2 </span>Informative references</a></li></ul></li></ul></div>
+</div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li></ul></li><li class="tocline"><a href="#preconditions" class="tocxref"><span class="secno">2. </span>Preconditions</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#creating-the-certificate" class="tocxref"><span class="secno">2.2 </span>Creating the certificate</a></li><li class="tocline"><a href="#publishing-the-webid-profile-document" class="tocxref"><span class="secno">2.3 </span>Publishing the WebID Profile Document</a><ul class="toc"><li class="tocline"><a href="#turtle" class="tocxref"><span class="secno">2.3.1 </span>Turtle</a></li><li class="tocline"><a href="#rdfa-html-notation" class="tocxref"><span class="secno">2.3.2 </span>RDFa HTML notation</a></li><li class="tocline"><a href="#in-rdf-xml" class="tocxref"><span class="secno">2.3.3 </span>In RDF/XML</a></li><li class="tocline"><a href="#in-portable-contacts-format-using-grddl" class="tocxref"><span class="secno">2.3.4 </span>In Portable Contacts format using GRDDL</a></li></ul></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">3. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">3.1 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">3.2 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">3.2.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">3.2.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">3.2.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#verifying-the-webid-is-identified-by-that-public-key" class="tocxref"><span class="secno">3.2.4 </span>Verifying the WebID is identified by that public key</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">3.2.5 </span>Authorization</a></li><li class="tocline"><a href="#secure-communication" class="tocxref"><span class="secno">3.2.6 </span>Secure Communication</a></li></ul></li><li class="tocline"><a href="#the-webid-profile" class="tocxref"><span class="secno">3.3 </span>The WebID Profile</a><ul class="toc"><li class="tocline"><a href="#personal-information" class="tocxref"><span class="secno">3.3.1 </span>Personal Information</a></li><li class="tocline"><a href="#cryptographic-details" class="tocxref"><span class="secno">3.3.2 </span>Cryptographic Details</a></li></ul></li></ul></li><li class="tocline"><a href="#history" class="tocxref"><span class="secno">A. </span>Change History</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgments</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></div>
 
 
 
@@ -884,11 +884,15 @@ html. Here is just one example.</p>
  <p class="issue">summarize and point to content negotiation documents</p>
 </div>
 </div>
+</div>
+
 <div class="normative section" id="the-webid-protocol" typeof="bibo:Chapter" about="#the-webid-protocol">
-<h3><span class="secno">2.4 </span>The WebID Protocol</h3>
+
+<!-- OddPage -->
+<h2><span class="secno">3. </span>The WebID Protocol</h2>
 
 <div class="normative section" id="authentication-sequence" typeof="bibo:Chapter" about="#authentication-sequence">
-<h4><span class="secno">2.4.1 </span>Authentication Sequence</h4>
+<h3><span class="secno">3.1 </span>Authentication Sequence</h3>
 
 <p>The following steps are executed by <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>s and
 <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>s to determine the global identity of the
@@ -954,13 +958,13 @@ completed.
 </div>
 
 <div class="normative section" id="authentication-sequence-details" typeof="bibo:Chapter" about="#authentication-sequence-details">
-<h4><span class="secno">2.4.2 </span>Authentication Sequence Details</h4>
+<h3><span class="secno">3.2 </span>Authentication Sequence Details</h3>
 
 <p>This section covers details about each step in the authentication process.
 </p>
 
 <div class="normative section" id="initiating-a-tls-connection" typeof="bibo:Chapter" about="#initiating-a-tls-connection">
-<h5><span class="secno">2.4.2.1 </span>Initiating a TLS Connection</h5>
+<h4><span class="secno">3.2.1 </span>Initiating a TLS Connection</h4>
 
 <p class="issue">This section will detail how the TLS connection process is
 started and used by WebID to create a secure channel between the 
@@ -968,14 +972,14 @@ Identification Agent and the Verification Agent.</p>
 </div>
 
 <div class="normative section" id="exchanging-the-identification-certificate" typeof="bibo:Chapter" about="#exchanging-the-identification-certificate">
-<h5><span class="secno">2.4.2.2 </span>Exchanging the Identification Certificate</h5>
+<h4><span class="secno">3.2.2 </span>Exchanging the Identification Certificate</h4>
 
 <p class="issue">This section will detail how the certificate is selected and
 sent to the Verification Agent.</p>
 </div>
 
 <div class="normative section" id="processing-the-webid-profile" typeof="bibo:Chapter" about="#processing-the-webid-profile">
-<h5><span class="secno">2.4.2.3 </span>Processing the WebID Profile</h5>
+<h4><span class="secno">3.2.3 </span>Processing the WebID Profile</h4>
 
 <p>A <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> <em class="rfc2119" title="must">must</em> be able to process documents in RDF/XML 
 [<cite><a class="bibref" rel="biblioentry" href="#bib-RDF-SYNTAX-GRAMMAR">RDF-SYNTAX-GRAMMAR</a></cite>] and XHTML+RDFa [<cite><a class="bibref" rel="biblioentry" href="#bib-XHTML-RDFA">XHTML-RDFA</a></cite>]. A server responding to 
@@ -992,7 +996,7 @@ semantic data describing the identification credentials from a WebID Profile.</p
 </div>
 
 <div class="normative section" id="verifying-the-webid-is-identified-by-that-public-key" typeof="bibo:Chapter" about="#verifying-the-webid-is-identified-by-that-public-key">
-<h5><span class="secno">2.4.2.4 </span>Verifying the WebID is identified by that public key</h5>
+<h4><span class="secno">3.2.4 </span>Verifying the WebID is identified by that public key</h4>
 
 <p>
 The <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a> must check that the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> associates the WebID with the public key given in the X.509 Certificate. There are number of ways of doing this, each of which essentially consists in checking that the graph of relations in the Profile contain a pattern of relations.
@@ -1029,7 +1033,7 @@ matches the integer values of the modulus and exponent given in the public key i
 </div>
 
 <div class="normative section" id="authorization" typeof="bibo:Chapter" about="#authorization">
-<h5><span class="secno">2.4.2.5 </span>Authorization</h5>
+<h4><span class="secno">3.2.5 </span>Authorization</h4>
 
 <p class="issue">This section will explain how a Verification Agent may
 use the information discovered via a WebID URI to determine if one should
@@ -1040,7 +1044,7 @@ given WebID.</p>
 </div>
 
 <div class="normative section" id="secure-communication" typeof="bibo:Chapter" about="#secure-communication">
-<h5><span class="secno">2.4.2.6 </span>Secure Communication</h5>
+<h4><span class="secno">3.2.6 </span>Secure Communication</h4>
 
 <p class="issue">This section will explain how an Identification Agent and
 a Verification Agent may communicate securely using a set of verified
@@ -1063,7 +1067,7 @@ privacy for both sides.
 </div>
 
 <div class="normative section" id="the-webid-profile" typeof="bibo:Chapter" about="#the-webid-profile">
-<h4><span class="secno">2.4.3 </span>The WebID Profile</h4>
+<h3><span class="secno">3.3 </span>The WebID Profile</h3>
 
 <p>The <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> is a structured document that contains 
 identification credentials for the <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a> expressed 
@@ -1085,7 +1089,7 @@ subsequent sections:</p>
 </dl>
 
 <div class="normative section" id="personal-information" typeof="bibo:Chapter" about="#personal-information">
-<h5><span class="secno">2.4.3.1 </span>Personal Information</h5>
+<h4><span class="secno">3.3.1 </span>Personal Information</h4>
 
 <p>Personal details are the most common requirement when registering an 
 account with a website. Some of these pieces of information include an e-mail 
@@ -1105,7 +1109,7 @@ information but are <em class="rfc2119" title="not required">not required</em> t
 </div>
 
 <div class="normative section" id="cryptographic-details" typeof="bibo:Chapter" about="#cryptographic-details">
-<h5><span class="secno">2.4.3.2 </span>Cryptographic Details</h5>
+<h4><span class="secno">3.3.2 </span>Cryptographic Details</h4>
 
 <p>Cryptographic details are important when <a class="tref internalDFN" title="Verification_Agent" href="#dfn-verification_agent">Verification Agent</a>s
 and <a class="tref internalDFN" title="Identification_Agent" href="#dfn-identification_agent">Identification Agent</a>s interact. The following properties 
@@ -1128,7 +1132,9 @@ documents:</p>
 </div>
 
 <div id="history" class="appendix informative section" typeof="bibo:Chapter" about="#history">
-<h3><span class="secno">2.5 </span>Change History</h3><p><em>This section is non-normative.</em></p>
+
+<!-- OddPage -->
+<h2><span class="secno">A. </span>Change History</h2><p><em>This section is non-normative.</em></p>
 <p><a href="">2010-08-09</a> Updates from WebID community: moved OpenID/OAuth sections to separate document, switched to the URI terminology instead of URL, added "Creating the certificate" and "Publishing the WebID Profile document" sections with a WebID graph and serializations in Turtle and RDFa, improved SPARQL queries using literal notation with cert datatypes, updated list of contributors, and many other fixes.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/b19d2812901b4511fdf9876c1be53bb36ee3201e">2010-07-25</a> Added WebID Profile section.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
@@ -1136,7 +1142,9 @@ documents:</p>
 </div>
 
 <div id="acknowledgements" class="informative section" typeof="bibo:Chapter" about="#acknowledgements">
-<h3><span class="secno">2.6 </span>Acknowledgments</h3><p><em>This section is non-normative.</em></p>
+
+<!-- OddPage -->
+<h2><span class="secno">B. </span>Acknowledgments</h2><p><em>This section is non-normative.</em></p>
 
 <p>The following people have been instrumental in providing thoughts, feedback,
 reviews, criticism and input in the creation of this specification:</p>
@@ -1155,9 +1163,9 @@ reviews, criticism and input in the creation of this specification:</p>
 </ul>
 
 </div>
-  </div><div id="references" class="appendix section" typeof="bibo:Chapter" about="#references">
+  <div id="references" class="appendix section" typeof="bibo:Chapter" about="#references">
 <!-- OddPage -->
-<h2><span class="secno">A. </span>References</h2><div id="normative-references" typeof="bibo:Chapter" about="#normative-references" class="section"><h3><span class="secno">A.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-HTTP-TLS">[HTTP-TLS]</dt><dd rel="dcterms:requires">E. Rescorla. <a href="http://www.ietf.org/rfc/rfc2818.txt"><cite>HTTP Over TLS.</cite></a> May 2000. Internet RFC 2818. URL: <a href="http://www.ietf.org/rfc/rfc2818.txt">http://www.ietf.org/rfc/rfc2818.txt</a> 
+<h2><span class="secno">C. </span>References</h2><div id="normative-references" typeof="bibo:Chapter" about="#normative-references" class="section"><h3><span class="secno">C.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-HTTP-TLS">[HTTP-TLS]</dt><dd rel="dcterms:requires">E. Rescorla. <a href="http://www.ietf.org/rfc/rfc2818.txt"><cite>HTTP Over TLS.</cite></a> May 2000. Internet RFC 2818. URL: <a href="http://www.ietf.org/rfc/rfc2818.txt">http://www.ietf.org/rfc/rfc2818.txt</a> 
 </dd><dt id="bib-N3">[N3]</dt><dd rel="dcterms:requires">Tim Berners-Lee; Dan Connolly. <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/"><cite>Notation3 (N3): A readable RDF syntax.</cite></a> 14 January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/">http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/</a> 
 </dd><dt id="bib-RDF-PRIMER">[RDF-PRIMER]</dt><dd rel="dcterms:requires">Frank Manola; Eric Miller. <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/"><cite>RDF Primer.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</a> 
 </dd><dt id="bib-RDF-SYNTAX-GRAMMAR">[RDF-SYNTAX-GRAMMAR]</dt><dd rel="dcterms:requires">Dave Beckett. <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210"><cite>RDF/XML Syntax Specification (Revised).</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210">http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210</a> 
@@ -1165,5 +1173,5 @@ reviews, criticism and input in the creation of this specification:</p>
 </dd><dt id="bib-TURTLE">[TURTLE]</dt><dd rel="dcterms:requires">David Beckett, Tim Berners-Lee. <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle: Terse RDF Triple Language</a> January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/turtle/">http://www.w3.org/TeamSubmission/turtle/</a> 
 </dd><dt id="bib-X509V3">[X509V3]</dt><dd rel="dcterms:requires"><cite>ITU-T Recommendation X.509 version 3 (1997). "Information Technology - Open Systems Interconnection - The Directory Authentication Framework"  ISO/IEC 9594-8:1997</cite>.
 </dd><dt id="bib-XHTML-RDFA">[XHTML-RDFA]</dt><dd rel="dcterms:requires">Shane McCarron; et. al. <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100803"><cite>XHTML+RDFa 1.1.</cite></a> 3 August 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100803">http://www.w3.org/TR/WD-xhtml-rdfa-20100803</a> 
-</dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">A.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-CONCEPTS">[RDF-CONCEPTS]</dt><dd rel="dcterms:references">Graham Klyne; Jeremy J. Carroll. <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210"><cite>Resource Description Framework (RDF): Concepts and Abstract Syntax.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210">http://www.w3.org/TR/2004/REC-rdf-concepts-20040210</a> 
+</dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">C.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-CONCEPTS">[RDF-CONCEPTS]</dt><dd rel="dcterms:references">Graham Klyne; Jeremy J. Carroll. <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210"><cite>Resource Description Framework (RDF): Concepts and Abstract Syntax.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210">http://www.w3.org/TR/2004/REC-rdf-concepts-20040210</a> 
 </dd></dl></div></div></body></html>
