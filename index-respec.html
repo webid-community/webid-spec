@@ -179,9 +179,9 @@ span.element { color: green; }
 
           // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
           // and its maturity status
-          previousPublishDate:  "2010-07-25",
+          previousPublishDate:  "2010-07-11",
           previousMaturity:  "ED",
-          previousURI:       "http://payswarm.com/webid/drafts/ED-webid-20100725/",
+          previousURI:       "http://payswarm.com/webid/drafts/ED-webid-20100711/",
 
 
           // if there a publicly available Editors Draft, this is the link
@@ -198,9 +198,7 @@ span.element { color: green; }
           // only "name" is required
           editors:  [
               { name: "Manu Sporny", mailto:"msporny@digitalbazaar.com",
-                  company: "Digital Bazaar, Inc.", companyURL: "http://blog.digitalbazaar.com/" },
-              { name: "Stéphane Corlosquet", mailto:"scorlosquet@gmail.com",
-                  company: "Massachusetts General Hospital", companyURL: "http://massgeneral.org/" }
+                  company: "Digital Bazaar, Inc.", companyURL: "http://blog.digitalbazaar.com/" }
               ],
 
           // authors, add as many as you like. 
@@ -227,7 +225,7 @@ span.element { color: green; }
           
           // alternate formats for this document
           alternateFormats: [
-              { uri: 'drafts/ED-webid-20100809/diff-20100725.html', 
+              { uri: 'diff-20100711.html', 
                   label: "Diff from previous Editors Draft" }],
 
           // URI of the patent status for this WG, for Rec-track documents
@@ -394,7 +392,6 @@ intended to receive it.
 </section>
 
 </section>
-
 <section>
 <h1>Preconditions</h1>
 
@@ -426,7 +423,6 @@ X509v3 extensions:
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre>
-<p class="issue">TODO: cover the case where there are more than one URI entry</p>
 </dd>
 
 <dt><tdef>WebID URI</tdef></dt>
@@ -449,13 +445,13 @@ format MUST be supported by the mechanism, e.g. a Web Service, providing the
 WebID Profile document. Alternate RDF serialization
 formats, such as N3 [[!N3]] or Turtle [[!TURTLE]], MAY be supported by the 
 mechanism providing the WebID Profile document.
-<p class="issue">Whether or not RDF/XML, XHTML+RDFa 1.1, both or neither
-serialization of RDF should be required serialization formats in the 
-specification is currently under heavy debate.</p>
 </dd>
 
 </dl>
 
+<p class="issue">Whether or not RDF/XML, XHTML+RDFa 1.1, both or neither
+serialization of RDF should be required serialization formats in the 
+specification is currently under heavy debate.</p>
 
 </section>
 
@@ -463,15 +459,12 @@ specification is currently under heavy debate.</p>
 <section class='normative'>
 <h1>Creating the certificate</h1>
 
-<p>The user agent will create a <tref>Identification Certificate</tref> with a
-<code>Subject Alternative Name</code> URI entry. This URI must be one that
-dereferences to a document the user controls so that he can publish the
-public key of the <tref>Identification Certificate</tref> at this URI.</p>
-<p>For example, if a user Joe controls <code>http://joe.example/profile</code>,
-then his WebID can be <code>http://joe.example/profile#me</code></p>
-
-<p class="issue">explain why the WebID URI is different from the URI of the WebID profile document.</p>
-
+<p>The user agent will create an X.509 Certificate with a Subject Alternative Name URI. The URI must be one that points to a document the user controls, as he will have to add information to that document at that URI. </p>
+<p>Suppose for sake of example that the X.509 Certificate contains the public key
+<p>Example: 
+  User controls http://joe.example/profile then his WebID can be
+  http://joe.example/profile#me
+</p>
 <p>As an example to use throughout this specification here is the 
 following certificate as an output of the openssl program.</p>
 <p class="example">
@@ -539,14 +532,10 @@ Certificate:
 
 
 <section class='normative'>
-<h1>Publishing the WebID Profile Document</h1>
+<h1>Publishing the Profile Document</h1>
 
-<p>The <tref>WebID Profile</tref> document MUST expose the relation between the
-<tref>WebID URI</tref> and the <tref>Identification Agent</tref>'s <tref>public key</tref>s
-using the <code>cert</code> and <code>rsa</code> ontologies, as well as the
-<code>cert</code> or <code>xsd</code> datatypes. The set of relations to be
-published at the <tref>WebID Profile</tref> document can be presented in a
-graphical notation as follows.</p>
+<p>The profile document must expose the relation between the WebID and the
+<tref>Identification Agent</tref>'s public keys at the location of the <tref>WebID document</tref>. It will do that using the cert, rsa ontologies, and the cert or xsd datatypes.  The set of relations to be published at the <tref>WebID document</tref> can be presented in a graphical notation as follows.</p>
 <img alt="Web ID graph" src="img/WebIdGraph.jpg"/>
 <p>The document can publish many more relations than are of interest to the WebID protocol, as shown in the above graph by the grayed out relations.</p>
 <p>The encoding of this graph is immaterial to the protocol, so long as a well known mapping to the format of the representation to such a graph can be found. Below we discuss the most well known formats, and a method for dealing with new unknown formats as they come along.</p>
@@ -667,6 +656,7 @@ html. Here is just one example.</p>
 <section class='normative'>
 <h1>The WebID Protocol</h1>
 
+<section class='normative'>
 <section class='normative'>
 <h1>Authentication Sequence</h1>
 
@@ -911,7 +901,6 @@ documents:</p>
 
 <section class='appendix informative' id="history">
 <h1>Change History</h1>
-<p><a href="">2010-08-09</a> Updates from WebID community: moved OpenID/OAuth sections to separate document, switched to the URI terminology instead of URL, added "Creating the certificate" and "Publishing the WebID Profile document" sections with a WebID graph and serializations in Turtle and RDFa, improved SPARQL queries using literal notation with cert datatypes, updated list of contributors, and many other fixes.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/b19d2812901b4511fdf9876c1be53bb36ee3201e">2010-07-25</a> Added WebID Profile section.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
 <p><a href="http://github.com/msporny/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
