@@ -414,19 +414,18 @@ may also be a peer on a peer-to-peer network.</dd>
 <tref>Identification Agent</tref> is typically also a User Agent.</dd>
 
 <dt><tdef>Identification Certificate</tdef></dt>
-<dd>An X.509 [[!X509V3]] Certificate that MUST contain exactly one 
-<code>Subject Alternative Name</code> extension with a URI entry. The URI
-identifies the <tref>Identification Agent</tref>. The URI SHOULD be
+<dd>An X.509 [[!X509V3]] Certificate that MUST contain a 
+<code>Subject Alternative Name</code> extension with at least one URI entry
+identifying the <tref>Identification Agent</tref>. This URI SHOULD be
 dereference-able and result in a document containing RDF data. For example, 
-the certificate would contain <code>http://example.org/webid#public</code>,
-known as a <tref>WebID URI</tref>, as the <code>Subject Alternative Name</code>:
+a certificate identifying the WebID URI <code>http://example.org/webid#public</code>
+would contain the following:
 <pre>
 X509v3 extensions:
    ...
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre>
-<p class="issue">TODO: cover the case where there are more than one URI entry</p>
 </dd>
 
 <dt><tdef>WebID URI</tdef></dt>
@@ -685,13 +684,17 @@ using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
 <tref>Identification Certificate</tref> of the <tref>Identification Agent</tref>
 as a part of the TLS client-certificate retrieval protocol.</li>
 
-<li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref> and the
-<tref>WebID URI</tref> contained in the <code>Subject Alternative Name</code>
-extension of the <tref>Identification Certificate</tref>.</li>
+<li>The <tref>Verification Agent</tref> MUST extract the <tref>public key</tref>
+and all the URI entries contained in the <code>Subject Alternative Name</code>
+extension of the <tref>Identification Certificate</tref>.
+An <tref>Identification Certificate</tref> MAY contain multiple URI entries
+which are considered claimed <tref>WebID URI</tref>s.</li>
 
-<li>The <tref>public key</tref> information associated with the 
-<tref>WebID URI</tref> MUST be checked by the <tref>Verification Agent</tref>.
-This process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
+<li>The <tref>Verification Agent</tref> MUST attempt to verify the 
+<tref>public key</tref> information associated with at least one of the claimed
+<tref>WebID URI</tref>s. The <tref>Verification Agent</tref> MAY attempt to 
+verify more than one claimed <tref>WebID URI</tref>.
+This verification process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
 extracting RDF data from the resulting document, or by utilizing a cached 
 version of the RDF data contained in the document or other data source that is 
 up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
@@ -702,12 +705,17 @@ and extraction mechanism is further detailed in the sections titled
 
 <li>If the <tref>public key</tref> in the 
 <tref>Identification Certificate</tref> is found in the list of 
-<tref>public key</tref>s associated with the <tref>WebID URI</tref>, the
+<tref>public key</tref>s associated with the claimed <tref>WebID URI</tref>, the
 <tref>Verification Agent</tref> MUST assume that the client intends to use
-this <tref>public key</tref> to verify their ownership of the <tref>WebID URI</tref>.</li>
+this <tref>public key</tref> to verify their ownership of the
+<tref>WebID URI</tref>.
+On the other hand, if no matching <tref>public key</tref> is found in the list
+of <tref>public key</tref>s associated with the claimed <tref>WebID URI</tref>,
+the <tref>Verification Agent</tref> MUST attempt to verify another claimed
+<tref>WebID URI</tref>. The authentication MUST fail if no matching
+<tref>public key</tref> is found among all the claimed <tref>WebID URI</tref>s.</li>
 
-<li>
-The <tref>Verification Agent</tref> verifies that the 
+<li>The <tref>Verification Agent</tref> verifies that the 
 <tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the 
 <tref>Identification Certificate</tref>. This SHOULD be fulfilled by performing TLS mutual-authentication
 between the <tref>Verification Agent</tref> and the 
