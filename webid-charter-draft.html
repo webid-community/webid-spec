@@ -6,9 +6,10 @@
 		<title>
 			WebID Incubator Group
 		</title>
+        <base href="http://lab.linkeddata.deri.ie/2010/WebID-XG/"/>
 		<link rel="stylesheet" href="w3cdoc.css" type="text/css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="pubrules-style.css" />
-		<link rel="stylesheet" type="text/css" href="charter-style.css" />
+		<link rel="stylesheet" type="text/css" href="http://lab.linkeddata.deri.ie/2010/WebID-XG/pubrules-style.css" />
+		<link rel="stylesheet" type="text/css" href="http://lab.linkeddata.deri.ie/2010/WebID-XG/charter-style.css" />
 	</head>
 	<body>
 		<div id="template">
@@ -48,10 +49,10 @@
 				WebID Incubator Group Charter
 			</h1>
 			<p class="mission">
-				The mission of the WebID Incubator Group, part of the <a href="http://www.w3.org/2005/Incubator/">Incubator Activity</a>, is to further advance the WebID protocol for full standardisation. 
+				The mission of the WebID Incubator Group, part of the <a href="http://www.w3.org/2005/Incubator/">Incubator Activity</a>, is to further advance the <a href="http://webid.info/spec/">WebID protocol</a> for full standardisation. 
 			</p>
 			<p>
-				WebID is an authentication protocol that uses the SSL/TLS layer for user identification by tying the client to a resource on the web. WebID takes that initial OpenID intuition further by making it fully Web Architecture compliant, succeeding in the process in making authentication both simpler for the user, more efficient and more secure. This is the first step to a fully standard-based browser authentication experience.
+				WebID is an authentication protocol that uses the SSL/TLS layer for user identification by tying the client to a profile document on the web through placing a URI in the Subject Alternative Name field in an X509 certificate.  This is the first step to a fully standard-based browser authentication experience.
 			</p>
 			<p>
 				Research on WebID has been evolving since 2008 on the <a href="http://lists.foaf-project.org/pipermail/foaf-protocols/" title="The foaf-protocols Archives">FOAF protocol mailing list</a> and the  <a href="http://esw.w3.org/Foaf%2Bssl" title="FOAF+SSL - ESW Wiki">ESW Wiki</a>. What is required now is to pursue the work in a more structured environment, grow the number of interested parties from the Social Web, security and browser communities and integrate their feedback.
@@ -122,11 +123,13 @@
 					Activities include:
 				</p>
 				<ul>
+                    <li>to mature the WebID as a draft specification</li>
 					<li>to compile a set of requirements and use cases for the WebID protocol</li>
+					<li>to describe the WebID authentication layer</li>
+                    <li>the <a href="http://webid.info/spec/">WebID protocol</a> is defined semantically - not syntactically. This means it can be deployed with profiles in any number of formats, such as <a href="http://portablecontacts.net/">Portable Contacts</a>, JSON or other... The WebID XG should try to work together with other groups working in the <a href="http://www.w3.org/2005/Incubator/socialweb/wiki/FederatedSocialWebCharter">Federated Social Web</a> space and see how existing formats can be WebID enabled.</li>
+					<li>to describe and develop the relations between WebID and OpenID, OAuth and SAML bringing to bear the work that has already been done in this space by various universities</li>
+					<li>to prepare the standardisation of the WebID protocol by bringing together people involved in authorisation and authentication activities and beyond, building on the existing WebID initiative</li>
 					<li>to document existing WebID implementations and identify interoperability issues</li>
-					<li>to describe a WebID authentication layer</li>
-					<li>to describe the relations between WebID and OpenID/OAuth</li>
-					<li>to prepare the standardisation of the WebID protocol by bringing together people involved in authorisation and authentication activities and beyond, building on the existing WebID initiative.</li>
 				</ul>
 				<div class="may">
 					<h3>
@@ -141,7 +144,7 @@
 						Out of Scope
 					</h3>
 					<p>
-						Alternative deployment formats (beyond standardised RDF serialisations). 
+                        Many things... 
 					</p>
 				</div>
 			</div>
@@ -164,23 +167,21 @@
 						W3C Groups
 					</h3>
 					<dl>
-						<dt><a href="http://www.w3.org/2010/02/rdfa/">RDFa Working Group</a></dt>
-						<dd>WebID serialisation.</dd>
+                        <dt><a href="http://www.w3.org/2005/Incubator/socialweb/wiki/FederatedSocialWebCharter">Federated Social Web Incubator Group</a>
+                        <dd>We are actively looking for participation and feedback from members of that community</dd>
 						<dt><a href="http://www.w3.org/2001/sw/">Semantic Web Activity</a></dt>
-						<dd>Dissemination and shared domain of interest.</dd>
-						<dt><a href="http://www.w3.org/2001/sw/interest/">Semantic Web Interest Group</a></dt>
-						<dd>Shared domain of interest.</dd>
-						<dt><a href="http://www.w3.org/2001/sw/DataAccess/">SPARQL Working Group</a></dt>
-						<dd>SPARL is typically Can be used in WebID protocol.</dd>
+						<dd>Shared domain of interest. Start looking at wider trust reasoning issues that are brought out by the WebId protocol, and that may be developed by other SW reasoning groups.</dd>
 					</dl>
 					<h3>External Groups</h3>
 					<dl>
-						<dt><a href="http://www.foaf-project.org/">FOAF</a> project</dt>
-						<dd>WebID uses FOAF vocabulary.</dd>
-						<dt>IETF <a href="http://datatracker.ietf.org/wg/tls/">Transport Layer Security (tls)</a> Working Group</dt>
-						<dd>WebID uses TLS.</dd>
+					<dt>IETF <a href="http://datatracker.ietf.org/wg/tls/">Transport Layer Security (tls)</a> Working Group</dt>
+					<dd>WebID depends essentially on TLS. The feedback and views of this TLS working group will be very helpful in a number of ways.</dd>
+					<dt><a href="http://www.foaf-project.org/">FOAF</a> project</dt>
+					<dd>The FOAF vocabulary, though not essential to the protocol, provides for some very good use cases.</dd>
+                    <dt><a href="https://openid.net/foundation/">OpenId foundation</a></td>            
+                    <dd>WebId and OpenId both use a URI to identify a user. The methods for proving authentication are different, but each is useful in different circumstances. (WebId cannot work for example in many telephones) It would be valuable to document more formally ways in which both protocols can best interact.</dd>
 					</dl>
-				</div>
+					</div>
 			</div>
 			<div class="participation">
 				<h2 id="participation">
