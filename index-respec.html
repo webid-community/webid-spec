@@ -4,7 +4,7 @@
   <head>
     <title>WebID 1.0</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-    <!-- 
+    <!--
       === NOTA BENE ===
       For the three scripts below, if your spec resides on dev.w3 you can check them
       out in the same tree and use relative links so that they'll work offline,
@@ -23,15 +23,15 @@ div.explanation { background-color: #ADD8E6;
 div.explanation li { margin-top: 8px; }
 div.explanation dd { margin: 4px; }
 
-.adef { 
-	font-family: monospace; 
-	font-weight: bold; 
+.adef {
+	font-family: monospace;
+	font-weight: bold;
     color: #ff4500 !important;
 }
 
-.aref { 
-	font-family: monospace; 
-	font-weight: bold; 
+.aref {
+	font-family: monospace;
+	font-weight: bold;
     color: #ff4500 !important;
 }
 
@@ -40,7 +40,7 @@ span.entity { color: red; }
 span.element { color: green; }
 </style>
 
-    <script src='http://dev.w3.org/2009/dap/ReSpec.js/js/respec.js' class='remove'></script> 
+    <script src='http://dev.w3.org/2009/dap/ReSpec.js/js/respec.js' class='remove'></script>
 <!--    <script src='/ReSpec.js/js/respec.js' class='remove'></script> -->
     <script class='remove'>
       var preProc = {
@@ -168,7 +168,7 @@ span.element { color: green; }
           specStatus:           "unofficial",
           //publishDate:          "2010-07-05",
           diffTool:             "http://www3.aptest.com/standards/htmldiff/htmldiff.pl",
-          
+
           // the specifications short name, as in http://www.w3.org/TR/short-name/
           shortName:            "webid",
           subtitle: "Web Identification and Discovery",
@@ -203,7 +203,7 @@ span.element { color: green; }
                   company: "Massachusetts General Hospital", companyURL: "http://massgeneral.org/" }
               ],
 
-          // authors, add as many as you like. 
+          // authors, add as many as you like.
           // This is optional, uncomment if you have authors as well as editors.
           // only "name" is required. Same format as editors.
 
@@ -215,19 +215,19 @@ span.element { color: green; }
           ],
 
 //          errata: 'http://www.w3.org/MarkUp/2008/REC-rdfa-syntax-20081014-errata',
-          
+
           // name of the WG
           wg:           "Social Web XG",
-          
+
           // URI of the public WG page
           wgURI:        "http://esw.w3.org/Foaf%2Bssl",
-          
+
           // name (with the @w3c.org) of the public mailing to which comments are due
           wgPublicList: "socialweb-xg",
-          
+
           // alternate formats for this document
           alternateFormats: [
-              { uri: 'drafts/ED-webid-20100809/diff-20100725.html', 
+              { uri: 'drafts/ED-webid-20100809/diff-20100725.html',
                   label: "Diff from previous Editors Draft" }],
 
           // URI of the patent status for this WG, for Rec-track documents
@@ -237,7 +237,7 @@ span.element { color: green; }
           // Team Contact.
           wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/44350/status",
           maxTocLevel: 4,
-          preProcess: [ preProc ] 
+          preProcess: [ preProc ]
       };
 
 
@@ -251,7 +251,7 @@ span.element { color: green; }
       }
 
       function updateDTD(doc, content) {
-        // perform transformations to 
+        // perform transformations to
         // make it render and prettier
         content = '<pre class="dtd">' + doc._esc(content) + '</pre>';
         content = content.replace(/!ENTITY % ([^ \t\r\n]*)/g, '!ENTITY <span class="entity">% $1</span>');
@@ -260,7 +260,7 @@ span.element { color: green; }
       }
 
       function updateSchema(doc, content) {
-        // perform transformations to 
+        // perform transformations to
         // make it render and prettier
         content = '<pre class="dtd">' + doc._esc(content) + '</pre>';
         content = content.replace(/&lt;xs:element\s+name=&quot;([^&]*)&quot;/g, '&lt;xs:element name="<span class="element" id="schema_element_$1">$1</span>"') ;
@@ -268,7 +268,7 @@ span.element { color: green; }
       }
 
       function updateTTL(doc, content) {
-        // perform transformations to 
+        // perform transformations to
         // make it render and prettier
         content = '<pre class="sh_sourceCode">' + doc._esc(content) + '</pre>';
         content = content.replace(/@prefix/g, '<span class="sh_keyword">@prefix</span>');
@@ -279,29 +279,29 @@ span.element { color: green; }
   <body>
     <section id='abstract'>
 
-<p>Social networking, identity and privacy have been at the center of how we 
-interact with the Web in the last decade. The explosion of social networking 
+<p>Social networking, identity and privacy have been at the center of how we
+interact with the Web in the last decade. The explosion of social networking
 sites has brought the world closer together as well as created new points of
 pain regarding ease of use and the Web. Remembering login details, passwords,
 and sharing private information across the many websites and social groups
-that we are a part of has become more difficult and complicated than necessary. 
-The Social Web is designed to ensure that control of identity and privacy 
-settings is always simple and under one's control. WebID is a key enabler of the 
-Social Web. This specification outlines a simple universal identification 
-mechanism that is distributed, openly extensible, improves privacy, security 
-and control over how one can identify themselves and control access to their 
+that we are a part of has become more difficult and complicated than necessary.
+The Social Web is designed to ensure that control of identity and privacy
+settings is always simple and under one's control. WebID is a key enabler of the
+Social Web. This specification outlines a simple universal identification
+mechanism that is distributed, openly extensible, improves privacy, security
+and control over how one can identify themselves and control access to their
 information on the Web.
 </p>
-  
+
 <section>
 <h2>How to Read this Document</h2>
-  
+
 <p>There are a number of concepts that are covered in this document that the
 reader may want to be aware of before continuing. General knowledge of
-<a href="http://en.wikipedia.org/wiki/Public_key_cryptography">public key cryptography</a> 
-and RDF [[!RDF-PRIMER]] and RDFa [[!RDFA-CORE]] is necessary to understand how 
-to implement this specification. WebID uses a number of specific technologies 
-like HTTP over TLS [[!HTTP-TLS]], X.509 certificates [[!X509V3]], 
+<a href="http://en.wikipedia.org/wiki/Public_key_cryptography">public key cryptography</a>
+and RDF [[!RDF-PRIMER]] and RDFa [[!RDFA-CORE]] is necessary to understand how
+to implement this specification. WebID uses a number of specific technologies
+like HTTP over TLS [[!HTTP-TLS]], X.509 certificates [[!X509V3]],
 RDF/XML [[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]].</p>
 
 <p>A general <a href="#introduction">Introduction</a> is provided for all that
@@ -312,10 +312,10 @@ of the Web.</p>
 titled <a href="#terminology">Terminology</a>.</p>
 
 <p>Developers that are interested in implementing this specification will be
-most interested in the sections titled 
-<a href="#authentication-sequence">Authentication Sequence</a> and 
+most interested in the sections titled
+<a href="#authentication-sequence">Authentication Sequence</a> and
 <a href="#authentication-sequence-details">Authentication Sequence Details</a>.</p>
-  
+
 </section>
 </section>
 
@@ -338,10 +338,10 @@ URI: <a href="http://github.com/msporny/webid-spec">http://github.com/msporny/we
 
 <p>
 The WebID specification is designed to help alleviate the difficultly that
-remembering different logins, passwords and settings for websites has created. 
-It is also designed to provide a universal and extensible mechanism to express 
-public and private information about yourself. This section outlines the 
-motivation behind the specification and the relationship to other similar 
+remembering different logins, passwords and settings for websites has created.
+It is also designed to provide a universal and extensible mechanism to express
+public and private information about yourself. This section outlines the
+motivation behind the specification and the relationship to other similar
 specifications that are in active use today.
 </p>
 
@@ -351,14 +351,14 @@ specifications that are in active use today.
 <p>
 It is a fundamental design criteria of the Web to enable individuals and
 organizations to control how they interact with the rest of society. This
-includes how one expresses their identity, public information and personal 
+includes how one expresses their identity, public information and personal
 details to social networks, Web sites and services.
 </p>
 
 <p>
-Semantic Web vocabularies such as Friend-of-a-Friend (FOAF) permit distributed 
-hyperlinked social networks to exist. This vocabulary, along with other 
-vocabularies, allow one to add information and services protection to 
+Semantic Web vocabularies such as Friend-of-a-Friend (FOAF) permit distributed
+hyperlinked social networks to exist. This vocabulary, along with other
+vocabularies, allow one to add information and services protection to
 distributed social networks.
 </p>
 
@@ -379,15 +379,15 @@ access control?
 <p>
 Using a process made popular by OpenID, we show how one can tie a User
 Agent to a URI by proving that one has write access to the URI.
-WebID is an authentication protocol which uses X.509 
+WebID is an authentication protocol which uses X.509
 certificates to associate a User Agent (Browser) to a Person identified via a URI.
 A WebID profile can also be used for OpenID, WebId provides a few additional features such as
-trust management via digital signatures, and free-form 
+trust management via digital signatures, and free-form
 extensibility via RDF. By using the existing SSL certificate exchange
 mechanism, WebID integrates smoothly with existing Web browsers, including
 browsers on mobile devices. WebID also permits automated session login
 in addition to interactive session login. Additionally, all data is encrypted
-and guaranteed to only be received by the person or organization that was 
+and guaranteed to only be received by the person or organization that was
 intended to receive it.
 </p>
 
@@ -405,8 +405,8 @@ intended to receive it.
 
 <dt><tdef>Verification Agent</tdef></dt>
 <dd>Performs authentication on provided WebID credentials and determines if
-an <tref>Identification Agent</tref> can have access to a particular 
-resource. A <tref>Verification Agent</tref> is typically a Web server, but 
+an <tref>Identification Agent</tref> can have access to a particular
+resource. A <tref>Verification Agent</tref> is typically a Web server, but
 may also be a peer on a peer-to-peer network.</dd>
 
 <dt><tdef>Identification Agent</tdef></dt>
@@ -414,10 +414,10 @@ may also be a peer on a peer-to-peer network.</dd>
 <tref>Identification Agent</tref> is typically also a User Agent.</dd>
 
 <dt><tdef>Identification Certificate</tdef></dt>
-<dd>An X.509 [[!X509V3]] Certificate that MUST contain a 
+<dd>An X.509 [[!X509V3]] Certificate that MUST contain a
 <code>Subject Alternative Name</code> extension with at least one URI entry
 identifying the <tref>Identification Agent</tref>. This URI SHOULD be
-dereference-able and result in a document containing RDF data. For example, 
+dereference-able and result in a document containing RDF data. For example,
 a certificate identifying the WebID URI <code>http://example.org/webid#public</code>
 would contain the following:
 <pre>
@@ -426,30 +426,31 @@ X509v3 extensions:
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
 </pre>
+<p class="issue">TODO: cover the case where there are more than one URI entry</p>
 </dd>
 
 <dt><tdef>WebID URI</tdef></dt>
 <dd>A URI specified via the <code>Subject Alternative Name</code> extension
-of the <tref>Identification Certificate</tref> that identifies an 
+of the <tref>Identification Certificate</tref> that identifies an
 <tref>Identification Agent</tref>.</dd>
 
 <dt><tdef>public key</tdef></dt>
-<dd>A widely distributed cryptographic key that can be used to verify 
+<dd>A widely distributed cryptographic key that can be used to verify
 digital signatures and encrypt data between a sender and a receiver. A public
 key is always included in an <tref>Identification Certificate</tref>.</dd>
 
 <dt><tdef>WebID Profile</tdef></dt>
 <dd>
-A structured document that contains identification credentials for the 
+A structured document that contains identification credentials for the
 <tref>Identification Agent</tref> expressed using the Resource Description
-Framework [[RDF-CONCEPTS]]. Either the XHTML+RDFa 1.1 [[!XHTML-RDFA]] 
+Framework [[RDF-CONCEPTS]]. Either the XHTML+RDFa 1.1 [[!XHTML-RDFA]]
 serialization format or the RDF/XML [[!RDF-SYNTAX-GRAMMAR]] serialization
 format MUST be supported by the mechanism, e.g. a Web Service, providing the
 WebID Profile document. Alternate RDF serialization
-formats, such as N3 [[!N3]] or Turtle [[!TURTLE]], MAY be supported by the 
+formats, such as N3 [[!N3]] or Turtle [[!TURTLE]], MAY be supported by the
 mechanism providing the WebID Profile document.
 <p class="issue">Whether or not RDF/XML, XHTML+RDFa 1.1, both or neither
-serialization of RDF should be required serialization formats in the 
+serialization of RDF should be required serialization formats in the
 specification is currently under heavy debate.</p>
 </dd>
 
@@ -471,7 +472,7 @@ then his WebID can be <code>http://joe.example/profile#me</code></p>
 
 <p class="issue">explain why the WebID URI is different from the URI of the WebID profile document.</p>
 
-<p>As an example to use throughout this specification here is the 
+<p>As an example to use throughout this specification here is the
 following certificate as an output of the openssl program.</p>
 <p class="example">
 <pre>
@@ -514,9 +515,9 @@ Certificate:
                 CA:FALSE
             X509v3 Key Usage: critical
                 Digital Signature, Non Repudiation, Key Encipherment, Key Agreement, Certificate Sign
-            Netscape Cert Type: 
+            Netscape Cert Type:
                 SSL Client, S/MIME
-            X509v3 Subject Key Identifier: 
+            X509v3 Subject Key Identifier:
                 08:8E:A5:5B:AE:5D:C3:8B:00:B7:30:62:65:2A:5A:F5:D2:E9:00:FA
             <span style="color: red">X509v3 Subject Alternative Name:</span> critical
                 <span style="color: red">URI:</span>https://joe.example/profile#me
@@ -531,7 +532,7 @@ Certificate:
         d8:b8
 </pre>
 </p>
-<p class="issue">Should we formally require the Issuer to be 
+<p class="issue">Should we formally require the Issuer to be
    O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority. This was discussed on the list as allowing servers to distinguish certificates that are foaf+Ssl enabled from others. Will probably need some very deep TLS thinking to get this right.</p>
 <p class="issue">discuss the importance for UIs of the CN</p>
 <p class="issue">The above certificate is no longer valid, as I took an valid certificate and change the time and WebID. As a result the Signatiure is now false. A completely valid certificate should be generated to avoid nit-pickers picking nits</p>
@@ -603,16 +604,16 @@ html. Here is just one example.</p>
       xmlns:foaf="http://xmlns.com/foaf/0.1/"
       xmlns:owl="http://www.w3.org/2002/07/owl#"
       xmlns:rsa="http://www.w3.org/ns/auth/rsa#"
-      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"&gt; 
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"&gt;
 &lt;head&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h2&gt;My RSA Public Key&lt;/h2&gt; 
- 
-   &lt;dl typeof="rsa:RSAPublicKey"&gt; 
+&lt;h2&gt;My RSA Public Key&lt;/h2&gt;
+
+   &lt;dl typeof="rsa:RSAPublicKey"&gt;
    &lt;dt&gt;WebId&lt;/dt&gt;&lt;dd href="#me" rel="cert:identity"&gt;http://joe.example/profile#me&lt;/dd&gt;
-   &lt;dt&gt;Modulus (hexadecimal)&lt;/dt&gt; 
-   &lt;dd property="rsa:modulus" datatype="cert:hex"&gt;      
+   &lt;dt&gt;Modulus (hexadecimal)&lt;/dt&gt;
+   &lt;dd property="rsa:modulus" datatype="cert:hex"&gt;
       00:cb:24:ed:85:d6:4d:79:4b:69:c7:01:c1:86:ac:
       c0:59:50:1e:85:60:00:f6:61:c9:32:04:d8:38:0e:
       07:19:1c:5c:8b:36:8d:2a:c3:2a:42:8a:cb:97:03:
@@ -631,10 +632,10 @@ html. Here is just one example.</p>
       71:fd:4f:20:7a:d7:70:80:9e:0e:2d:7b:0e:f5:49:
       3b:ef:e7:35:44:d8:e1:be:3d:dd:b5:24:55:c6:13:
       91:a1
-    &lt;/dd&gt; 
-    &lt;dt&gt;Exponent (decimal)&lt;/dt&gt; 
-    &lt;dd property="rsa:public_exponent" datatype="cert:int"&gt;65537&lt;/dd&gt; 
-   &lt;/dl&gt; 
+    &lt;/dd&gt;
+    &lt;dt&gt;Exponent (decimal)&lt;/dt&gt;
+    &lt;dd property="rsa:public_exponent" datatype="cert:int"&gt;65537&lt;/dd&gt;
+   &lt;/dl&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
@@ -642,7 +643,7 @@ html. Here is just one example.</p>
 <p>If a WebId provider would rather prefer not to mark up his data in RDFa, but just provide a human readable format for users and have the RDF graph appear in a machine readable format such as RDF/XML then he MAY publish the link from the HTML to a machine readable format (it this is available at a dedicated URI) as follows:</p>
  <p class="example">
 <pre>
-&lt;html&gt; 
+&lt;html&gt;
 &lt;head&gt;
 &lt;link type="rel" type="application/rdf+xml" href="profile.rdf"/&gt;
 &lt;/head&gt;
@@ -680,7 +681,7 @@ if access should be granted to the requested resource.
 <li>The <tref>Identification Agent</tref> attempts to access a resource
 using HTTP over TLS [[!HTTP-TLS]] via the <tref>Verification Agent</tref>.</li>
 
-<li>The <tref>Verification Agent</tref> MUST request the 
+<li>The <tref>Verification Agent</tref> MUST request the
 <tref>Identification Certificate</tref> of the <tref>Identification Agent</tref>
 as a part of the TLS client-certificate retrieval protocol.</li>
 
@@ -690,21 +691,21 @@ extension of the <tref>Identification Certificate</tref>.
 An <tref>Identification Certificate</tref> MAY contain multiple URI entries
 which are considered claimed <tref>WebID URI</tref>s.</li>
 
-<li>The <tref>Verification Agent</tref> MUST attempt to verify the 
+<li>The <tref>Verification Agent</tref> MUST attempt to verify the
 <tref>public key</tref> information associated with at least one of the claimed
-<tref>WebID URI</tref>s. The <tref>Verification Agent</tref> MAY attempt to 
+<tref>WebID URI</tref>s. The <tref>Verification Agent</tref> MAY attempt to
 verify more than one claimed <tref>WebID URI</tref>.
 This verification process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
-extracting RDF data from the resulting document, or by utilizing a cached 
-version of the RDF data contained in the document or other data source that is 
+extracting RDF data from the resulting document, or by utilizing a cached
+version of the RDF data contained in the document or other data source that is
 up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
-and extraction mechanism is further detailed in the sections titled 
+and extraction mechanism is further detailed in the sections titled
 <a href="#processing-the-webid-profile">Processing the WebID Profile</a> and
 <a href="#extracting-webid-URI-details">Extracting WebID URI Details</a>.
 </li>
 
-<li>If the <tref>public key</tref> in the 
-<tref>Identification Certificate</tref> is found in the list of 
+<li>If the <tref>public key</tref> in the
+<tref>Identification Certificate</tref> is found in the list of
 <tref>public key</tref>s associated with the claimed <tref>WebID URI</tref>, the
 <tref>Verification Agent</tref> MUST assume that the client intends to use
 this <tref>public key</tref> to verify their ownership of the
@@ -715,30 +716,30 @@ the <tref>Verification Agent</tref> MUST attempt to verify another claimed
 <tref>WebID URI</tref>. The authentication MUST fail if no matching
 <tref>public key</tref> is found among all the claimed <tref>WebID URI</tref>s.</li>
 
-<li>The <tref>Verification Agent</tref> verifies that the 
-<tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the 
+<li>The <tref>Verification Agent</tref> verifies that the
+<tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the
 <tref>Identification Certificate</tref>. This SHOULD be fulfilled by performing TLS mutual-authentication
-between the <tref>Verification Agent</tref> and the 
-<tref>Identification Agent</tref>. 
-If the <tref>Verification Agent</tref> does not have access to the TLS layer, 
-a digital signature challenge MUST be provided by the 
-<tref>Verification Agent</tref>. These processes are detailed in the sections 
-titled <a href="#authorization">Authorization</a> and 
+between the <tref>Verification Agent</tref> and the
+<tref>Identification Agent</tref>.
+If the <tref>Verification Agent</tref> does not have access to the TLS layer,
+a digital signature challenge MUST be provided by the
+<tref>Verification Agent</tref>. These processes are detailed in the sections
+titled <a href="#authorization">Authorization</a> and
 <a href="#secure-communication">Secure Communication</a>.</li>
 
-<li>If the <tref>public key</tref> in the 
+<li>If the <tref>public key</tref> in the
 <tref>Identification Certificate</tref> matches one in the set given by the
 profile document graph given above then the <tref>Verification Agent</tref>
 knows that the <tref>Identification Agent</tref> is indeed identified by the
-<tref>WebID URI</tref>. The verification is done by querying the 
+<tref>WebID URI</tref>. The verification is done by querying the
 Personal Profile graph as specified in <a href="#extracting-webid-uri-details">querying the RDF graph</a>.</li>
 </ol>
 
 <p>
-The <tref>Identification Agent</tref> MAY re-establish a different identity at 
-any time by executing all of the steps in the Authentication Sequence again. 
-Additional algorithms, detailed in the next section, MAY be performed to 
-determine if the <tref>Verification Agent</tref> can access a particular 
+The <tref>Identification Agent</tref> MAY re-establish a different identity at
+any time by executing all of the steps in the Authentication Sequence again.
+Additional algorithms, detailed in the next section, MAY be performed to
+determine if the <tref>Verification Agent</tref> can access a particular
 resource after the last step of the Authentication Sequence has been
 completed.
 </p>
@@ -755,7 +756,7 @@ completed.
 <h2>Initiating a TLS Connection</h2>
 
 <p class="issue">This section will detail how the TLS connection process is
-started and used by WebID to create a secure channel between the 
+started and used by WebID to create a secure channel between the
 Identification Agent and the Verification Agent.</p>
 </section>
 
@@ -769,17 +770,17 @@ sent to the Verification Agent.</p>
 <section class='normative'>
 <h2>Processing the WebID Profile</h2>
 
-<p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML 
-[[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to 
+<p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML
+[[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to
 a <tref>WebID Profile</tref> request SHOULD be able to deliver at least RDF/XML
 or RDFa. The <tref>Verification Agent</tref> MUST set the Accept-Header to request
 <code>application/rdf+xml</code> with a higher priority than <code>text/html</code>
 and <code>application/xhtml+xml</code>. If the server answers such a request
 with an HTML representation of the resource, this SHOULD describe the WebId Profile
 with RDFa.
-</p> 
+</p>
 
-<p class="issue">This section will explain how a Verification Agent extracts 
+<p class="issue">This section will explain how a Verification Agent extracts
 semantic data describing the identification credentials from a WebID Profile.</p>
 </section>
 
@@ -787,9 +788,9 @@ semantic data describing the identification credentials from a WebID Profile.</p
 <h2>Verifying the WebID is identified by that public key</h2>
 
 <p>
-There are number of different ways to check that the public key given in the X.509 
-certificate against the one provided by the <tref>WebID Profile</tref> or another 
-trusted source, the essence is checking that the graph of relations in the 
+There are number of different ways to check that the public key given in the X.509
+certificate against the one provided by the <tref>WebID Profile</tref> or another
+trusted source, the essence is checking that the graph of relations in the
 Profile contains a pattern of relations.
 </p>
 <p>Assuming the public key is an RSA key, and that its modulus is
@@ -804,23 +805,23 @@ ASK {
       rsa:public_exponent "65537"^^cert:int .
 }
 </pre>
-<p>If the query returns true, then the graph has validated the associated 
+<p>If the query returns true, then the graph has validated the associated
 public key with the WebID.</p>
-<p>The above requires the sparql endpoint (or the underlying triple store 
-to be able to do inferencing on dataytypes. This is because the numerical 
+<p>The above requires the sparql endpoint (or the underlying triple store
+to be able to do inferencing on dataytypes. This is because the numerical
 values may be expressed with different xsd and cert datatypes which must all
 be supported by <tref>VerificationAgent</tref>s. The cert datatypes allow
-the numerical expression to be spread over a number of lines, or contain 
+the numerical expression to be spread over a number of lines, or contain
 arbitrary characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." .  The datatype
 itself need not necessarily be expressed in cert:hex, but could use a number of
-xsd integer datatype notations, cert:int or future base64 notations. 
+xsd integer datatype notations, cert:int or future base64 notations.
 </p>
 <p class="issue">Should we define the base64 notation?</p>
 <p>If the SPARQL endpoint doesn't provide a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the <code>?webid</code> variable in the following query with the required value the <tref>Verifying Agent</tref> can query the Profile Graph with</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
-SELECT ?m ?e 
+SELECT ?m ?e
 WHERE {
    [] cert:identity ?webid ;
         rsa:modulus ?m ;
@@ -853,11 +854,11 @@ identification credentials.</p>
 
 <p>
 If the <tref>Verification Agent</tref> has verified that the
-<tref>WebID Profile</tref> is owned by the <tref>Identification Agent</tref>, 
-the <tref>Verification Agent</tref> SHOULD use the verified 
-<tref>public key</tref> contained in the <tref>Identification Certificate</tref> 
+<tref>WebID Profile</tref> is owned by the <tref>Identification Agent</tref>,
+the <tref>Verification Agent</tref> SHOULD use the verified
+<tref>public key</tref> contained in the <tref>Identification Certificate</tref>
 for all TLS-based communication with the <tref>Identification Agent</tref>.
-This ensures that both the <tref>Verification Agent</tref> and the 
+This ensures that both the <tref>Verification Agent</tref> and the
 <tref>Identification Agent</tref>
 are communicating in a secure manner, ensuring cryptographically protected
 privacy for both sides.
@@ -870,14 +871,14 @@ privacy for both sides.
 <section class='normative'>
 <h2>The WebID Profile</h2>
 
-<p>The <tref>WebID Profile</tref> is a structured document that contains 
-identification credentials for the <tref>Identification Agent</tref> expressed 
-using the Resource Description Framework [[RDF-CONCEPTS]]. The following 
+<p>The <tref>WebID Profile</tref> is a structured document that contains
+identification credentials for the <tref>Identification Agent</tref> expressed
+using the Resource Description Framework [[RDF-CONCEPTS]]. The following
 sections describe how to express certain common properties that could be used
-by <tref>Verification Agent</tref>s and other entities that consume a 
+by <tref>Verification Agent</tref>s and other entities that consume a
 <tref>WebID Profile</tref>.</p>
 
-<p>The following vocabularies are used in their shortened form in the 
+<p>The following vocabularies are used in their shortened form in the
 subsequent sections:</p>
 
 <dl>
@@ -892,17 +893,17 @@ subsequent sections:</p>
 <section class='normative'>
 <h2>Personal Information</h2>
 
-<p>Personal details are the most common requirement when registering an 
-account with a website. Some of these pieces of information include an e-mail 
+<p>Personal details are the most common requirement when registering an
+account with a website. Some of these pieces of information include an e-mail
 address, a name and perhaps an avatar image. This section includes
-properties that SHOULD be used when conveying key pieces of personal 
+properties that SHOULD be used when conveying key pieces of personal
 information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:</p>
 
 <dl>
   <dt>foaf:mbox</dt>
   <dd>The e-mail address that is associated with the WebID URI.</dd>
   <dt>foaf:name</dt>
-  <dd>The name that is most commonly used to refer to the individual 
+  <dd>The name that is most commonly used to refer to the individual
     or agent.</dd>
   <dt>foaf:depiction</dt>
   <dd>An image representation of the individual or agent.</dd>
@@ -913,7 +914,7 @@ information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:<
 <h2>Cryptographic Details</h2>
 
 <p>Cryptographic details are important when <tref>Verification Agent</tref>s
-and <tref>Identification Agent</tref>s interact. The following properties 
+and <tref>Identification Agent</tref>s interact. The following properties
 SHOULD be used when conveying cryptographic information in <tref>WebID Profile</tref>
 documents:</p>
 
