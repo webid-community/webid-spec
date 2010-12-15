@@ -58,7 +58,7 @@
 				The mission of the WebID Incubator Group, part of the <a href="http://www.w3.org/2005/Incubator/">Incubator Activity</a>, is to further advance the <a href="http://webid.info/spec/">WebID protocol</a> for full standardisation. 
 			</p>
 			<p>
-				WebID is an authentication protocol that uses the SSL/TLS layer for user identification by tying the client to a profile document on the web through placing a URI in the Subject Alternative Name field in an X509 certificate.  This is the first step to a fully standard-based browser authentication experience. 
+				WebID is an authentication protocol that uses the SSL/TLS layer for user identification by tying the client to a profile document on the web through placing a URI in the Subject Alternative Name field in an X509 certificate.  This is the first step to a fully standard-based browser authentication experience. Of course it is not limited to browser based authentication: peer to peer server authentication will work just as well.
 			</p>
 			<p>
 				Research on WebID has been evolving since 2008 on the <a href="http://lists.foaf-project.org/pipermail/foaf-protocols/" title="The foaf-protocols Archives">FOAF protocol mailing list</a> and the  <a href="http://esw.w3.org/Foaf%2Bssl" title="FOAF+SSL - ESW Wiki">ESW Wiki</a>. What is required now is to pursue the work in a more structured environment, grow the number of interested parties from the Social Web, security and browser communities and integrate their feedback.
@@ -163,7 +163,7 @@
 						Out of Scope
 					</h3>
 					<p>
-                        Many things... 
+                       Making the protocol complex by attempting to solve all problems.     
 					</p>
 
 				</div>
@@ -193,7 +193,8 @@
 							<a href="http://www.w3.org/2005/Incubator/socialweb/fedsocweb-charter.html">Federated Social Web Incubator Group</a>
 						</dt>
 						<dd>
-							We are actively looking for participation and feedback from members of that community</dd>
+							We are actively looking for participation and feedback from members of that community. There are too many members of that community whose work could be relevant to this work to list them all here. Some that spring to mind are WebFinger and Portable Contacts, already mentioned in the draft specification.</dd>
+
 
 						<dt>
 							<a href="http://www.w3.org/2001/sw/">Semantic Web Activity</a>
@@ -210,8 +211,7 @@
 							IETF <a href="http://datatracker.ietf.org/wg/tls/">Transport Layer Security (tls)</a> Working Group
 						</dt>
 						<dd>
-							WebID depends essentially on TLS. The feedback and views of this TLS working group will be very 
-							helpful in a number of ways.
+							All current WebID implementations function with TLS. The feedback and views of this TLS working group will be very helpful in a number of ways. This should not to understood as excluding other technologies in the same space such as DTLS  TTLS, or other encryption technologies, which it would be very useful to have feedback on too.
 						</dd>
 						<dt>
 
@@ -229,24 +229,24 @@
 							but each is useful in different circumstances (WebID cannot work for example in many telephones).
 							It would be valuable to document more formally ways in which both protocols can best interact.
 						</dd>
-						<dt>
-							OASIS <a href="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security">Security Services (SAML) Technical Committee</a> 
-						</dt>
-						<dd>
-							To explore synergies and use cases with Security Assertion Markup Language (SAML).
-						</dd>
-
                         <dt>
                            The <a href="http://kantarainitiative.org/">Kantara</a> intiative.
                         </dt>
                         <dd>
                            The Kantara initiative has the broader goal of harmonising with identity solutions, and we will be pleased to harmonize with them. WebId is a lightweight technical solution that should make it very easy to insert into most identity solutions.
                         </dd>
-                        <dt><a href="http://www.internetidentityworkshop.com/">Internet Identity Workshop</a></dt>
+ 						<dt>
+							OASIS <a href="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security">Security Services (SAML) Technical Committee</a> 
+						</dt>
+						<dd>
+							To explore synergies and use cases with Security Assertion Markup Language (SAML).
+						</dd>
+                        <dt><a href="http://www.internetidentityworkshop.com/">Internet Identity Workshop</a> and <a href="http://wiki.idcommons.net">ID Commons</a></dt>
                         <dd>
-
-                            The Internet Identity Workshop organises meetings between many different identity players in light well organised workshops.
+                            The Internet Identity Workshop organises meetings between many different identity players in light well organised workshops. Idenity Commons is a hub linking many user-centric identity efforts including OpeniD, Information cards, OSIS, Higgins -
                         </dd>
+                        <dt><a href="http://datatracker.ietf.org/wg/oauth/charter/">OAuth IETF Working Group</a>
+                        <dd>To explore the overlaps and complemenarities between OAuth and WebID</dd>
 					</dl>
 				</div>
 			</div>
