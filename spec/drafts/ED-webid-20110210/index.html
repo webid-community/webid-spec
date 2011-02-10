@@ -1,19 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML+RDFa 1.0//EN' 'http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd'>
-<html dir="ltr" about="" property="dcterms:language" content="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:dcterms='http://purl.org/dc/terms/' xmlns:bibo='http://purl.org/ontology/bibo/' xmlns:foaf='http://xmlns.com/foaf/0.1/' xmlns:xsd='http://www.w3.org/2001/XMLSchema#'>
+<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
+<html lang="en" dir="ltr" about="" property="dcterms:language" content="en" prefix="dcterms: http://purl.org/dc/terms/ bibo: http://purl.org/ontology/bibo/ foaf: http://xmlns.com/foaf/0.1/ xsd: http://www.w3.org/2001/XMLSchema#">
 <head>
-
-
-
     <title>WebID 1.0</title>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-
-<!--
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!--
       === NOTA BENE ===
       For the three scripts below, if your spec resides on dev.w3 you can check them
       out in the same tree and use relative links so that they'll work offline,
-      -->
-
+     -->
 <style type="text/css">
 code           { font-family: monospace; }
 
@@ -45,11 +39,9 @@ span.entity { color: red; }
 span.element { color: green; }
 </style>
 
-
-
-<!--     <script src='/ReSpec.js/js/respec.js' class='remove'></script>  -->
-
-
+    
+<!--    <script src='/ReSpec.js/js/respec.js' class='remove'></script> -->
+    
   <style type="text/css">
 /*****************************************************************
  * ReSpec CSS
@@ -59,7 +51,7 @@ span.element { color: green; }
 
 
 /* --- INLINES --- */
-em.rfc2119 {
+em.rfc2119 { 
     text-transform:     lowercase;
     font-variant:       small-caps;
     font-style:         normal;
@@ -514,19 +506,20 @@ pre.sh_sourceCode .sh_section { color: black; font-weight: bold; }
 pre.sh_sourceCode .sh_paren { color: red; }
 pre.sh_sourceCode .sh_attribute { color: #006400; }
 
-</style><link href="http://www.w3.org/StyleSheets/TR/W3C-ED" rel="stylesheet" type="text/css" charset="utf-8" /></head><body style="display: inherit;"><div class="head"><p><a href="http://www.w3.org/"><img width="72" height="48" alt="W3C" src="http://www.w3.org/Icons/w3c_home" /></a></p><h1 id="title" class="title" property="dcterms:title">WebID 1.0</h1><h2 id="subtitle" property="bibo:subtitle">Web Identification and Discovery</h2><h2 content="2011-02-10T16:21:01+0000" datatype="xsd:dateTime" property="dcterms:issued" id="w3c-editor-s-draft-10-february-2011">W3C Editor's Draft 10 February 2011</h2><dl><dt>This version:</dt><dd><a href="http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210">http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210</a></dd><dt>Latest published version:</dt><dd><a href="http://www.w3.org/TR/webid/">http://www.w3.org/TR/webid/</a></dd><dt>Latest editor's draft:</dt><dd><a href="http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210">http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210</a></dd><dt>Previous version:</dt><dd><a href="http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20100809" rel="dcterms:replaces">http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20100809</a></dd><dt>Editors:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a href="http://blog.digitalbazaar.com/" rel="foaf:workplaceHomepage">Digital Bazaar, Inc.</a> <a href="mailto:msporny@digitalbazaar.com" rel="foaf:mbox">msporny@digitalbazaar.com</a> </span>
+</style><link href="http://www.w3.org/StyleSheets/TR/W3C-ED" rel="stylesheet" type="text/css" charset="utf-8"></head>
+  <body style="display: inherit; "><div class="head"><p><a href="http://www.w3.org/"><img width="72" height="48" src="http://www.w3.org/Icons/w3c_home" alt="W3C"></a></p><h1 property="dcterms:title" class="title" id="title">WebID 1.0</h1><h2 property="bibo:subtitle" id="subtitle">Web Identification and Discovery</h2><h2 property="dcterms:issued" datatype="xsd:dateTime" content="2011-02-10T18:00:22+0000" id="w3c-editor-s-draft-10-february-2011">W3C Editor's Draft 10 February 2011</h2><dl><dt>This version:</dt><dd><a href="http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210">http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210</a></dd><dt>Latest published version:</dt><dd><a href="http://www.w3.org/2005/Incubator/webid/spec/">http://www.w3.org/2005/Incubator/webid/spec/</a></dd><dt>Latest editor's draft:</dt><dd><a href="http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210">http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210</a></dd><dt>Previous version:</dt><dd><a rel="dcterms:replaces" href="http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20100809">http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20100809</a></dd><dt>Editor:</dt><dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Stéphane Corlosquet</span>, <a rel="foaf:workplaceHomepage" href="http://massgeneral.org/">Massachusetts General Hospital</a> <a rel="foaf:mbox" href="mailto:scorlosquet@gmail.com">scorlosquet@gmail.com</a> </span>
 </dd>
-<dd rel="bibo:editor"><span typeof="foaf:Person"><span property="foaf:name">Stéphane Corlosquet</span>, <a href="http://massgeneral.org/" rel="foaf:workplaceHomepage">Massachusetts General Hospital</a> <a href="mailto:scorlosquet@gmail.com" rel="foaf:mbox">scorlosquet@gmail.com</a> </span>
+<dt>Authors:</dt><dd rel="dcterms:contributor"><span typeof="foaf:Person"><span property="foaf:name">Manu Sporny</span>, <a rel="foaf:workplaceHomepage" href="http://blog.digitalbazaar.com/">Digital Bazaar, Inc.</a> <a rel="foaf:mbox" href="mailto:msporny@digitalbazaar.com">msporny@digitalbazaar.com</a> </span>
 </dd>
-<dt>Authors:</dt><dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="http://tobyinkster.co.uk/" content="Toby Inkster" property="foaf:name" rel="foaf:homepage">Toby Inkster</a></span>
+<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" content="Toby Inkster" href="http://tobyinkster.co.uk/">Toby Inkster</a></span>
 </dd>
-<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="http://bblfish.net/" content="Henry Story" property="foaf:name" rel="foaf:homepage">Henry Story</a></span>
+<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" content="Henry Story" href="http://bblfish.net/">Henry Story</a></span>
 </dd>
-<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="http://blog.distributedmatter.net/" content="Bruno Harbulot" property="foaf:name" rel="foaf:homepage">Bruno Harbulot</a></span>
+<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" content="Bruno Harbulot" href="http://blog.distributedmatter.net/">Bruno Harbulot</a></span>
 </dd>
-<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a href="http://trialox.org/" content="Reto Bachmann-Gmür" property="foaf:name" rel="foaf:homepage">Reto Bachmann-Gmür</a></span>
+<dd rel="dcterms:contributor"><span typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" content="Reto Bachmann-Gmür" href="http://trialox.org/">Reto Bachmann-Gmür</a></span>
 </dd>
-</dl><p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright" rel="license">Copyright</a> © 2010-2011 <span rel="dcterms:publisher"><span typeof="foaf:Organization"><a href="http://www.w3.org/" content="World Wide Web Consotrium" property="foaf:name" rel="foaf:homepage"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup></span></span> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p><hr /></div>
+</dl><p class="copyright"><a rel="license" href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2010-2011 <span rel="dcterms:publisher"><span typeof="foaf:Organization"><a rel="foaf:homepage" property="foaf:name" content="World Wide Web Consotrium" href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup></span></span> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p><hr></div>
     <div id="abstract" class="introductory section" property="dcterms:abstract" datatype="" typeof="bibo:Chapter" about="#abstract"><h2>Abstract</h2>
 
 <p>Social networking, identity and privacy have been at the center of how we
@@ -567,16 +560,14 @@ most interested in the sections titled
 <a href="#authentication-sequence-details">Authentication Sequence Details</a>.</p>
 
 </div>
-</div><div class="introductory section" id="sotd" typeof="bibo:Chapter" about="#sotd"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current W3C publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/.</em></p>
-
-<!--  <p>This document has been reviewed by W3C Members, by software
+</div><div id="sotd" class="introductory section" typeof="bibo:Chapter" about="#sotd"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current W3C publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/">W3C technical reports index</a> at http://www.w3.org/TR/.</em></p>
+<!-- <p>This document has been reviewed by W3C Members, by software
 developers, and by other W3C groups and interested parties, and is
 endorsed by the Director as a W3C Recommendation. It is a stable
 document and may be used as reference material or cited from another
 document. W3C's role in making the Recommendation is to draw attention
 to the specification and to promote its widespread deployment. This
-enhances the functionality and interoperability of the Web.</p>  -->
-
+enhances the functionality and interoperability of the Web.</p> -->
 
 This document is produced from work by the
 <a href="http://www.w3.org/2005/Incubator/webid/">W3C WebID Incubator Group</a>.
@@ -587,14 +578,12 @@ work in progress.
 The source code for this document is available at the following
 URI: <a href="https://dvcs.w3.org/hg/WebID">https://dvcs.w3.org/hg/WebID</a>
 
-<p>This document was published by the <a href="http://www.w3.org/2005/Incubator/webid/">WebID XG</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to <a href="mailto:public-xg-webid@w3.org">public-xg-webid@w3.org</a> (<a href="mailto:public-xg-webid-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-xg-webid/">archives</a>). All feedback is welcome.</p><p>Publication as a Editor's Draft does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p><p>This document was produced by a group operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</a>. W3C maintains a <a rel="disclosure" href="http://www.w3.org/2004/01/pp-impl/44350/status">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>.</p></div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li></ul></li><li class="tocline"><a href="#preconditions" class="tocxref"><span class="secno">2. </span>Preconditions</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#creating-the-certificate" class="tocxref"><span class="secno">2.2 </span>Creating the certificate</a></li><li class="tocline"><a href="#publishing-the-webid-profile-document" class="tocxref"><span class="secno">2.3 </span>Publishing the WebID Profile Document</a><ul class="toc"><li class="tocline"><a href="#turtle" class="tocxref"><span class="secno">2.3.1 </span>Turtle</a></li><li class="tocline"><a href="#rdfa-html-notation" class="tocxref"><span class="secno">2.3.2 </span>RDFa HTML notation</a></li><li class="tocline"><a href="#in-rdf-xml" class="tocxref"><span class="secno">2.3.3 </span>In RDF/XML</a></li><li class="tocline"><a href="#in-portable-contacts-format-using-grddl" class="tocxref"><span class="secno">2.3.4 </span>In Portable Contacts format using GRDDL</a></li></ul></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">3. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">3.1 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">3.2 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">3.2.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">3.2.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">3.2.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#verifying-the-webid-is-identified-by-that-public-key" class="tocxref"><span class="secno">3.2.4 </span>Verifying the WebID is identified by that public key</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">3.2.5 </span>Authorization</a></li><li class="tocline"><a href="#secure-communication" class="tocxref"><span class="secno">3.2.6 </span>Secure Communication</a></li></ul></li><li class="tocline"><a href="#the-webid-profile" class="tocxref"><span class="secno">3.3 </span>The WebID Profile</a><ul class="toc"><li class="tocline"><a href="#personal-information" class="tocxref"><span class="secno">3.3.1 </span>Personal Information</a></li><li class="tocline"><a href="#cryptographic-details" class="tocxref"><span class="secno">3.3.2 </span>Cryptographic Details</a></li></ul></li></ul></li><li class="tocline"><a href="#history" class="tocxref"><span class="secno">A. </span>Change History</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgments</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></div>
+<p>This document was published by the <a href="http://www.w3.org/2005/Incubator/webid/">WebID XG</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to <a href="mailto:public-xg-webid@w3.org">public-xg-webid@w3.org</a> (<a href="mailto:public-xg-webid-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-xg-webid/">archives</a>). All feedback is welcome.</p><p>Publication as a Editor's Draft does not imply endorsement by the W3C Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p><p>This document was produced by a group operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</a>. W3C maintains a <a href="http://www.w3.org/2004/01/pp-impl/44350/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>.</p></div><div id="toc" typeof="bibo:Chapter" about="#toc" class="section"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#motivation" class="tocxref"><span class="secno">1.1 </span>Motivation</a></li></ul></li><li class="tocline"><a href="#preconditions" class="tocxref"><span class="secno">2. </span>Preconditions</a><ul class="toc"><li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">2.1 </span>Terminology</a></li><li class="tocline"><a href="#creating-the-certificate" class="tocxref"><span class="secno">2.2 </span>Creating the certificate</a></li><li class="tocline"><a href="#publishing-the-webid-profile-document" class="tocxref"><span class="secno">2.3 </span>Publishing the WebID Profile Document</a><ul class="toc"><li class="tocline"><a href="#turtle" class="tocxref"><span class="secno">2.3.1 </span>Turtle</a></li><li class="tocline"><a href="#rdfa-html-notation" class="tocxref"><span class="secno">2.3.2 </span>RDFa HTML notation</a></li><li class="tocline"><a href="#in-rdf-xml" class="tocxref"><span class="secno">2.3.3 </span>In RDF/XML</a></li><li class="tocline"><a href="#in-portable-contacts-format-using-grddl" class="tocxref"><span class="secno">2.3.4 </span>In Portable Contacts format using GRDDL</a></li></ul></li></ul></li><li class="tocline"><a href="#the-webid-protocol" class="tocxref"><span class="secno">3. </span>The WebID Protocol</a><ul class="toc"><li class="tocline"><a href="#authentication-sequence" class="tocxref"><span class="secno">3.1 </span>Authentication Sequence</a></li><li class="tocline"><a href="#authentication-sequence-details" class="tocxref"><span class="secno">3.2 </span>Authentication Sequence Details</a><ul class="toc"><li class="tocline"><a href="#initiating-a-tls-connection" class="tocxref"><span class="secno">3.2.1 </span>Initiating a TLS Connection</a></li><li class="tocline"><a href="#exchanging-the-identification-certificate" class="tocxref"><span class="secno">3.2.2 </span>Exchanging the Identification Certificate</a></li><li class="tocline"><a href="#processing-the-webid-profile" class="tocxref"><span class="secno">3.2.3 </span>Processing the WebID Profile</a></li><li class="tocline"><a href="#verifying-the-webid-is-identified-by-that-public-key" class="tocxref"><span class="secno">3.2.4 </span>Verifying the WebID is identified by that public key</a></li><li class="tocline"><a href="#authorization" class="tocxref"><span class="secno">3.2.5 </span>Authorization</a></li><li class="tocline"><a href="#secure-communication" class="tocxref"><span class="secno">3.2.6 </span>Secure Communication</a></li></ul></li><li class="tocline"><a href="#the-webid-profile" class="tocxref"><span class="secno">3.3 </span>The WebID Profile</a><ul class="toc"><li class="tocline"><a href="#personal-information" class="tocxref"><span class="secno">3.3.1 </span>Personal Information</a></li><li class="tocline"><a href="#cryptographic-details" class="tocxref"><span class="secno">3.3.2 </span>Cryptographic Details</a></li></ul></li></ul></li><li class="tocline"><a href="#history" class="tocxref"><span class="secno">A. </span>Change History</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgments</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></div>
 
 
 
 <div class="informative section" id="introduction" typeof="bibo:Chapter" about="#introduction">
-
-<!-- OddPage -->
-<h2><span class="secno">1. </span>Introduction</h2><p><em>This section is non-normative.</em></p>
+<!--OddPage--><h2><span class="secno">1. </span>Introduction</h2><p><em>This section is non-normative.</em></p>
 
 <p>
 The WebID specification is designed to help alleviate the difficultly that
@@ -656,9 +645,7 @@ intended to receive it.
 </div>
 
 <div id="preconditions" typeof="bibo:Chapter" about="#preconditions" class="section">
-
-<!-- OddPage -->
-<h2><span class="secno">2. </span>Preconditions</h2>
+<!--OddPage--><h2><span class="secno">2. </span>Preconditions</h2>
 
 <div id="terminology" typeof="bibo:Chapter" about="#terminology" class="section">
 <h3><span class="secno">2.1 </span>Terminology</h3>
@@ -682,8 +669,7 @@ identifying the <a class="tref internalDFN" title="Identification_Agent" href="#
 dereference-able and result in a document containing RDF data. For example,
 a certificate identifying the WebID URI <code>http://example.org/webid#public</code>
 would contain the following:
-<pre>
-X509v3 extensions:
+<pre>X509v3 extensions:
    ...
    X509v3 Subject Alternative Name:
       URI:http://example.org/webid#public
@@ -737,22 +723,21 @@ then his WebID can be <code>http://joe.example/profile#me</code></p>
 <p>As an example to use throughout this specification here is the
 following certificate as an output of the openssl program.</p>
 <p class="example">
-</p><pre>
-Certificate:
+</p><pre>Certificate:
     Data:
         Version: 3 (0x2)
         Serial Number:
             5f:df:d6:be:2c:73:c1:fb:aa:2a:2d:23:a6:91:3b:5c
         Signature Algorithm: sha1WithRSAEncryption
-        <span style="color: red;">Issuer:</span> O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority
+        <span style="color: red">Issuer:</span> O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority
         Validity
             Not Before: Jun  8 14:16:14 2010 GMT
             Not After : Jun  8 16:16:14 2010 GMT
-        <span style="color: red;">Subject:</span> O=FOAF+SSL, OU=The Community Of Self Signers/UID=https://example.org/profile#me, CN=Joe (Personal)
+        <span style="color: red">Subject:</span> O=FOAF+SSL, OU=The Community Of Self Signers/UID=https://example.org/profile#me, CN=Joe (Personal)
         Subject Public Key Info:
-<span style="color: red;">            Public Key Algorithm:</span> rsaEncryption
-                <span style="color: red;">Public-Key:</span> (2048 bit)
-                <span style="color: red;">Modulus:</span>
+<span style="color: red">            Public Key Algorithm:</span> rsaEncryption
+                <span style="color: red">Public-Key:</span> (2048 bit)
+                <span style="color: red">Modulus:</span>
                     00:cb:24:ed:85:d6:4d:79:4b:69:c7:01:c1:86:ac:
                     c0:59:50:1e:85:60:00:f6:61:c9:32:04:d8:38:0e:
                     07:19:1c:5c:8b:36:8d:2a:c3:2a:42:8a:cb:97:03:
@@ -771,7 +756,7 @@ Certificate:
                     71:fd:4f:20:7a:d7:70:80:9e:0e:2d:7b:0e:f5:49:
                     3b:ef:e7:35:44:d8:e1:be:3d:dd:b5:24:55:c6:13:
                     91:a1
-                <span style="color: red;">Exponent:</span> 65537 (0x10001)
+                <span style="color: red">Exponent:</span> 65537 (0x10001)
         X509v3 extensions:
             X509v3 Basic Constraints: critical
                 CA:FALSE
@@ -781,8 +766,8 @@ Certificate:
                 SSL Client, S/MIME
             X509v3 Subject Key Identifier:
                 08:8E:A5:5B:AE:5D:C3:8B:00:B7:30:62:65:2A:5A:F5:D2:E9:00:FA
-            <span style="color: red;">X509v3 Subject Alternative Name:</span> critical
-                <span style="color: red;">URI:</span>https://joe.example/profile#me
+            <span style="color: red">X509v3 Subject Alternative Name:</span> critical
+                <span style="color: red">URI:</span>https://joe.example/profile#me
     Signature Algorithm: sha1WithRSAEncryption
         cf:8c:f8:7b:b2:af:63:f0:0e:dc:64:22:e5:8a:ba:03:1e:f1:
         ee:6f:2c:f5:f5:10:ad:4c:54:fc:49:2b:e1:0d:cd:be:3d:7c:
@@ -793,7 +778,7 @@ Certificate:
         45:0c:b9:48:c0:fd:ac:bc:fb:1b:c9:e0:1c:01:18:5e:44:bb:
         d8:b8
 </pre>
-
+<p></p>
 <p class="issue">Should we formally require the Issuer to be
    O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority. This was discussed on the list as allowing servers to distinguish certificates that are foaf+Ssl enabled from others. Will probably need some very deep TLS thinking to get this right.</p>
 <p class="issue">discuss the importance for UIs of the CN</p>
@@ -810,7 +795,7 @@ using the <code>cert</code> and <code>rsa</code> ontologies, as well as the
 <code>cert</code> or <code>xsd</code> datatypes. The set of relations to be
 published at the <a class="tref internalDFN" title="WebID_Profile" href="#dfn-webid_profile">WebID Profile</a> document can be presented in a
 graphical notation as follows.</p>
-<img src="img/WebIdGraph.jpg" alt="Web ID graph" />
+<img alt="Web ID graph" src="img/WebIdGraph.jpg">
 <p>The document can publish many more relations than are of interest to the WebID protocol, as shown in the above graph by the grayed out relations.</p>
 <p>The encoding of this graph is immaterial to the protocol, so long as a well known mapping to the format of the representation to such a graph can be found. Below we discuss the most well known formats, and a method for dealing with new unknown formats as they come along.</p>
 <p>The WebID provider must publish the graph of relations in one of the well known formats, though he may publish it in a number of formats to increase the useabulity of his site using Content Negotations.</p>
@@ -820,8 +805,7 @@ graphical notation as follows.</p>
 <h4><span class="secno">2.3.1 </span>Turtle</h4>
 <p>A widely used format for writing RDF graphs is the Turtle notation. </p>
 <p class="example">
-</p><pre>
- @prefix cert: &lt;http://www.w3.org/ns/auth/cert#&gt; .
+</p><pre> @prefix cert: &lt;http://www.w3.org/ns/auth/cert#&gt; .
  @prefix rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt; .
  @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
  @prefix : &lt;https://joe.example/profile#&gt; .
@@ -853,15 +837,14 @@ graphical notation as follows.</p>
     rsa:public_exponent "65537"^^cert:int;
     cert:identity :me .
 </pre>
-
+<p></p>
 </div>
 <div id="rdfa-html-notation" typeof="bibo:Chapter" about="#rdfa-html-notation" class="section">
 <h4><span class="secno">2.3.2 </span>RDFa HTML notation</h4>
 <p>There are many ways of writing out the above graph using RDFa in
 html. Here is just one example.</p>
 <p class="example">
-</p><pre>
-&lt;html xmlns="http://www.w3.org/1999/xhtml"
+</p><pre>&lt;html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cert="http://www.w3.org/ns/auth/cert#"
       xmlns:foaf="http://xmlns.com/foaf/0.1/"
       xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -901,18 +884,17 @@ html. Here is just one example.</p>
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-
+<p></p>
 <p>If a WebId provider would rather prefer not to mark up his data in RDFa, but just provide a human readable format for users and have the RDF graph appear in a machine readable format such as RDF/XML then he <em class="rfc2119" title="may">may</em> publish the link from the HTML to a machine readable format (it this is available at a dedicated URI) as follows:</p>
  <p class="example">
-</p><pre>
-&lt;html&gt;
+</p><pre>&lt;html&gt;
 &lt;head&gt;
 &lt;link type="rel" type="application/rdf+xml" href="profile.rdf"/&gt;
 &lt;/head&gt;
 &lt;body&gt; ...  &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-
+<p></p>
 </div>
 <div id="in-rdf-xml" typeof="bibo:Chapter" about="#in-rdf-xml" class="section">
 <h4><span class="secno">2.3.3 </span>In RDF/XML</h4>
@@ -928,9 +910,7 @@ html. Here is just one example.</p>
 </div>
 
 <div class="normative section" id="the-webid-protocol" typeof="bibo:Chapter" about="#the-webid-protocol">
-
-<!-- OddPage -->
-<h2><span class="secno">3. </span>The WebID Protocol</h2>
+<!--OddPage--><h2><span class="secno">3. </span>The WebID Protocol</h2>
 
 <div class="normative section" id="authentication-sequence" typeof="bibo:Chapter" about="#authentication-sequence">
 <h3><span class="secno">3.1 </span>Authentication Sequence</h3>
@@ -1060,8 +1040,7 @@ Profile contains a pattern of relations.
 <p>Assuming the public key is an RSA key, and that its modulus is
  "9D79BFE2498..." and exponent "65537" then the following SPARQL query could be used:
 </p>
-<pre class="example">
-PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
+<pre class="example">PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 ASK {
    [] cert:identity &lt;http://example.org/webid#public&gt;;
@@ -1081,8 +1060,7 @@ xsd integer datatype notations, cert:int or future base64 notations.
 </p>
 <p class="issue">Should we define the base64 notation?</p>
 <p>If the SPARQL endpoint doesn't provide a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the <code>?webid</code> variable in the following query with the required value the <a class="tref" title="Verifying_Agent">Verifying Agent</a> can query the Profile Graph with</p>
-<pre class="example">
-PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
+<pre class="example">PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 SELECT ?m ?e
 WHERE {
@@ -1195,10 +1173,8 @@ documents:</p>
 
 </div>
 
-<div id="history" class="appendix informative section" typeof="bibo:Chapter" about="#history">
-
-<!-- OddPage -->
-<h2><span class="secno">A. </span>Change History</h2><p><em>This section is non-normative.</em></p>
+<div class="appendix informative section" id="history" typeof="bibo:Chapter" about="#history">
+<!--OddPage--><h2><span class="secno">A. </span>Change History</h2><p><em>This section is non-normative.</em></p>
 <p><a href="https://dvcs.w3.org/hg/WebID/rev/6b60d7335151">2011-02-10</a> Move to <a href="http://www.w3.org/2005/Incubator/webid/">W3C WebID XG</a>. Updates from previous unofficial WebID group include changes on RDF/XML publishing in HTML, clarification on multiple SAN URIs and WebID verification steps.
 </p>
 <p><a href="https://dvcs.w3.org/hg/WebID/rev/dc93b6bbc538">2010-08-09</a> Updates from WebID community: moved OpenID/OAuth sections to separate document, switched to the URI terminology instead of URL, added "Creating the certificate" and "Publishing the WebID Profile document" sections with a WebID graph and serializations in Turtle and RDFa, improved SPARQL queries using literal notation with cert datatypes, updated list of contributors, and many other fixes.</p>
@@ -1207,10 +1183,8 @@ documents:</p>
 <p><a href="https://dvcs.w3.org/hg/WebID/rev/25ba7f596f07">2010-07-11</a> Initial version.</p>
 </div>
 
-<div id="acknowledgements" class="informative section" typeof="bibo:Chapter" about="#acknowledgements">
-
-<!-- OddPage -->
-<h2><span class="secno">B. </span>Acknowledgments</h2><p><em>This section is non-normative.</em></p>
+<div class="informative section" id="acknowledgements" typeof="bibo:Chapter" about="#acknowledgements">
+<!--OddPage--><h2><span class="secno">B. </span>Acknowledgments</h2><p><em>This section is non-normative.</em></p>
 
 <p>The following people have been instrumental in providing thoughts, feedback,
 reviews, criticism and input in the creation of this specification:</p>
@@ -1228,15 +1202,16 @@ reviews, criticism and input in the creation of this specification:</p>
 </ul>
 
 </div>
-  <div id="references" class="appendix section" typeof="bibo:Chapter" about="#references">
-<!-- OddPage -->
-<h2><span class="secno">C. </span>References</h2><div id="normative-references" typeof="bibo:Chapter" about="#normative-references" class="section"><h3><span class="secno">C.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-HTTP-TLS">[HTTP-TLS]</dt><dd rel="dcterms:requires">E. Rescorla. <a href="http://www.ietf.org/rfc/rfc2818.txt"><cite>HTTP Over TLS.</cite></a> May 2000. Internet RFC 2818. URL: <a href="http://www.ietf.org/rfc/rfc2818.txt">http://www.ietf.org/rfc/rfc2818.txt</a>
-</dd><dt id="bib-N3">[N3]</dt><dd rel="dcterms:requires">Tim Berners-Lee; Dan Connolly. <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/"><cite>Notation3 (N3): A readable RDF syntax.</cite></a> 14 January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/">http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/</a>
-</dd><dt id="bib-RDF-PRIMER">[RDF-PRIMER]</dt><dd rel="dcterms:requires">Frank Manola; Eric Miller. <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/"><cite>RDF Primer.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</a>
-</dd><dt id="bib-RDF-SYNTAX-GRAMMAR">[RDF-SYNTAX-GRAMMAR]</dt><dd rel="dcterms:requires">Dave Beckett. <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210"><cite>RDF/XML Syntax Specification (Revised).</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210">http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210</a>
-</dd><dt id="bib-RDFA-CORE">[RDFA-CORE]</dt><dd rel="dcterms:requires">Shane McCarron; et al. <a href="http://www.w3.org/TR/2010/WD-rdfa-core-20101026"><cite>RDFa Core 1.1: Syntax and processing rules for embedding RDF through attributes.</cite></a>26 October 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-rdfa-core-20101026">http://www.w3.org/TR/2010/WD-rdfa-core-20101026</a>
-</dd><dt id="bib-TURTLE">[TURTLE]</dt><dd rel="dcterms:requires">David Beckett, Tim Berners-Lee. <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle: Terse RDF Triple Language</a> January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/turtle/">http://www.w3.org/TeamSubmission/turtle/</a>
-</dd><dt id="bib-X509V3">[X509V3]</dt><dd rel="dcterms:requires"><cite>ITU-T Recommendation X.509 version 3 (1997). "Information Technology - Open Systems Interconnection - The Directory Authentication Framework"  ISO/IEC 9594-8:1997</cite>.
-</dd><dt id="bib-XHTML-RDFA">[XHTML-RDFA]</dt><dd rel="dcterms:requires">Shane McCarron; et. al. <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100803"><cite>XHTML+RDFa 1.1.</cite></a> 3 August 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100803">http://www.w3.org/TR/WD-xhtml-rdfa-20100803</a>
-</dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">C.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-CONCEPTS">[RDF-CONCEPTS]</dt><dd rel="dcterms:references">Graham Klyne; Jeremy J. Carroll. <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210"><cite>Resource Description Framework (RDF): Concepts and Abstract Syntax.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210">http://www.w3.org/TR/2004/REC-rdf-concepts-20040210</a>
+  
+
+
+<div id="references" class="appendix section" typeof="bibo:Chapter" about="#references"><!--OddPage--><h2><span class="secno">C. </span>References</h2><div id="normative-references" typeof="bibo:Chapter" about="#normative-references" class="section"><h3><span class="secno">C.1 </span>Normative references</h3><dl class="bibliography" about=""><dt id="bib-HTTP-TLS">[HTTP-TLS]</dt><dd rel="dcterms:requires">E. Rescorla. <a href="http://www.ietf.org/rfc/rfc2818.txt"><cite>HTTP Over TLS.</cite></a> May 2000. Internet RFC 2818. URL: <a href="http://www.ietf.org/rfc/rfc2818.txt">http://www.ietf.org/rfc/rfc2818.txt</a> 
+</dd><dt id="bib-N3">[N3]</dt><dd rel="dcterms:requires">Tim Berners-Lee; Dan Connolly. <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/"><cite>Notation3 (N3): A readable RDF syntax.</cite></a> 14 January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/">http://www.w3.org/TeamSubmission/2008/SUBM-n3-20080114/</a> 
+</dd><dt id="bib-RDF-PRIMER">[RDF-PRIMER]</dt><dd rel="dcterms:requires">Frank Manola; Eric Miller. <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/"><cite>RDF Primer.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</a> 
+</dd><dt id="bib-RDF-SYNTAX-GRAMMAR">[RDF-SYNTAX-GRAMMAR]</dt><dd rel="dcterms:requires">Dave Beckett. <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210"><cite>RDF/XML Syntax Specification (Revised).</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210">http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210</a> 
+</dd><dt id="bib-RDFA-CORE">[RDFA-CORE]</dt><dd rel="dcterms:requires">Shane McCarron; et al. <a href="http://www.w3.org/TR/2010/WD-rdfa-core-20101026"><cite>RDFa Core 1.1: Syntax and processing rules for embedding RDF through attributes.</cite></a>26 October 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-rdfa-core-20101026">http://www.w3.org/TR/2010/WD-rdfa-core-20101026</a> 
+</dd><dt id="bib-TURTLE">[TURTLE]</dt><dd rel="dcterms:requires">David Beckett, Tim Berners-Lee. <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle: Terse RDF Triple Language</a> January 2008. W3C Team Submission. URL: <a href="http://www.w3.org/TeamSubmission/turtle/">http://www.w3.org/TeamSubmission/turtle/</a> 
+</dd><dt id="bib-X509V3">[X509V3]</dt><dd rel="dcterms:requires"><cite>ITU-T Recommendation X.509 version 3 (1997). "Information Technology - Open Systems Interconnection - The Directory Authentication Framework"&nbsp; ISO/IEC 9594-8:1997</cite>.
+</dd><dt id="bib-XHTML-RDFA">[XHTML-RDFA]</dt><dd rel="dcterms:requires">Shane McCarron; et. al. <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100803"><cite>XHTML+RDFa 1.1.</cite></a> 3 August 2010. W3C Working Draft. URL: <a href="http://www.w3.org/TR/2010/WD-xhtml-rdfa-20100803">http://www.w3.org/TR/WD-xhtml-rdfa-20100803</a> 
+</dd></dl></div><div id="informative-references" typeof="bibo:Chapter" about="#informative-references" class="section"><h3><span class="secno">C.2 </span>Informative references</h3><dl class="bibliography" about=""><dt id="bib-RDF-CONCEPTS">[RDF-CONCEPTS]</dt><dd rel="dcterms:references">Graham Klyne; Jeremy J. Carroll. <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210"><cite>Resource Description Framework (RDF): Concepts and Abstract Syntax.</cite></a> 10 February 2004. W3C Recommendation. URL: <a href="http://www.w3.org/TR/2004/REC-rdf-concepts-20040210">http://www.w3.org/TR/2004/REC-rdf-concepts-20040210</a> 
 </dd></dl></div></div></body></html>
