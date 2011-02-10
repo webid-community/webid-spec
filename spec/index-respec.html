@@ -165,8 +165,7 @@ span.element { color: green; }
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
           // embed RDFa data in the output
           doRDFa: true,
-          specStatus:           "unofficial",
-          //publishDate:          "2010-07-05",
+          specStatus:           "ED",
           diffTool:             "http://www3.aptest.com/standards/htmldiff/htmldiff.pl",
 
           // the specifications short name, as in http://www.w3.org/TR/short-name/
@@ -179,13 +178,13 @@ span.element { color: green; }
 
           // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
           // and its maturity status
-          previousPublishDate:  "2010-07-25",
-          previousMaturity:  "ED",
-          previousURI:       "http://payswarm.com/webid/drafts/ED-webid-20100725/",
+          previousPublishDate:  "2010-08-09",
+          previousMaturity:  "unofficial",
+          previousURI:       "http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20100809",
 
 
           // if there a publicly available Editors Draft, this is the link
-          edDraftURI:           "http://payswarm.com/webid/",
+          edDraftURI:           "http://www.w3.org/2005/Incubator/webid/spec/drafts/ED-webid-20110210",
 
           // if this is a LCWD, uncomment and set the end of its review period
           // lcEnd: "2009-08-05",
@@ -217,18 +216,18 @@ span.element { color: green; }
 //          errata: 'http://www.w3.org/MarkUp/2008/REC-rdfa-syntax-20081014-errata',
 
           // name of the WG
-          wg:           "Social Web XG",
+          wg:           "WebID XG",
 
           // URI of the public WG page
-          wgURI:        "http://esw.w3.org/Foaf%2Bssl",
+          wgURI:        "http://www.w3.org/2005/Incubator/webid/",
 
           // name (with the @w3c.org) of the public mailing to which comments are due
-          wgPublicList: "socialweb-xg",
+          wgPublicList: "public-xg-webid",
 
           // alternate formats for this document
-          alternateFormats: [
-              { uri: 'drafts/ED-webid-20100809/diff-20100725.html',
-                  label: "Diff from previous Editors Draft" }],
+          //alternateFormats: [
+          //    { uri: 'drafts/ED-webid-20100809/diff-20100725.html',
+          //        label: "Diff from previous Editors Draft" }],
 
           // URI of the patent status for this WG, for Rec-track documents
           // !!!! IMPORTANT !!!!
@@ -941,10 +940,12 @@ documents:</p>
 
 <section class='appendix informative' id="history">
 <h1>Change History</h1>
-<p><a href="https://github.com/webid-community/webid-spec/commit/21deeba1918df73047081d62204dd781f36f5fd7">2010-08-09</a> Updates from WebID community: moved OpenID/OAuth sections to separate document, switched to the URI terminology instead of URL, added "Creating the certificate" and "Publishing the WebID Profile document" sections with a WebID graph and serializations in Turtle and RDFa, improved SPARQL queries using literal notation with cert datatypes, updated list of contributors, and many other fixes.</p>
-<p><a href="http://github.com/webid-community/webid-spec/commit/b19d2812901b4511fdf9876c1be53bb36ee3201e">2010-07-25</a> Added WebID Profile section.</p>
-<p><a href="http://github.com/webid-community/webid-spec/commit/211d197510ca119c21ae48f3e5aa3f931ea88672">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
-<p><a href="http://github.com/webid-community/webid-spec/commit/a54dee9c242b08edaac617d678215b389dd3556d">2010-07-11</a> Initial version.</p>
+<p><a href="">2011-02-10</a> Move to <a href="http://www.w3.org/2005/Incubator/webid/">W3C WebID XG</a>. Updates from previous unofficial WebID group include changes on RDF/XML publishing in HTML, clarification on multiple SAN URIs and WebID verification steps.
+</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/dc93b6bbc538">2010-08-09</a> Updates from WebID community: moved OpenID/OAuth sections to separate document, switched to the URI terminology instead of URL, added "Creating the certificate" and "Publishing the WebID Profile document" sections with a WebID graph and serializations in Turtle and RDFa, improved SPARQL queries using literal notation with cert datatypes, updated list of contributors, and many other fixes.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/4aef27947dec">2010-07-25</a> Added WebID Profile section.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/805d44635286">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/25ba7f596f07">2010-07-11</a> Initial version.</p>
 </section>
 
 <section class='informative' id="acknowledgements">
