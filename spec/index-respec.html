@@ -387,9 +387,10 @@ access control?
 Using a process made popular by OpenID, we show how one can tie a User
 Agent to a URI by proving that one has write access to the URI.
 WebID is an authentication protocol which uses X.509
-certificates to associate a User Agent (Browser) to a Person identified via a URI.
-A WebID profile can also be used for OpenID, WebId provides a few additional features such as
-trust management via digital signatures, and free-form
+certificates to associate a User Agent (Browser) to a Person identified
+via a URI.
+A WebID profile can also be used for OpenID, WebId provides a few additional
+features such as trust management via digital signatures, and free-form
 extensibility via RDF. By using the existing SSL certificate exchange
 mechanism, WebID integrates smoothly with existing Web browsers, including
 browsers on mobile devices. WebID also permits automated session login
@@ -417,16 +418,16 @@ resource. A <tref>Verification Agent</tref> is typically a Web server, but
 may also be a peer on a peer-to-peer network.</dd>
 
 <dt><tdef>Identification Agent</tdef></dt>
-<dd>Provides identification credentials to a <tref>Verification Agent</tref>. The
-<tref>Identification Agent</tref> is typically also a User Agent.</dd>
+<dd>Provides identification credentials to a <tref>Verification Agent</tref>.
+The <tref>Identification Agent</tref> is typically also a User Agent.</dd>
 
 <dt><tdef>Identification Certificate</tdef></dt>
 <dd>An X.509 [[!X509V3]] Certificate that MUST contain a
 <code>Subject Alternative Name</code> extension with at least one URI entry
 identifying the <tref>Identification Agent</tref>. This URI SHOULD be
-dereference-able and result in a document containing RDF data. For example,
-a certificate identifying the WebID URI <code>http://example.org/webid#public</code>
-would contain the following:
+dereference-able and result in a document containing RDF data.
+For example, a certificate identifying the WebID URI
+<code>http://example.org/webid#public</code> would contain the following:
 <pre>
 X509v3 extensions:
    ...
@@ -477,7 +478,8 @@ public key of the <tref>Identification Certificate</tref> at this URI.</p>
 <p>For example, if a user Joe controls <code>http://joe.example/profile</code>,
 then his WebID can be <code>http://joe.example/profile#me</code></p>
 
-<p class="issue">explain why the WebID URI is different from the URI of the WebID profile document.</p>
+<p class="issue">explain why the WebID URI is different from the URI of the
+WebID profile document.</p>
 
 <p>As an example to use throughout this specification here is the
 following certificate as an output of the openssl program.</p>
@@ -540,9 +542,15 @@ Certificate:
 </pre>
 </p>
 <p class="issue">Should we formally require the Issuer to be
-   O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority. This was discussed on the list as allowing servers to distinguish certificates that are foaf+Ssl enabled from others. Will probably need some very deep TLS thinking to get this right.</p>
+O=FOAF+SSL, OU=The Community of Self Signers, CN=Not a Certification Authority.
+This was discussed on the list as allowing servers to distinguish certificates
+that are foaf+Ssl enabled from others. Will probably need some very deep TLS
+thinking to get this right.</p>
 <p class="issue">discuss the importance for UIs of the CN</p>
-<p class="issue">The above certificate is no longer valid, as I took an valid certificate and change the time and WebID. As a result the Signatiure is now false. A completely valid certificate should be generated to avoid nit-pickers picking nits</p>
+<p class="issue">The above certificate is no longer valid, as I took an valid
+certificate and change the time and WebID. As a result the Signatiure is now
+false. A completely valid certificate should be generated to avoid nit-pickers
+picking nits</p>
 </section>
 
 
@@ -550,17 +558,25 @@ Certificate:
 <h1>Publishing the WebID Profile Document</h1>
 
 <p>The <tref>WebID Profile</tref> document MUST expose the relation between the
-<tref>WebID URI</tref> and the <tref>Identification Agent</tref>'s <tref>public key</tref>s
-using the <code>cert</code> and <code>rsa</code> ontologies, as well as the
-<code>cert</code> or <code>xsd</code> datatypes. The set of relations to be
-published at the <tref>WebID Profile</tref> document can be presented in a
-graphical notation as follows.</p>
+<tref>WebID URI</tref> and the <tref>Identification Agent</tref>'s
+<tref>public key</tref>s using the <code>cert</code> and <code>rsa</code>
+ontologies, as well as the <code>cert</code> or <code>xsd</code> datatypes.
+The set of relations to be published at the <tref>WebID Profile</tref> document
+can be presented in a graphical notation as follows.</p>
 <img alt="Web ID graph" src="img/WebIdGraph.jpg"/>
-<p>The document can publish many more relations than are of interest to the WebID protocol, as shown in the above graph by the grayed out relations.</p>
-<p>The encoding of this graph is immaterial to the protocol, so long as a well known mapping to the format of the representation to such a graph can be found. Below we discuss the most well known formats, and a method for dealing with new unknown formats as they come along.</p>
-<p>The WebID provider must publish the graph of relations in one of the well known formats, though he may publish it in a number of formats to increase the useabulity of his site using Content Negotations.</p>
+<p>The document can publish many more relations than are of interest to the
+WebID protocol, as shown in the above graph by the grayed out relations.</p>
+<p>The encoding of this graph is immaterial to the protocol, so long as a well
+known mapping to the format of the representation to such a graph can be found.
+Below we discuss the most well known formats, and a method for dealing with new
+unknown formats as they come along.</p>
+<p>The WebID provider must publish the graph of relations in one of the well
+known formats, though he may publish it in a number of formats to increase the
+useabulity of his site using Content Negotations.</p>
 <p class="issue">Add content negoatiation pointers</p>
-<p>It is particularly useful to have one of the representations be in HTML or XHTML even if it is not marked up in RDFa as this allows people using a web browser to understand what the information at that URI represents.</p>
+<p>It is particularly useful to have one of the representations be in HTML or
+XHTML even if it is not marked up in RDFa as this allows people using a
+web browser to understand what the information at that URI represents.</p>
 <section class='normative'>
 <h1>Turtle</h1>
 <p>A widely used format for writing RDF graphs is the Turtle notation. </p>
@@ -647,7 +663,11 @@ html. Here is just one example.</p>
 &lt;/html&gt;
 </pre>
 </p>
-<p>If a WebId provider would rather prefer not to mark up his data in RDFa, but just provide a human readable format for users and have the RDF graph appear in a machine readable format such as RDF/XML then he MAY publish the link from the HTML to a machine readable format (it this is available at a dedicated URI) as follows:</p>
+<p>If a WebId provider would rather prefer not to mark up his data in RDFa, but
+just provide a human readable format for users and have the RDF graph appear
+in a machine readable format such as RDF/XML then he MAY publish the link from
+the HTML to a machine readable format (it this is available at a dedicated URI)
+as follows:</p>
  <p class="example">
 <pre>
 &lt;html&gt;
@@ -661,13 +681,15 @@ html. Here is just one example.</p>
 </section>
 <section>
 <h1>In RDF/XML</h1>
-<p>RDF/XML is easy to generate automatically from structured data, be it in object notiation or in relational databases. Parsers for it are also widely available.</p>
+<p>RDF/XML is easy to generate automatically from structured data, be it in
+object notiation or in relational databases. Parsers for it are also widely
+available.</p>
 <p class="issue">TODO: the dsa ontology</p>
 </section>
 <section>
 <h1>In Portable Contacts format using GRDDL</h1>
 <p class="issue">TODO: discuss other formats and GRDDL, XSPARQL options for xml formats</p>
- <p class="issue">summarize and point to content negotiation documents</p>
+<p class="issue">summarize and point to content negotiation documents</p>
 </section>
 </section>
 </section>
@@ -702,7 +724,8 @@ which are considered claimed <tref>WebID URI</tref>s.</li>
 <tref>public key</tref> information associated with at least one of the claimed
 <tref>WebID URI</tref>s. The <tref>Verification Agent</tref> MAY attempt to
 verify more than one claimed <tref>WebID URI</tref>.
-This verification process SHOULD occur either by dereferencing the <tref>WebID URI</tref> and
+This verification process SHOULD occur either by dereferencing the
+<tref>WebID URI</tref> and
 extracting RDF data from the resulting document, or by utilizing a cached
 version of the RDF data contained in the document or other data source that is
 up-to-date and trusted by the <tref>Verification Agent</tref>. The processing
@@ -721,11 +744,13 @@ On the other hand, if no matching <tref>public key</tref> is found in the list
 of <tref>public key</tref>s associated with the claimed <tref>WebID URI</tref>,
 the <tref>Verification Agent</tref> MUST attempt to verify another claimed
 <tref>WebID URI</tref>. The authentication MUST fail if no matching
-<tref>public key</tref> is found among all the claimed <tref>WebID URI</tref>s.</li>
+<tref>public key</tref> is found among all the claimed
+<tref>WebID URI</tref>s.</li>
 
 <li>The <tref>Verification Agent</tref> verifies that the
-<tref>Identification Agent</tref> owns the private key corresponding to the public key  sent in the
-<tref>Identification Certificate</tref>. This SHOULD be fulfilled by performing TLS mutual-authentication
+<tref>Identification Agent</tref> owns the private key corresponding to the
+public key  sent in the <tref>Identification Certificate</tref>.
+This SHOULD be fulfilled by performing TLS mutual-authentication
 between the <tref>Verification Agent</tref> and the
 <tref>Identification Agent</tref>.
 If the <tref>Verification Agent</tref> does not have access to the TLS layer,
@@ -739,7 +764,8 @@ titled <a href="#authorization">Authorization</a> and
 profile document graph given above then the <tref>Verification Agent</tref>
 knows that the <tref>Identification Agent</tref> is indeed identified by the
 <tref>WebID URI</tref>. The verification is done by querying the
-Personal Profile graph as specified in <a href="#extracting-webid-uri-details">querying the RDF graph</a>.</li>
+Personal Profile graph as specified in
+<a href="#extracting-webid-uri-details">querying the RDF graph</a>.</li>
 </ol>
 
 <p>
@@ -777,14 +803,15 @@ sent to the Verification Agent.</p>
 <section class='normative'>
 <h2>Processing the WebID Profile</h2>
 
-<p>A <tref>Verification Agent</tref> MUST be able to process documents in RDF/XML
-[[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]]. A server responding to
-a <tref>WebID Profile</tref> request SHOULD be able to deliver at least RDF/XML
-or RDFa. The <tref>Verification Agent</tref> MUST set the Accept-Header to request
-<code>application/rdf+xml</code> with a higher priority than <code>text/html</code>
-and <code>application/xhtml+xml</code>. If the server answers such a request
-with an HTML representation of the resource, this SHOULD describe the WebId Profile
-with RDFa.
+<p>A <tref>Verification Agent</tref> MUST be able to process documents in
+RDF/XML [[!RDF-SYNTAX-GRAMMAR]] and XHTML+RDFa [[!XHTML-RDFA]].
+A server responding to a <tref>WebID Profile</tref> request SHOULD be able
+to deliver at least RDF/XML or RDFa.
+The <tref>Verification Agent</tref> MUST set the Accept-Header to request
+<code>application/rdf+xml</code> with a higher priority than
+<code>text/html</code> and <code>application/xhtml+xml</code>. If the server
+answers such a request with an HTML representation of the resource, this SHOULD
+describe the WebId Profile with RDFa.
 </p>
 
 <p class="issue">This section will explain how a Verification Agent extracts
@@ -795,13 +822,14 @@ semantic data describing the identification credentials from a WebID Profile.</p
 <h2>Verifying the WebID is identified by that public key</h2>
 
 <p>
-There are number of different ways to check that the public key given in the X.509
-certificate against the one provided by the <tref>WebID Profile</tref> or another
-trusted source, the essence is checking that the graph of relations in the
-Profile contains a pattern of relations.
+There are number of different ways to check that the public key given in the
+X.509 certificate against the one provided by the <tref>WebID Profile</tref> or
+another trusted source, the essence is checking that the graph of relations in
+the Profile contains a pattern of relations.
 </p>
 <p>Assuming the public key is an RSA key, and that its modulus is
- "9D79BFE2498..." and exponent "65537" then the following SPARQL query could be used:
+"9D79BFE2498..." and exponent "65537" then the following SPARQL query could
+be used:
 </p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
@@ -819,12 +847,17 @@ to be able to do inferencing on dataytypes. This is because the numerical
 values may be expressed with different xsd and cert datatypes which must all
 be supported by <tref>VerificationAgent</tref>s. The cert datatypes allow
 the numerical expression to be spread over a number of lines, or contain
-arbitrary characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." .  The datatype
+arbitrary characters such as "9D ☮ 79 ☮ BF ☮ E2 ☮ F4 ☮ 98 ☮..." . The datatype
 itself need not necessarily be expressed in cert:hex, but could use a number of
 xsd integer datatype notations, cert:int or future base64 notations.
 </p>
 <p class="issue">Should we define the base64 notation?</p>
-<p>If the SPARQL endpoint doesn't provide a literal inferencing engine, then the modulus should be extracted from the graph, normalised into a big integer (integers without an upper bound), and compared with the values given in the public key certificate. After replacing the <code>?webid</code> variable in the following query with the required value the <tref>Verifying Agent</tref> can query the Profile Graph with</p>
+<p>If the SPARQL endpoint doesn't provide a literal inferencing engine, then
+the modulus should be extracted from the graph, normalised into a big integer
+(integers without an upper bound), and compared with the values given in the
+public key certificate. After replacing the <code>?webid</code> variable in the
+following query with the required value the <tref>Verifying Agent</tref> can
+query the Profile Graph with</p>
 <pre class='example'>
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
@@ -836,8 +869,10 @@ WHERE {
 }
 </pre>
 <p>Here the verification agent must check that one of the answers for ?m and ?e
-matches the integer values of the modulus and exponent given in the public key in the certificate.</p>
-<p class="issue"> The public key could be a DSA key. We need to add an ontology for DSA too. What other cryptographic ontologies should we add?</p>
+matches the integer values of the modulus and exponent given in the public key
+in the certificate.</p>
+<p class="issue"> The public key could be a DSA key. We need to add an ontology
+for DSA too. What other cryptographic ontologies should we add?</p>
 
 </section>
 
@@ -903,8 +938,8 @@ subsequent sections:</p>
 <p>Personal details are the most common requirement when registering an
 account with a website. Some of these pieces of information include an e-mail
 address, a name and perhaps an avatar image. This section includes
-properties that SHOULD be used when conveying key pieces of personal
-information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:</p>
+properties that SHOULD be used when conveying key pieces of personal information
+but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:</p>
 
 <dl>
   <dt>foaf:mbox</dt>
@@ -922,8 +957,8 @@ information but are NOT REQUIRED to be present in a <tref>WebID Profile</tref>:<
 
 <p>Cryptographic details are important when <tref>Verification Agent</tref>s
 and <tref>Identification Agent</tref>s interact. The following properties
-SHOULD be used when conveying cryptographic information in <tref>WebID Profile</tref>
-documents:</p>
+SHOULD be used when conveying cryptographic information in
+<tref>WebID Profile</tref> documents:</p>
 
 <dl>
   <dt>rsa:RSAPublicKey</dt>
@@ -942,12 +977,26 @@ documents:</p>
 
 <section class='appendix informative' id="history">
 <h1>Change History</h1>
-<p><a href="https://dvcs.w3.org/hg/WebID/rev/6b60d7335151">2011-02-10</a> Move to <a href="http://www.w3.org/2005/Incubator/webid/">W3C WebID XG</a>. Updates from previous unofficial WebID group include changes on RDF/XML publishing in HTML, clarification on multiple SAN URIs and WebID verification steps.
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/6b60d7335151">2011-02-10</a>
+Move to <a href="http://www.w3.org/2005/Incubator/webid/">W3C WebID XG</a>.
+Updates from previous unofficial WebID group include changes on
+RDF/XML publishing in HTML, clarification on multiple SAN URIs and
+WebID verification steps.
 </p>
-<p><a href="https://dvcs.w3.org/hg/WebID/rev/dc93b6bbc538">2010-08-09</a> Updates from WebID community: moved OpenID/OAuth sections to separate document, switched to the URI terminology instead of URL, added "Creating the certificate" and "Publishing the WebID Profile document" sections with a WebID graph and serializations in Turtle and RDFa, improved SPARQL queries using literal notation with cert datatypes, updated list of contributors, and many other fixes.</p>
-<p><a href="https://dvcs.w3.org/hg/WebID/rev/4aef27947dec">2010-07-25</a> Added WebID Profile section.</p>
-<p><a href="https://dvcs.w3.org/hg/WebID/rev/805d44635286">2010-07-18</a> Updates from WebID community related to RDF/XML support, authentication sequence corrections, abstract and introduction updates.</p>
-<p><a href="https://dvcs.w3.org/hg/WebID/rev/25ba7f596f07">2010-07-11</a> Initial version.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/dc93b6bbc538">2010-08-09</a>
+Updates from WebID community: moved OpenID/OAuth sections to separate document,
+switched to the URI terminology instead of URL, added "Creating the certificate"
+and "Publishing the WebID Profile document" sections with a WebID graph and
+serializations in Turtle and RDFa, improved SPARQL queries using literal
+notation with cert datatypes, updated list of contributors,
+and many other fixes.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/4aef27947dec">2010-07-25</a>
+Added WebID Profile section.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/805d44635286">2010-07-18</a>
+Updates from WebID community related to RDF/XML support, authentication sequence
+corrections, abstract and introduction updates.</p>
+<p><a href="https://dvcs.w3.org/hg/WebID/rev/25ba7f596f07">2010-07-11</a>
+Initial version.</p>
 </section>
 
 <section class='informative' id="acknowledgements">
