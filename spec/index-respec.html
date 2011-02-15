@@ -389,7 +389,7 @@ Agent to a URI by proving that one has write access to the URI.
 WebID is an authentication protocol which uses X.509
 certificates to associate a User Agent (Browser) to a Person identified
 via a URI.
-A WebID profile can also be used for OpenID, WebId provides a few additional
+A WebID profile can also be used for OpenID, WebID provides a few additional
 features such as trust management via digital signatures, and free-form
 extensibility via RDF. By using the existing SSL certificate exchange
 mechanism, WebID integrates smoothly with existing Web browsers, including
@@ -572,8 +572,8 @@ Below we discuss the most well known formats, and a method for dealing with new
 unknown formats as they come along.</p>
 <p>The WebID provider must publish the graph of relations in one of the well
 known formats, though he may publish it in a number of formats to increase the
-useabulity of his site using Content Negotations.</p>
-<p class="issue">Add content negoatiation pointers</p>
+usability of his site using content negotiations.</p>
+<p class="issue">Add content negotiation pointers</p>
 <p>It is particularly useful to have one of the representations be in HTML or
 XHTML even if it is not marked up in RDFa as this allows people using a
 web browser to understand what the information at that URI represents.</p>
@@ -663,7 +663,7 @@ html. Here is just one example.</p>
 &lt;/html&gt;
 </pre>
 </p>
-<p>If a WebId provider would rather prefer not to mark up his data in RDFa, but
+<p>If a WebID provider would rather prefer not to mark up his data in RDFa, but
 just provide a human readable format for users and have the RDF graph appear
 in a machine readable format such as RDF/XML then he MAY publish the link from
 the HTML to a machine readable format (it this is available at a dedicated URI)
@@ -811,7 +811,7 @@ The <tref>Verification Agent</tref> MUST set the Accept-Header to request
 <code>application/rdf+xml</code> with a higher priority than
 <code>text/html</code> and <code>application/xhtml+xml</code>. If the server
 answers such a request with an HTML representation of the resource, this SHOULD
-describe the WebId Profile with RDFa.
+describe the WebID Profile with RDFa.
 </p>
 
 <p class="issue">This section will explain how a Verification Agent extracts
