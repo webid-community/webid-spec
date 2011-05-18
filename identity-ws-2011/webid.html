@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" version="XHTML+RDFa 1.0" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta property="dc:subject" content="identity, WebID, authentication, Browser, REST, HTTPS, Public-key cryptography" />
+  <title>The WebID Protocol &amp; Browsers</title>
+  <style type="text/css">
+  @import url("http://www.w3.org/StyleSheets/TR/base.css");
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    background-color: white;
+    text-align: justify;
+  }
+  h1, div.description, div.figure {
+    text-align:center;
+  }
+  pre {
+    background-color: #FFFFE0;
+  }
+  .headerish { color: #005A9C; background: white }
+  .highlight {
+    color:red;
+    font-weight:bold;
+  }
+  ul.authorship { list-style:none; }
+  ul.authorship li { display: inline; }
+  ul.authorship li:after { content: ' • ' }
+  </style>
+</head>
+
+<body>
+    <h1 property="dc:title">The WebID Protocol &amp; Browsers</h1>
+    <div class="description">
+    <p datatype="" property="dc:description">Position Paper for <a href=
+    "http://www.w3.org/2011/identity-ws/">W3C Workshop on Identity in the Browser</a>
+    24/25th May 2011, Mountain View (USA)</p>
+
+    <p>Presented by members of the <a href=
+    "http://www.w3.org/2005/Incubator/webid/">
+    W3C WebID Incubator Group</a></p>
+
+
+    <p class="headerish"><strong>Authors</strong>:</p> 
+    <ul class="authorship" rel="dc:creator">
+      <li typeof="foaf:Person">• <a rel="foaf:homepage" href="http://jeffsayre.com/"  property="foaf:name">Jeff Sayre</a></li> 
+      <li about="http://bblfish.net/#hjs" typeof="foaf:Person"><a rel="foaf:homepage" href="http://bblfish.net/"  property="foaf:name">Henry Story</a>, WebID Incubator Chair</li>
+    </ul>
+
+    <p class="headerish"><strong>Contributors</strong>:</p> 
+    <ul class="authorship" rel="dc:contributor"><li typeof="foaf:Person">• 
+    <a rel="foaf:workInfoHomepage" href="http://www.cs.kent.ac.uk/people/staff/dwc8/" property="foaf:name">David Chadwick</a>, University of Kent</li>
+    <li about="http://openspring.net/scor#me" typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" href="http://openspring.net/scor">Stéphane Corlosquet</a></li>
+    <li typeof="foaf:Person"><a rel="foaf:workInfoHomepage" property="foaf:name" href="http://vsr.informatik.tu-chemnitz.de/people/gaedke/">Martin Gaedke</a>, Chemnitz University of Technology</li>
+    <li typeof="foaf:Person"><a rel="foaf:blog" property="foaf:name" href="http://www.openlinksw.com/blog/~kidehen/">Kingsley Idehen</a>, OpenLink Software</li>
+    <li typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" href="http://apassant.net/alex">Alexandre Passant</a>, DERI, NUI Galway</li>
+    <li about="http://fcns.eu/people/andrei/card#me" typeof="foaf:Person"><a rel="foaf:homepage" property="foaf:name" href="http://fcns.eu/">Andrei Sambra</a></li>
+    <li typeof="foaf:Person"><a rel="foaf:workInfoHomepage" href="http://ii.uwb.edu.pl/~dtomaszuk/" property="foaf:name">Dominik Tomaszuk</a>, <a rel="foaf:workplaceHomepage" href="http://ii.uwb.edu.pl/">University of Bialystok</a></li>
+    <li typeof="foaf:Person"><a rel="foaf:made" property="foaf:name" href="http://portal.acm.org/citation.cfm?id=560938">Peter Williams</a></li>
+    </ul>
+    </div>
+
+    <h2>1. Position Statement</h2>
+
+
+    <p>The browser is both the interface to the
+    Web as well as presenting the user&apos;s face to the world. The browser user should
+    therefore be conscious of the face he is presenting at any time. He should be able to
+    change it easily: identity selection should be a one-click gesture,
+    cryptographically-secure, and web site independent. It should put the user in control
+    of the information he shares with each site. And it should be available
+    now.</p>
+
+
+    <p>The WebID protocol enables all of the
+    above. It works in all browsers that correctly implement HTTPS and client-side
+    certificates. But with a twist: it ties those certificates into the web in a
+    <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">RESTful manner</a> allowing identities to be linked together in
+    a secure social web of trust, that does not require central authorities, and that
+    allows the user to control how he describes himself to each site he logs
+    into.</p>
+
+
+    <p>After describing the WebID protocol and its benefits, we will suggest a roadmap for future improvements in the browser that can take advantage of it.</p>
+
+
+    <h2>2. WebID Overview</h2>
+
+    <p>To illustrate how WebID works, we will first look in detail at what happens on the wire when Bob connects for the first time to a protected resource on Alice's Web Server. This resource could simply be a login button, or it could be any of the resources published there. This should help show just how simple and efficient the protocol is: it requires only one more HTTP connection than the original resource
+    requested, and the results of this connection can be cached. </p>
+
+    <ol>
+    <li>Bob requests
+    Alice&apos;s protected HTTPS resource</li>
+    <li>Alice&apos;s web
+    server requests the client certificate on the TLS connection started above</li>
+    <li>Bob&apos;s browser
+    presents him with a selection of identities to choose from: <div class="figure"><img width=
+    "576" height="235" src="webid_images/image001.jpg" alt="" /></div>Having selected one, the corresponding X509
+    certificate is sent to Alice&apos;s server:
+    <pre>  Public Key Info:
+      Public Key Algorithm: rsaEncryption
+        Public-Key: (1024 bit)
+        Modulus:
+          00:e8:f9: [snip] :c6:af:2e
+        Exponent: 65537 (0x10001)
+      X509v3 extensions:
+        X509v3 Subject Alternative Name:
+          URI: <span class="highlight">https://bob.net/id/bob#me</span></pre>
+  It contains Bob&apos;s WebID, shown in bold red above.</li>
+    <li>Alice&apos;s server:<ol>
+      <li>checks that
+    Bob&apos;s browser is in possession of the private key corresponding to the public key
+    sent in the certificate, as specified by TLS</li>
+      <li>extracts the
+    URI from the Subject Alternative Name field of the certificate, which is known as
+    Bob&apos;s WebID: a global identifier that refers to Bob via a document that describes
+    him, in a machine readable way using W3C standards.<div class="figure"><img width="708" height="544" src=
+    "webid_images/WebIDSequence-friendly.jpg" alt="" /></div></li>
+    </ol></li>
+    <li>Alice's server
+    fetches Bob&apos;s WebID Profile at https://bob.net/id/bob in the example if an up to date
+    version is not in the cache</li>
+    <li>Alice&apos;s server
+    checks that the profile relates Bob&apos;s WebID to the public key found in the
+    certificate. If they match then she knows that she is in
+    communication with the agent referred to by https://bob.net/id/bob#me</li>
+    <li>Bob's identity
+    is then checked as to its position in a graph of relations in order to determine
+    trust according to some criteria decided by Alice combined with information from the
+    cloud.<br/>
+    This is outside the core of WebID, but it is important to
+    understand how it can work. Alice might decide for example that only a group of
+    friends who have given her a WebID personally may have access. Or she may be more
+    lenient, and allow any of the <a href="http://xmlns.com/foaf/0.1/">friends of those friends</a> to also access that
+    resource, as specified by them in their profile located on their servers. Or she may
+    only trust employees of her company, or of her department, to view that resource.
+    Alice&apos;s server can do a lookup in a local file, crawl the web at intervals, or use
+    web services to gather the data to help make that decision.</li>
+    <li>Access is
+    granted fully, partially, or denied and a representation is returned. Assuming the
+    resource requested is a friend graph, a full representation could be returned to a
+    friend, and a very limited one to an anonymous user.</li>
+    </ol>
+
+    <p>The WebID placed in the X509 Certificate can be a https URL as
+    shown above. Although the HTTPS scheme is currently the most widely implemented,
+    WebID could also used with any dereferenceable scheme such as ftps://, ldaps://,
+    xris://, accnt: (used by <a href="http://code.google.com/p/webfinger/">webfinger</a> ). It could also be used in future schemes such as
+    <a href="http://lists.w3.org/Archives/Public/public-xg-webid/2011Mar/0068.html">
+    httpk</a> that would give up human readable URIs in order to
+    avoid the centralisation problems of DNS.</p>
+
+
+    <h2>3. Advantages of WebID</h2>
+
+
+    <p>Issues of identity and privacy have been
+    growing increasingly serious as the Web has become social over the last decade.
+    Remembering login details has grown into a serious security issue as more sites asked
+    for them than people had the ability to remember. And the inability to easily share
+    restricted information across websites has become a visible problem to 100s of
+    millions of people as they started finding themselves and those they wished to
+    communicate with split across siloed services.</p>
+
+    <p>Specifically, WebID offers the following
+    advantages.</p>
+
+
+    <h3>3.1 Overcoming Password Fatigue</h3>
+
+
+    <p>Passwords are <em>difficult</em> to remember or
+    they are easy to crack. As a result people tend to re-use them, making phishing
+    attacks the biggest threat on the web, leading to a mistrust of new services. WebID
+    uses TLS-client certificates and public key cryptography as shipped in current
+    browsers in a way that enables the same certificate to be used across sites securely.
+    Furthermore with the HTML5 supported <code>keygen</code> element, creating such a certificate is
+    as easy as submitting an HTML form.</p>
+
+
+    <h3>3.2 OpenID</h3>
+
+
+    <p><a href="http://openid.net/">OpenID</a>
+    reduces the account multiplication issue by allowing users to login
+    to every site using the same global identifier. This provides a base from which WebId can be deployed,
+    procuring the following extra advantages:</p>
+
+    <ul>
+    <li><strong>Protocol
+    simplicity</strong>: the WebID protocol is a lot simpler,
+    requiring only one more connection over and above the connection to the requested
+    resource, where the result is cacheable. OpenID <a href=
+    "http://blogs.sun.com/bblfish/entry/the_openid_sequence_diagram">requires seven TLS connections</a>, significantly more than WebID. These
+    additional steps create opportunities for denial of service attacks, making it more
+    difficult to secure and to debug.</li>
+    <li><strong>User-interaction
+    simplicity</strong>: OpenID requires the user to remember and type
+    an OpenID URL. WebID hides this in the X509 certificate allowing the browser to offer
+    select-and-click interaction. This is very helpful anywhere, but especially on
+    <a href="http://blogs.sun.com/bblfish/entry/one_click_global_sign_on">handheld devices</a>.</li>
+    </ul>
+
+<p>These protocol simplifications create a cascade of additional benefits. WebID can be applied recursively, enabling the Relying Party (Alice above) to identify herself using WebID, making it easy to <a href="http://blogs.sun.com/bblfish/entry/sketch_of_a_restful_photo">build an authorisation protocol</a>. WebId takes full advantage of the peer to peer nature of the Web. </p>
+
+    <h3>3.3 Public Key Infrastructure</h3>
+
+
+    <p>TLS-client certificates have been available in
+    the browser since 1996, but their usage has been limited to a small number of sites.
+    The organisation which generates the certificate is usually the same as the one that
+    consumes it, giving the user little advantage over username/passwords layered on
+    server-side https. Outside of very large and well-funded Defence related
+    organisations, client-side certificates have thus had very poor adoption.</p>
+
+    <p>The missing link to wide adoption is the global naming system
+    that OpenID takes advantage of with URLs, and that allows one to potentially
+    authenticate to all sites. What failed TLS was that X500 names were not Universal
+    Identifiers, were not designed to form an interlinked web, and hence were not usable
+    to authenticate to sites without those first having a federated agreement. One can easily
+    imagine how much resistance there would have been to global hypertext system  if organisations had 
+    to first make an agreement with every web site they wanted to visit, before their users 
+    were able to visit them. </p>
+
+    <p>Having solved the naming/identity problem using standard URLs, WebId authorization agents can then use the web of interlinked profiles and other resources (eg. academic publications, ...) to calculate trust in a dynamic manner. Since trust can then be spread to a much large network of actors, each bringing a small piece of information to the graph, this allows both greater resilience in the system and more flexibility.</p>
+
+    
+    <h3>3.4 Future Proof Protocol</h3>
+
+    <p>Not only does WebID work with the Web as it is
+    today, but it will be strengthened with the rollout of critical infrastructure
+    elements such as DNSSEC, which can be used as <a href=
+    "http://www.wired.com/techbiz/people/magazine/16-12/ff_kaminsky?currentPage=all">Dan Kaminsky</a>
+    explains in his <a href="http://dankaminsky.com/2010/12/13/dnssec-ch1/">DNSSEC Diaries</a>
+    to publish public keys of services, a work being developed formally
+    by the <a href=
+    "http://datatracker.ietf.org/wg/dane/charter/">
+    IETF Dane</a>
+    working group. This can be used to increase trust in all server
+    certificates, but in particular self-signed server certificates, which according to a
+    report by the <a href=
+    "http://www.eff.org/observatory">
+    EFF Observatory</a>
+    are three times more numerous than CA-signed certificates. By
+    lowering the entry barrier to using cryptography, both WebID and Dane will help bring
+    about an increasingly-secure Web.</p>
+
+    <h2>4. Recommended Browser Improvements</h2>
+
+    <p>All current browser-based authentication
+    methods fail to give full control over identity to the user. We declare that browsers
+    MUST give the user full visible control of their identity. With TLS, as with cookies,
+    one should be able to see clearly which identity one is logged in under and be able
+    to easily become anonymous again, as far as that is possible of course. The Firefox
+    Weave team have shown what this could look like, making use of the URL bar&apos;s existing
+    role as guarantor of server identity and extending it to client identity.</p>
+
+    <div class="figure"><img width="278" height="157" src=
+    "webid_images/image003.jpg" alt="" /><img width="337" height="202" src=
+    "webid_images/image004.jpg" alt="" /></div>
+
+    <p>Here the user can see what persona they are
+    presenting to the site or if they are anonymous. It also permits the user to change
+    identity or to log out. The browser could then make use of the information found in
+    the WebID profile--linked to from the X509 certificate--such as finding a link to a
+    picture which could then be displayed, or linking to the account management page as
+    shown above.</p>
+
+    <p>This WebID anchor can then be used by browsers
+    to improve the user experience by:</p>
+    <ul>
+    <li>using bookmarking
+    services linked to from the profile</li>
+    <li>using the linked social
+    graph to provide real time changes to address books as well as social web based spam
+    protection</li>
+    <li>building micropayment
+    services by using the TLS cryptography layer, ...</li>
+    </ul>
+
+    <h2>5. Conclusion</h2>
+
+    <p>WebID allows users to authenticate easily and
+    securely to any website in the world in a one click gesture without needing to fill
+    out any new forms. That site can immediately personalise the experience given the
+    information and social graph made available to it by the user (see <a href="http://blogs.sun.com/bblfish/entry/sketch_of_a_restful_photo">Sketch of a RESTful photo Printing service</a> ). This will allow innumerable applications
+    to be built that improve relations between individuals and their friends, co-workers,
+    employers, and vendors across domain and organisational boundaries.</p>
+
+    <p>The <a href="http://www.w3.org/2005/Incubator/webid/">
+    W3C WebID Incubator Group</a>
+    is keen to work with browser vendors and Web service providers to
+    help standardise the necessary formats, semantics, and RESTful protocols and to provide test suites for these. We are also keen to work with the <a href="http://www.w3.org/2005/Incubator/federatedsocialweb/">Federated Social Web XG</a> to build interoperable services in order to discover what gets adopted, standardise those pieces that are most widely agreed on, and discover issues that require longer term research to be resolved.</p>
+
+    <h2>6. Additional Resources</h2>
+    <ul>
+    <li><a href=
+    "http://www.w3.org/2005/Incubator/webid/spec/">
+    WebID Draft Spec</a></li>
+    <li><a href=
+    "http://www.w3.org/wiki/Foaf%2Bssl/FAQ">
+    WebID Frequently Asked Questions</a></li>
+    <li><a href=
+    "http://www.w3.org/wiki/Foaf%2Bssl">WebID Wiki</a></li>
+    </ul>
+
+
+</body>
+</html>
