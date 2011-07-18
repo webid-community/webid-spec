@@ -910,7 +910,7 @@ PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 SELECT ?m ?e
 WHERE {
-   ?webid cert:identity [
+   ?webid cert:publicKey [
         rsa:modulus ?m ;
         rsa:public_exponent ?e ;
    ] .
