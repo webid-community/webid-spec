@@ -1017,6 +1017,12 @@ SHOULD be used when conveying cryptographic information in
   MUST contain at least one RSAPublicKey that is associated with the
   corresponding WebID URI.</dd>
 </dl>
+<p class="note">cert:identity was previously used to associate an RSAPublicKey
+with a WebID URI. cert:identity has been deprecated in favor of its inverse
+property cert:key. Implementors are encouraged to publish WebID Profile
+Documents using cert:key. During this transitional period, implementations
+consuming WebID Profile Documents might still support the deprecated
+cert:identity as well as the stable cert:key.</p>
 </section>
 
 </section>
