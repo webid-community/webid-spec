@@ -589,7 +589,7 @@ web browser to understand what the information at that URI represents.</p>
 
  :me a foaf:Person;
    foaf:name "Joe";
-   cert:publicKey [
+   cert:key [
      a rsa:RSAPublicKey;
      rsa:modulus """
        00:cb:24:ed:85:d6:4d:79:4b:69:c7:01:c1:86:ac:
@@ -635,7 +635,7 @@ html. Here is just one example.</p>
 &lt;div&gt;
   &lt;span property="foaf:name"&gt;Joe&lt;/span&gt;
 
-  &lt;div rel="cert:publicKey"&gt;
+  &lt;div rel="cert:key"&gt;
     &lt;h2&gt;My RSA Public Key&lt;/h2&gt;
     &lt;div typeof="rsa:RSAPublicKey"&gt;
       &lt;dl&gt;
@@ -701,7 +701,7 @@ available.</p>
  xmlns:foaf=&quot;http://xmlns.com/foaf/0.1/&quot;&gt;
   &lt;foaf:Person rdf:about=&quot;https://joe.example/profile#me&quot;&gt;
     &lt;foaf:name&gt;Joe&lt;/foaf:name&gt;
-    &lt;cert:publicKey&gt;
+    &lt;cert:key&gt;
       &lt;rsa:RSAPublicKey&gt;
         &lt;rsa:modulus rdf:datatype=&quot;http://www.w3.org/ns/auth/cert#hex&quot;&gt;
           00:cb:24:ed:85:d6:4d:79:4b:69:c7:01:c1:86:ac:
@@ -725,7 +725,7 @@ available.</p>
         &lt;/rsa:modulus&gt;
         &lt;rsa:public_exponent rdf:datatype=&quot;http://www.w3.org/ns/auth/cert#int&quot;&gt;65537&lt;/rsa:public_exponent&gt;
       &lt;/rsa:RSAPublicKey&gt;
-    &lt;/cert:publicKey&gt;
+    &lt;/cert:key&gt;
   &lt;/foaf:Person&gt;
 
 &lt;/rdf:RDF&gt;
@@ -881,7 +881,7 @@ be used:
 PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 ASK {
-   &lt;http://example.org/webid#public&gt; cert:publicKey [
+   &lt;http://example.org/webid#public&gt; cert:key [
       rsa:modulus  "9D79BFE2498..."^^cert:hex;
       rsa:public_exponent "65537"^^cert:int;
    ] .
@@ -910,7 +910,7 @@ PREFIX cert: &lt;http://www.w3.org/ns/auth/cert#&gt;
 PREFIX rsa: &lt;http://www.w3.org/ns/auth/rsa#&gt;
 SELECT ?m ?e
 WHERE {
-   ?webid cert:publicKey [
+   ?webid cert:key [
         rsa:modulus ?m ;
         rsa:public_exponent ?e ;
    ] .
@@ -1012,7 +1012,7 @@ SHOULD be used when conveying cryptographic information in
   <dt>rsa:RSAPublicKey</dt>
   <dd>Expresses an RSA public key. The RSAPublicKey MUST specify the
   rsa:modulus and rsa:public_exponent properties.</dd>
-  <dt>cert:publicKey</dt>
+  <dt>cert:key</dt>
   <dd>Used to associate a WebID URI with an RSAPublicKey. A WebID Profile
   MUST contain at least one RSAPublicKey that is associated with the
   corresponding WebID URI.</dd>
